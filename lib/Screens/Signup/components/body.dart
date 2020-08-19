@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: size.height * 0.03),
+            SizedBox(height: size.height * 0.06),
             Text(
               "Зарегистрироваться",
               style: TextStyle(
