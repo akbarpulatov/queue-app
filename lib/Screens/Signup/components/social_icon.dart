@@ -27,6 +27,7 @@ class SocalIcon extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           iconSrc,
+          color: kPrimaryColor,
           height: 20,
           width: 20,
         ),

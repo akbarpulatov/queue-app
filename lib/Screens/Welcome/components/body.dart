@@ -19,11 +19,10 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.05),
-            SizedBox(height: size.height * 0.05),
             RoundedButton(
               text: "Зарегистрироваться",
-              color: kPrimaryLightColor,
-              textColor: Colors.black,
+              color: kPrimaryColor,
+              textColor: kBackgroundLightColor,
               press: () {
                 Navigator.push(
                   context,
