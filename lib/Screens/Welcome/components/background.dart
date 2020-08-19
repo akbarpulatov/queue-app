@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_auth/constants.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -14,22 +16,46 @@ class Background extends StatelessWidget {
       height: size.height,
       width: double.infinity,
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.bottomCenter,
         children: <Widget>[
           Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_top.png",
-              width: size.width * 0.3,
+            bottom: 0,
+            right: 0,
+            height: size.height * 0.5,
+            child: SvgPicture.asset(
+              "assets/images/main_bottom2.svg",
+              fit: BoxFit.fill,
+              color: kBackgroundColor,
             ),
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * 0.2,
+            bottom: size.height * 0.5,
+            width: size.width * 0.85,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Добро пожаловать!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.width * 0.103,
+                  ),
+                ),
+                Text(
+                  "Navbat",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.width * 0.20,
+                  ),
+                ),
+                Text(
+                  "Kutmang!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.width * 0.075,
+                  ),
+                ),
+              ],
             ),
           ),
           child,
