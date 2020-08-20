@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Components/background.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/History/history_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/home_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_view.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -28,12 +31,12 @@ class _MainPageState extends State<MainPage> {
   }
 
   final tabs = [
-    Center(child: Text('Здесь будеть Главная страница')),
-    // MainScreen(),
-    Center(child: Text('Здесь будеть страница Очереди')),
-    // QueueScreen(),
-    // MyTabbedPage(),
-    Center(child: Text('Здесь будеть страница История')),
+    // Center(child: Text('Здесь будеть Главная страница')),
+    HomeView(),
+    // Center(child: Text('Здесь будеть страница Очереди')),
+    QueueScreen(),
+    HistoryView(),
+    // Center(child: Text('Здесь будеть страница История')),
     Center(child: Text('Здесь будеть страница Профилья')),
   ];
 
