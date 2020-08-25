@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/model/history.dart';
 
 //==========================================================
 class BookedQueueItem extends StatefulWidget {
@@ -42,7 +42,7 @@ class _BookedQueueItemState extends State<BookedQueueItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Клиника DoctorPlus',
+                            history.testString,
                             style: TextStyle(fontSize: 19),
                           ),
                           Text(
