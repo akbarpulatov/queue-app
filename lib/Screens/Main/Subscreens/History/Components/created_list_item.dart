@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/model/history.dart';
 
 //==========================================================
 class CreatedHistoryItem extends StatefulWidget {
+  final int index;
+  final List<Created> listCreated;
+
+  const CreatedHistoryItem({
+    Key key,
+    @required this.index,
+    @required this.listCreated,
+  }) : super(key: key);
+
   @override
   _CreatedHistoryItemState createState() => _CreatedHistoryItemState();
 }
@@ -9,6 +19,16 @@ class CreatedHistoryItem extends StatefulWidget {
 class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
   @override
   Widget build(BuildContext context) {
+    history.updateCreatedList('jsonRaw');
+    final String name = widget.listCreated[widget.index].name;
+    // final String;
+    // int uID,
+    // Status status,
+    // String name,
+    // double averageWaitingTime,
+    // DateTime bookedTime,
+    // int numberOfPeopleInQueue,
+
     return Center(
       child: Container(
         child: Padding(
@@ -41,7 +61,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Клиника DoctorPlus',
+                            name,
                             style: TextStyle(fontSize: 19),
                           ),
                           Text(

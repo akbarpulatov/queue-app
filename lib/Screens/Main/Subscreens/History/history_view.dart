@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/model/history.dart';
 
 import 'Components/booked_list_item.dart';
 import 'Components/created_list_item.dart';
@@ -103,9 +104,12 @@ class _HistoryListViewState extends State<HistoryListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 10,
+      itemCount: 4,
       itemBuilder: (context, index) {
-        return CreatedHistoryItem();
+        return CreatedHistoryItem(
+          index: index,
+          listCreated: history.createdList,
+        );
         // return Text('abcd');
       },
       separatorBuilder: (context, index) {
