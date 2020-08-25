@@ -19,7 +19,6 @@ class CreatedHistoryItem extends StatefulWidget {
 class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
   @override
   Widget build(BuildContext context) {
-    history.updateCreatedList('jsonRaw');
     final String name = widget.listCreated[widget.index].name;
     // final String;
     // int uID,

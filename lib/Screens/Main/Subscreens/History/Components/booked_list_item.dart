@@ -42,7 +42,7 @@ class _BookedQueueItemState extends State<BookedQueueItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            history.testString,
+                            'history.testString',
                             style: TextStyle(fontSize: 19),
                           ),
                           Text(

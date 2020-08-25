@@ -61,7 +61,6 @@ class History {
     "Prokuratura",
     "Sud",
   ];
-  String testString;
   List<Created> createdList = [
     Created(12, Status.atReception, "Clinic1", 5.0, DateTime.now(), 15),
     Created(12, Status.completed, "Clinic2", 5.0, DateTime.now(), 15),

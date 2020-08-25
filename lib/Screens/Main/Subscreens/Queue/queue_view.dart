@@ -16,7 +16,7 @@ class _QueueScreenState extends State<QueueScreen> {
       print('Add Queue button pressed');
 
       //TODO: Delete it. Cause it is for testing data model.
-      history.testString = "Clinics of Doctor Plus";
+      history.updateCreatedList('jsonRaw');
     });
   }
 

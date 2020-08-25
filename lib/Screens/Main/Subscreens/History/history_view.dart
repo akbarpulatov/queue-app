@@ -104,7 +104,7 @@ class _HistoryListViewState extends State<HistoryListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 4,
+      itemCount: history.createdList.length,
       itemBuilder: (context, index) {
         return CreatedHistoryItem(
           index: index,
