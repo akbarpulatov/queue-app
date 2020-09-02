@@ -85,3 +85,17 @@ class History {
 }
 
 var history = History();
+
+class HistoryListItemBaseClass {
+  String uID;
+  String status;
+  String name;
+  String averageWaitingTime;
+  String bookedTime;
+}
+
+class CreatedItem extends HistoryListItemBaseClass {
+  String numberOfPeopleInQueue;
+}
+
+List<CreatedItem> createdList;
