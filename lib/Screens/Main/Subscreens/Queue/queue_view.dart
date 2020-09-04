@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/model/history.dart';
+import 'package:flutter_auth/services/http_requests.dart';
 
 class QueueScreen extends StatefulWidget {
   QueueScreen({Key key, this.title}) : super(key: key);
@@ -14,6 +15,7 @@ class _QueueScreenState extends State<QueueScreen> {
     setState(() {
       //TODO: Implement what will happen after pressing add queue button
       print('Add Queue button pressed');
+      httpRequest.getHttp();
 
       //TODO: Delete it. Cause it is for testing data model.
       history.updateCreatedList('jsonRaw');
