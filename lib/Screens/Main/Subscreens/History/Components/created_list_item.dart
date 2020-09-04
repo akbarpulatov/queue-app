@@ -5,11 +5,13 @@ import 'package:flutter_auth/model/history.dart';
 class CreatedHistoryItem extends StatefulWidget {
   final int index;
   final List<Created> listCreated;
+  final List<CreatedItem> listCreatedItems;
 
   const CreatedHistoryItem({
     Key key,
     @required this.index,
     @required this.listCreated,
+    @required this.listCreatedItems,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CreatedHistoryItem extends StatefulWidget {
 class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
   @override
   Widget build(BuildContext context) {
-    final String name = widget.listCreated[widget.index].name;
+    final String name = widget.listCreatedItems[widget.index].name;
     // final String;
     // int uID,
     // Status status,

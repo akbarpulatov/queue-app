@@ -98,4 +98,4 @@ class CreatedItem extends HistoryListItemBaseClass {
   String numberOfPeopleInQueue;
 }
 
-List<CreatedItem> createdList;
+var createdList = new List<CreatedItem>();

@@ -104,11 +104,13 @@ class _HistoryListViewState extends State<HistoryListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: history.createdList.length,
+      itemCount: createdList.length,
       itemBuilder: (context, index) {
         return CreatedHistoryItem(
           index: index,
+          // listCreated: history.createdList,
           listCreated: history.createdList,
+          listCreatedItems: createdList,
         );
         // return Text('abcd');
       },
