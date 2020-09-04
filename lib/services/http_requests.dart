@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'package:flutter_auth/model/history.dart';
 import 'package:http/http.dart' as http;
 
 class HttpRequest {
@@ -9,17 +10,15 @@ class HttpRequest {
 
     // Await the http get response, then decode the json-formatted response.
     var response = await http.get(url);
-    print(response.body);
+    // print(response.body);
 
     if (response.statusCode == 200) {
-      print('status is ok!');
-      // var jsonResponse = convert.jsonDecode(response.body);
+      print('==================== status is ok! ==================== ');
 
-      // var id = jsonResponse['id'];
-      // String title = jsonResponse['title'] as String;
-
-      // print('ID of the request is $id');
-      // print('Title of the request is: $title');
+      var createdListJson = convert.jsonDecode(response.body) as List;
+      createdList =
+          createdListJson.map((e) => CreatedItem.fromJson(e)).toList();
+      print(createdList[0].bookedTime);
     } else {
       print('status is NOTok!');
       print('Request failed with status: ${response.statusCode}.');
@@ -28,4 +27,3 @@ class HttpRequest {
 }
 
 var httpRequest = new HttpRequest();
-// httpRequest.getHttp();

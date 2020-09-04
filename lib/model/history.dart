@@ -109,6 +109,16 @@ class HistoryListItemBaseClass {
   String averageWaitingTime;
   @required
   String bookedTime;
+
+  factory HistoryListItemBaseClass.fromJson(dynamic json) {
+    return HistoryListItemBaseClass(
+      json['uID'],
+      json['status'],
+      json['name'],
+      json['averageWaitingTime'],
+      json['bookedTime'],
+    );
+  }
 }
 
 //============================< CreatedItem Class >============================
@@ -121,6 +131,22 @@ class CreatedItem extends HistoryListItemBaseClass {
 
   @required
   String numberOfPeopleInQueue;
+
+  factory CreatedItem.fromJson(dynamic json) {
+    return CreatedItem(
+      json['uID'],
+      json['status'],
+      json['name'],
+      json['averageWaitingTime'],
+      json['bookedTime'],
+      json['numberOfPeopleInQueue'],
+    );
+  }
+
+  @override
+  String toString() {
+    return '{ $this.uID, $this.status, $this.name, $this.averageWaitingTime, $this.bookedTime, $this.numberOfPeopleInQueue }';
+  }
 }
 
 var createdList = new List<CreatedItem>();
