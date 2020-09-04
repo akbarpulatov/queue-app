@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 enum Status {
   // Na priyome
   atReception,
@@ -86,16 +88,53 @@ class History {
 
 var history = History();
 
+//============================< New History Class >============================
 class HistoryListItemBaseClass {
+  HistoryListItemBaseClass(String uID, String status, String name,
+      String averageWaitingTime, String bookedTime) {
+    this.uID = uID;
+    this.status = status;
+    this.name = name;
+    this.averageWaitingTime = averageWaitingTime;
+    this.bookedTime = bookedTime;
+  }
+
+  @required
   String uID;
+  @required
   String status;
+  @required
   String name;
+  @required
   String averageWaitingTime;
+  @required
   String bookedTime;
 }
 
+//============================< CreatedItem Class >============================
 class CreatedItem extends HistoryListItemBaseClass {
+  CreatedItem(String uID, String status, String name, String averageWaitingTime,
+      String bookedTime, String numberOfPeopleInQueue)
+      : super(uID, status, name, averageWaitingTime, bookedTime) {
+    this.numberOfPeopleInQueue = numberOfPeopleInQueue;
+  }
+
+  @required
   String numberOfPeopleInQueue;
 }
 
 var createdList = new List<CreatedItem>();
+
+//============================< BookedItem Class >============================
+class BookedItem extends HistoryListItemBaseClass {
+  BookedItem(String uID, String status, String name, String averageWaitingTime,
+      String bookedTime, String orderInQueue)
+      : super(uID, status, name, averageWaitingTime, bookedTime) {
+    this.orderInQueue = orderInQueue;
+  }
+
+  @required
+  String orderInQueue;
+}
+
+var bookedList = new List<BookedItem>();

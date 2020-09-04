@@ -109,7 +109,6 @@ class _HistoryListViewState extends State<HistoryListView> {
         return CreatedHistoryItem(
           index: index,
           // listCreated: history.createdList,
-          listCreated: history.createdList,
           listCreatedItems: createdList,
         );
         // return Text('abcd');
