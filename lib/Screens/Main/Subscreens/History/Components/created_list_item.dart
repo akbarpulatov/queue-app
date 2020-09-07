@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_auth/model/history.dart';
 
 //==========================================================
@@ -30,6 +32,31 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
     final String numberOfPeopleInQueue =
         widget.listCreatedItems[widget.index].numberOfPeopleInQueue;
 
+    var icon = Icon(Icons.ac_unit);
+    Color colorStatus = MyColors.enabled;
+    var iconSrc = "assets/icons/check.svg";
+
+    switch (status) {
+      case 'Завершено':
+        icon = Icon(Icons.check_circle_outline);
+        colorStatus = MyColors.disabled;
+        iconSrc = "assets/icons/check.svg";
+        break;
+      case 'Закрыто':
+        icon = Icon(Icons.cancel);
+        colorStatus = MyColors.disabled;
+        iconSrc = "assets/icons/cancel.svg";
+        break;
+      case 'Открыто':
+        icon = Icon(Icons.arrow_forward);
+        colorStatus = MyColors.enabled;
+        iconSrc = "assets/icons/right-arrow.svg";
+
+        break;
+
+      default:
+    }
+
     return Center(
       child: Container(
         child: Padding(
@@ -41,14 +68,18 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.assignment_turned_in,
-                      color: Colors.lightGreen,
+                    // child: icon,
+                    child: SvgPicture.asset(
+                      // "assets/icons/facebook.svg",
+                      iconSrc,
+                      color: colorStatus,
+                      height: 26,
+                      width: 26,
                     ),
                   ),
                   Text(
                     status,
-                    style: TextStyle(color: Colors.lightGreen, fontSize: 17),
+                    style: TextStyle(color: colorStatus, fontSize: 17),
                   )
                 ],
               ),
@@ -88,7 +119,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Вы в очереди с',
+                          'Дата создания',
                           style:
                               TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),

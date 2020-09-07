@@ -1,4 +1,46 @@
 {
+  "history-booked": [
+    {
+      "uID": "000001", 
+      "status": "На приеме", 
+      "name": "Клиника AkfaMedline", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "8.08.2020 08:51",
+      "orderInQueue": "1"
+    },
+    {
+      "uID": "000002", 
+      "status": "В ожидании", 
+      "name": "Клиника ShoxMed", 
+      "averageWaitingTime": "22 min",
+      "bookedTime": "12.08.2020 08:22",
+      "orderInQueue": "10"
+    },
+    {
+      "uID": "000003", 
+      "status": "Завершено", 
+      "name": "Паспортный стол", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "11.09.2020 09:35",
+      "orderInQueue": "0"
+    },
+    {
+      "uID": "000004", 
+      "status": "Пропущенно", 
+      "name": "Национальный банк", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "11.09.2020 09:35",
+      "orderInQueue": "0"
+    },
+    {
+      "uID": "000005", 
+      "status": "Отменено", 
+      "name": "Национальный банк", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "11.09.2020 09:35",
+      "orderInQueue": "0"
+    }
+  ],
   "history-created": [
     {
       "uID": "000001", 
@@ -25,5 +67,6 @@
       "numberOfPeopleInQueue": "29"
     }
   ]
+
 }
   
