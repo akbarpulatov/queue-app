@@ -18,7 +18,15 @@ class HttpRequest {
       var createdListJson = convert.jsonDecode(response.body) as List;
       createdList =
           createdListJson.map((e) => CreatedItem.fromJson(e)).toList();
-      print(createdList[0].bookedTime);
+
+      for (var i = 0; i < createdList.length; i++) {
+        print(createdList[i].uID);
+        print(createdList[i].status);
+        print(createdList[i].name);
+        print(createdList[i].averageWaitingTime);
+        print(createdList[i].bookedTime);
+        print(createdList[i].numberOfPeopleInQueue);
+      }
     } else {
       print('status is NOTok!');
       print('Request failed with status: ${response.statusCode}.');
