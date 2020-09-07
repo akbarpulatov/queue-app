@@ -1,0 +1,29 @@
+{
+  "history-created": [
+    {
+      "uID": "000001", 
+      "status": "Завершено", 
+      "name": "Клиника DoctorPlus", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "10.07.2020 17:35",
+      "numberOfPeopleInQueue": "107"
+    },
+    {
+      "uID": "000002", 
+      "status": "Закрыто", 
+      "name": "Клиника DoctorPlus", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "10.07.2020 17:35",
+      "numberOfPeopleInQueue": "107"
+    },
+    {
+      "uID": "000003", 
+      "status": "Открыто", 
+      "name": "Клиника DoctorPlus", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "10.07.2020 17:35",
+      "numberOfPeopleInQueue": "107"
+    }
+  ]
+}
+  
