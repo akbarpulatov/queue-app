@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/model/history.dart';
+import 'package:flutter_auth/services/http_requests.dart';
 
 import 'Components/booked_list_item.dart';
 import 'Components/created_list_item.dart';
@@ -101,21 +102,40 @@ class HistoryListView extends StatefulWidget {
 }
 
 class _HistoryListViewState extends State<HistoryListView> {
+  var refreshKey = GlobalKey<RefreshIndicatorState>();
+
+  Future<Null> refreshList() async {
+    refreshKey.currentState?.show(atTop: false);
+    await Future.delayed(Duration(seconds: 2));
+
+    setState(() {
+      httpRequest.getHttp();
+
+      print('set state is fired!');
+    });
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: createdList.length,
-      itemBuilder: (context, index) {
-        return CreatedHistoryItem(
-          index: index,
-          // listCreated: history.createdList,
-          listCreatedItems: createdList,
-        );
-        // return Text('abcd');
-      },
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
+    return RefreshIndicator(
+      onRefresh: refreshList,
+      key: refreshKey,
+      child: ListView.separated(
+        itemCount: createdList.length,
+        itemBuilder: (context, index) {
+          return CreatedHistoryItem(
+            index: index,
+            // listCreated: history.createdList,
+            listCreatedItems: createdList,
+          );
+          // return Text('abcd');
+        },
+        separatorBuilder: (context, index) {
+          return Divider();
+        },
+      ),
     );
   }
 }
