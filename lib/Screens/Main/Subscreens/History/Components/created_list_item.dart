@@ -19,14 +19,16 @@ class CreatedHistoryItem extends StatefulWidget {
 class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
   @override
   Widget build(BuildContext context) {
+    // final String name = widget.listCreatedItems[widget.index].name;
+
+    final String uID = widget.listCreatedItems[widget.index].uID;
+    final String status = widget.listCreatedItems[widget.index].status;
     final String name = widget.listCreatedItems[widget.index].name;
-    // final String;
-    // int uID,
-    // Status status,
-    // String name,
-    // double averageWaitingTime,
-    // DateTime bookedTime,
-    // int numberOfPeopleInQueue,
+    final String averageWaitingTime =
+        widget.listCreatedItems[widget.index].averageWaitingTime;
+    final String bookedTime = widget.listCreatedItems[widget.index].bookedTime;
+    final String numberOfPeopleInQueue =
+        widget.listCreatedItems[widget.index].numberOfPeopleInQueue;
 
     return Center(
       child: Container(
@@ -45,7 +47,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                     ),
                   ),
                   Text(
-                    'На приеме',
+                    status,
                     style: TextStyle(color: Colors.lightGreen, fontSize: 17),
                   )
                 ],
@@ -64,7 +66,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                             style: TextStyle(fontSize: 19),
                           ),
                           Text(
-                            'Среднее ожидание: 5 мин.',
+                            'Среднее ожидание: $averageWaitingTime.',
                             style: TextStyle(
                                 fontSize: 18, color: Colors.grey[700]),
                           ),
@@ -72,28 +74,6 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                       ),
                     ),
                   ),
-                  // Container(
-                  //   margin: EdgeInsets.all(0),
-                  //   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  //     border: Border.all(
-                  //         color: Colors.green, style: BorderStyle.solid),
-                  //   ),
-                  //   // color: Colors.red,
-                  //   child: Column(
-                  //     children: [
-                  //       Text('Ваш №'),
-                  //       Text(
-                  //         '1',
-                  //         style: TextStyle(
-                  //             fontSize: 20,
-                  //             fontStyle: FontStyle.italic,
-                  //             fontWeight: FontWeight.bold),
-                  //       )
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
 //=====================< Row #3 >=======================
@@ -112,7 +92,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                           style:
                               TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
-                        Text('10.07.2020 17:35'),
+                        Text(bookedTime),
                       ],
                     ),
                   ),
@@ -129,7 +109,7 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
                             style: TextStyle(
                                 fontSize: 15, color: Colors.grey[600]),
                           ),
-                          Text('107 чел.'),
+                          Text('$numberOfPeopleInQueue чел.'),
                         ],
                       )
                     ],
