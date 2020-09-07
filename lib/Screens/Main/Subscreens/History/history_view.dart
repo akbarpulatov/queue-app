@@ -105,12 +105,11 @@ class _HistoryListViewState extends State<HistoryListView> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future<Null> refreshList() async {
+    httpRequest.getHttp();
     refreshKey.currentState?.show(atTop: false);
+
     await Future.delayed(Duration(seconds: 2));
-
     setState(() {
-      httpRequest.getHttp();
-
       print('set state is fired!');
     });
 
