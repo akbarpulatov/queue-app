@@ -11,11 +11,18 @@ const kBackgroundLightColor = Color(0xfffffef5);
 
 class MyUrls {
   static const historyCreatedList =
-      'http://192.168.233.211:3000/history-created';
-  static const historyBookedList = 'http://192.168.233.211:3000/history-booked';
+      'http://192.168.233.96:3000/history-created';
+  static const historyBookedList = 'http://192.168.233.96:3000/history-booked';
 }
 
 class MyColors {
   static const enabled = Colors.lightGreen;
   static const disabled = Colors.black26;
+}
+
+class MyAssets {
+  static const check = "assets/icons/check.svg";
+  static const rightArrow = "assets/icons/right-arrow.svg";
+  static const leftArrow = "assets/icons/left-arrow.svg";
+  static const cancel = "assets/icons/cancel.svg";
 }

@@ -65,6 +65,30 @@
       "averageWaitingTime": "22 min",
       "bookedTime": "11.09.2020 09:35",
       "numberOfPeopleInQueue": "29"
+    },
+    {
+      "uID": "000004", 
+      "status": "Закрыто", 
+      "name": "Клиника Doctor+", 
+      "averageWaitingTime": "26 min",
+      "bookedTime": "11.09.2020 15:26",
+      "numberOfPeopleInQueue": "29"
+    },
+    {
+      "uID": "000005", 
+      "status": "Открыто", 
+      "name": "Клиника MedService", 
+      "averageWaitingTime": "17 min",
+      "bookedTime": "11.09.2020 09:35",
+      "numberOfPeopleInQueue": "29"
+    },
+    {
+      "uID": "000006", 
+      "status": "Завершено", 
+      "name": "Клиника DoctorPlus", 
+      "averageWaitingTime": "6 min",
+      "bookedTime": "11.09.2020 10:42",
+      "numberOfPeopleInQueue": "29"
     }
   ]
 

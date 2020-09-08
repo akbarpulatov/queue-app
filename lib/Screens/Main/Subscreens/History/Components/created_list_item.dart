@@ -34,24 +34,23 @@ class _CreatedHistoryItemState extends State<CreatedHistoryItem> {
 
     var icon = Icon(Icons.ac_unit);
     Color colorStatus = MyColors.enabled;
-    var iconSrc = "assets/icons/check.svg";
+    var iconSrc = MyAssets.check;
 
     switch (status) {
       case 'Завершено':
         icon = Icon(Icons.check_circle_outline);
         colorStatus = MyColors.disabled;
-        iconSrc = "assets/icons/check.svg";
+        iconSrc = MyAssets.check;
         break;
       case 'Закрыто':
         icon = Icon(Icons.cancel);
         colorStatus = MyColors.disabled;
-        iconSrc = "assets/icons/cancel.svg";
+        iconSrc = MyAssets.cancel;
         break;
       case 'Открыто':
         icon = Icon(Icons.arrow_forward);
         colorStatus = MyColors.enabled;
-        iconSrc = "assets/icons/right-arrow.svg";
-
+        iconSrc = MyAssets.rightArrow;
         break;
 
       default:
