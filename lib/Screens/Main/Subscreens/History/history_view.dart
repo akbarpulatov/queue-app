@@ -4,6 +4,7 @@ import 'package:flutter_auth/services/http_requests.dart';
 
 import 'Components/booked_list_item.dart';
 import 'Components/created_list_item.dart';
+import 'Components/history_list_item.dart';
 
 //===========================================< MyTabbedPage >===========================================
 class HistoryView extends StatefulWidget {
@@ -149,10 +150,13 @@ class _MyListViewState extends State<MyListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 10,
+      itemCount: createdList.length,
       itemBuilder: (context, index) {
-        return BookedQueueItem();
-        // return Text('asdf');
+        return HistoryItem(
+          index: index,
+          listCreatedItems: createdList,
+          historyItemType: HistoryItemType.createdList,
+        );
       },
       separatorBuilder: (context, index) {
         return Divider();
