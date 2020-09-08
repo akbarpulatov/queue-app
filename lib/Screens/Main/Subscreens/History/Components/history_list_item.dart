@@ -28,40 +28,35 @@ class HistoryItem extends StatefulWidget {
 class _HistoryItemState extends State<HistoryItem> {
   @override
   Widget build(BuildContext context) {
-    // final String name = widget.listCreatedItems[widget.index].name;
+    final historyItemType = widget.historyItemType;
 
     // Common parameters
-    // Booked List parameters
-
-    // Created List parameters
     final String uID = widget.listCreatedItems[widget.index].uID;
     final String status = widget.listCreatedItems[widget.index].status;
     final String name = widget.listCreatedItems[widget.index].name;
     final String averageWaitingTime =
         widget.listCreatedItems[widget.index].averageWaitingTime;
     final String bookedTime = widget.listCreatedItems[widget.index].bookedTime;
+
+    // Created List parameters
     final String numberOfPeopleInQueue =
         widget.listCreatedItems[widget.index].numberOfPeopleInQueue;
 
-    final historyItemType = widget.historyItemType;
+    // Booked List parameters
 
-    var icon = Icon(Icons.ac_unit);
     Color colorStatus = MyColors.enabled;
     var iconSrc = MyAssets.check;
 
     switch (status) {
       case 'Завершено':
-        icon = Icon(Icons.check_circle_outline);
         colorStatus = MyColors.disabled;
         iconSrc = MyAssets.check;
         break;
       case 'Закрыто':
-        icon = Icon(Icons.cancel);
         colorStatus = MyColors.disabled;
         iconSrc = MyAssets.cancel;
         break;
       case 'Открыто':
-        icon = Icon(Icons.arrow_forward);
         colorStatus = MyColors.enabled;
         iconSrc = MyAssets.rightArrow;
         break;
@@ -80,7 +75,6 @@ class _HistoryItemState extends State<HistoryItem> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    // child: icon,
                     child: SvgPicture.asset(
                       iconSrc,
                       color: colorStatus,
@@ -164,9 +158,6 @@ class _HistoryItemState extends State<HistoryItem> {
             ],
           ),
         ),
-        // color: Colors.grey[500],
-        // width: 500,
-        // height: 150,
       ),
     );
   }
