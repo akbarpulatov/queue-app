@@ -3,7 +3,6 @@ import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 
 import 'Components/booked_list_item.dart';
-import 'Components/created_list_item.dart';
 import 'Components/history_list_item.dart';
 
 //===========================================< MyTabbedPage >===========================================
@@ -125,10 +124,11 @@ class _HistoryListViewState extends State<HistoryListView> {
       child: ListView.separated(
         itemCount: createdList.length,
         itemBuilder: (context, index) {
-          return CreatedHistoryItem(
+          return HistoryItem(
             index: index,
             // listCreated: history.createdList,
             listCreatedItems: createdList,
+            historyItemType: HistoryItemType.createdList,
           );
           // return Text('abcd');
         },
@@ -155,7 +155,7 @@ class _MyListViewState extends State<MyListView> {
         return HistoryItem(
           index: index,
           listCreatedItems: createdList,
-          historyItemType: HistoryItemType.createdList,
+          historyItemType: HistoryItemType.bookedList,
         );
       },
       separatorBuilder: (context, index) {

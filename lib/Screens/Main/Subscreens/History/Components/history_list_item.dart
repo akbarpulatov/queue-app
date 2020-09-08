@@ -43,6 +43,8 @@ class _HistoryItemState extends State<HistoryItem> {
     final String numberOfPeopleInQueue =
         widget.listCreatedItems[widget.index].numberOfPeopleInQueue;
 
+    final historyItemType = widget.historyItemType;
+
     var icon = Icon(Icons.ac_unit);
     Color colorStatus = MyColors.enabled;
     var iconSrc = MyAssets.check;
@@ -80,7 +82,6 @@ class _HistoryItemState extends State<HistoryItem> {
                     padding: const EdgeInsets.all(8.0),
                     // child: icon,
                     child: SvgPicture.asset(
-                      // "assets/icons/facebook.svg",
                       iconSrc,
                       color: colorStatus,
                       height: 26,
@@ -139,24 +140,25 @@ class _HistoryItemState extends State<HistoryItem> {
                   ),
 
                   // TODO this Row should be conditional of historyItemType
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.supervised_user_circle),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Очередь',
-                            style: TextStyle(
-                                fontSize: 15, color: Colors.grey[600]),
-                          ),
-                          Text('$numberOfPeopleInQueue чел.'),
-                        ],
-                      )
-                    ],
-                  )
+                  if (historyItemType == HistoryItemType.createdList)
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.supervised_user_circle),
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'Очередь',
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.grey[600]),
+                            ),
+                            Text('$numberOfPeopleInQueue чел.'),
+                          ],
+                        )
+                      ],
+                    )
                 ],
               )
             ],
