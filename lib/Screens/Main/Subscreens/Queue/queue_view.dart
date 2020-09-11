@@ -15,7 +15,7 @@ class _QueueScreenState extends State<QueueScreen> {
     setState(() {
       //TODO: Implement what will happen after pressing add queue button
       print('Add Queue button pressed');
-      httpRequest.getHttp();
+      // httpRequest.getHttp();
       final createdItem = CreatedItem(
           '18', 'Na Priyome', 'new Clinics', '15 min', '13 min', '20');
 

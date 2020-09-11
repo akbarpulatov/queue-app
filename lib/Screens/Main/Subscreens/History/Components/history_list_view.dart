@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
@@ -18,8 +19,16 @@ class HistoryListView extends StatefulWidget {
 class _HistoryListViewState extends State<HistoryListView> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
-  Future<Null> refreshList() async {
-    httpRequest.getHttp();
+  Future<Null> refreshList(HistoryItemType historyItemType) async {
+    var url = MyUrls.historyBookedList;
+
+    if (historyItemType == HistoryItemType.createdList) {
+      url = MyUrls.historyCreatedList;
+    } else {
+      url = MyUrls.historyBookedList;
+    }
+
+    httpRequest.getHttp(url);
     refreshKey.currentState?.show(atTop: false);
 
     await Future.delayed(Duration(seconds: 2));
@@ -35,7 +44,7 @@ class _HistoryListViewState extends State<HistoryListView> {
     final historyItemType = widget.historyItemType;
 
     return RefreshIndicator(
-      onRefresh: refreshList,
+      onRefresh: () => refreshList(historyItemType),
       key: refreshKey,
       child: ListView.separated(
         itemCount: createdList.length,

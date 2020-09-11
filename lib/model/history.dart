@@ -161,6 +161,22 @@ class BookedItem extends HistoryListItemBaseClass {
 
   @required
   String orderInQueue;
+
+  factory BookedItem.fromJson(dynamic json) {
+    return BookedItem(
+      json['uID'],
+      json['status'],
+      json['name'],
+      json['averageWaitingTime'],
+      json['bookedTime'],
+      json['orderInQueue'],
+    );
+  }
+
+  @override
+  String toString() {
+    return '{ $this.uID, $this.status, $this.name, $this.averageWaitingTime, $this.bookedTime, $this.orderInQueue }';
+  }
 }
 
 var bookedList = new List<BookedItem>();

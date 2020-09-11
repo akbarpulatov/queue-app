@@ -44,12 +44,8 @@ class _HistoryViewState extends State<HistoryView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          HistoryListView(
-            historyItemType: HistoryItemType.bookedList,
-          ),
-          HistoryListView(
-            historyItemType: HistoryItemType.createdList,
-          ),
+          HistoryListView(historyItemType: HistoryItemType.bookedList),
+          HistoryListView(historyItemType: HistoryItemType.createdList),
         ],
       ),
     );

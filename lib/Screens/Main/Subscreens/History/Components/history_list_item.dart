@@ -132,8 +132,6 @@ class _HistoryItemState extends State<HistoryItem> {
                       ],
                     ),
                   ),
-
-                  // TODO this Row should be conditional of historyItemType
                   if (historyItemType == HistoryItemType.createdList)
                     Row(
                       children: [
