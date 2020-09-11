@@ -127,6 +127,30 @@ class _HistoryItemState extends State<HistoryItem> {
                       ),
                     ),
                   ),
+                  if (historyItemType == HistoryItemType.bookedList)
+                    Container(
+                      margin: EdgeInsets.all(0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        border: Border.all(
+                            color: Colors.green, style: BorderStyle.solid),
+                      ),
+                      // color: Colors.red,
+                      child: Column(
+                        children: [
+                          Text('Ваш №'),
+                          Text(
+                            '1',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    )
                 ],
               ),
 //=====================< Row #3 >=======================
