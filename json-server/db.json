@@ -2,19 +2,19 @@
   "history-booked": [
     {
       "uID": "000001", 
-      "status": "На приеме", 
-      "name": "Клиника AkfaMedline", 
-      "averageWaitingTime": "0 min",
-      "bookedTime": "8.08.2020 08:51",
-      "orderInQueue": "1"
-    },
-    {
-      "uID": "000002", 
       "status": "В ожидании", 
       "name": "Клиника ShoxMed", 
       "averageWaitingTime": "22 min",
       "bookedTime": "12.08.2020 08:22",
       "orderInQueue": "10"
+    },
+    {
+      "uID": "000002", 
+      "status": "На приеме", 
+      "name": "Клиника AkfaMedline", 
+      "averageWaitingTime": "0 min",
+      "bookedTime": "8.08.2020 08:51",
+      "orderInQueue": "1"
     },
     {
       "uID": "000003", 
@@ -64,7 +64,7 @@
       "name": "Клиника DoctorPlus", 
       "averageWaitingTime": "22 min",
       "bookedTime": "11.09.2020 09:35",
-      "numberOfPeopleInQueue": "29"
+      "numberOfPeopleInQueue": "14"
     },
     {
       "uID": "000004", 
@@ -80,7 +80,7 @@
       "name": "Клиника MedService", 
       "averageWaitingTime": "17 min",
       "bookedTime": "11.09.2020 09:35",
-      "numberOfPeopleInQueue": "29"
+      "numberOfPeopleInQueue": "11"
     },
     {
       "uID": "000006", 
@@ -88,7 +88,7 @@
       "name": "Клиника DoctorPlus", 
       "averageWaitingTime": "6 min",
       "bookedTime": "11.09.2020 10:42",
-      "numberOfPeopleInQueue": "29"
+      "numberOfPeopleInQueue": "2"
     }
   ]
 

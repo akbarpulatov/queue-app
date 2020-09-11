@@ -11,13 +11,13 @@ enum HistoryItemType {
 //==========================================================
 class HistoryItem extends StatefulWidget {
   final int index;
-  final List<CreatedItem> listCreatedItems;
+  // final List<CreatedItem> listCreatedItems;
   final HistoryItemType historyItemType;
 
   const HistoryItem({
     Key key,
     @required this.index,
-    @required this.listCreatedItems,
+    // @required this.listCreatedItems,
     @required this.historyItemType,
   }) : super(key: key);
 
@@ -29,20 +29,37 @@ class _HistoryItemState extends State<HistoryItem> {
   @override
   Widget build(BuildContext context) {
     final historyItemType = widget.historyItemType;
+    final index = widget.index;
+    // final String uID = createdList[widget.index].uID;
 
     // Common parameters
-    final String uID = widget.listCreatedItems[widget.index].uID;
-    final String status = widget.listCreatedItems[widget.index].status;
-    final String name = widget.listCreatedItems[widget.index].name;
-    final String averageWaitingTime =
-        widget.listCreatedItems[widget.index].averageWaitingTime;
-    final String bookedTime = widget.listCreatedItems[widget.index].bookedTime;
+    String status;
+    String name;
+    String averageWaitingTime;
+    String bookedTime;
+
+    if (historyItemType == HistoryItemType.createdList) {
+      status = createdList[index].status;
+      name = createdList[index].name;
+      averageWaitingTime = createdList[index].averageWaitingTime;
+      bookedTime = createdList[index].bookedTime;
+    } else {
+      status = bookedList[index].status;
+      name = bookedList[index].name;
+      averageWaitingTime = bookedList[index].averageWaitingTime;
+      bookedTime = bookedList[index].bookedTime;
+    }
 
     // Created List parameters
-    final String numberOfPeopleInQueue =
-        widget.listCreatedItems[widget.index].numberOfPeopleInQueue;
+    String numberOfPeopleInQueue;
+    if (historyItemType == HistoryItemType.createdList)
+      numberOfPeopleInQueue = createdList[index].numberOfPeopleInQueue;
 
     // Booked List parameters
+    String orderInQueue;
+    if (historyItemType == HistoryItemType.bookedList) {
+      orderInQueue = bookedList[index].orderInQueue;
+    }
 
     Color colorStatus = MyColors.enabled;
     var iconSrc = MyAssets.check;

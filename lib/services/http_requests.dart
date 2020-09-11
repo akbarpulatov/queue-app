@@ -31,6 +31,17 @@ class HttpRequest {
         }
       } else if (url == MyUrls.historyBookedList) {
         print('History booked list is requested!');
+        var bookedListJson = convert.jsonDecode(response.body) as List;
+        bookedList = bookedListJson.map((e) => BookedItem.fromJson(e)).toList();
+
+        for (var j = 0; j < bookedList.length; j++) {
+          print(bookedList[j].uID);
+          print(bookedList[j].status);
+          print(bookedList[j].name);
+          print(bookedList[j].averageWaitingTime);
+          print(bookedList[j].bookedTime);
+          print(bookedList[j].orderInQueue);
+        }
       }
     } else {
       print('status is NOTok!');

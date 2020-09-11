@@ -20,7 +20,7 @@ class _HistoryListViewState extends State<HistoryListView> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future<Null> refreshList(HistoryItemType historyItemType) async {
-    var url = MyUrls.historyBookedList;
+    String url;
 
     if (historyItemType == HistoryItemType.createdList) {
       url = MyUrls.historyCreatedList;
@@ -42,16 +42,21 @@ class _HistoryListViewState extends State<HistoryListView> {
   @override
   Widget build(BuildContext context) {
     final historyItemType = widget.historyItemType;
+    int length = 0;
+
+    if (historyItemType == HistoryItemType.createdList)
+      length = createdList.length;
+    else
+      length = bookedList.length;
 
     return RefreshIndicator(
       onRefresh: () => refreshList(historyItemType),
       key: refreshKey,
       child: ListView.separated(
-        itemCount: createdList.length,
+        itemCount: length,
         itemBuilder: (context, index) {
           return HistoryItem(
             index: index,
-            listCreatedItems: createdList,
             historyItemType: historyItemType,
           );
         },
