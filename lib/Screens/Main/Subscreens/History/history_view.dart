@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/model/history.dart';
-import 'package:flutter_auth/services/http_requests.dart';
-
-import 'Components/booked_list_item.dart';
 import 'Components/history_list_item.dart';
+import 'Components/history_list_view.dart';
 
 //===========================================< MyTabbedPage >===========================================
 class HistoryView extends StatefulWidget {
@@ -47,8 +44,12 @@ class _HistoryViewState extends State<HistoryView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          MyListView(),
-          HistoryListView(),
+          HistoryListView(
+            historyItemType: HistoryItemType.bookedList,
+          ),
+          HistoryListView(
+            historyItemType: HistoryItemType.createdList,
+          ),
         ],
       ),
     );
@@ -91,76 +92,6 @@ class HistoryAppBar extends StatelessWidget implements PreferredSizeWidget {
         labelColor: Colors.black,
         indicatorSize: TabBarIndicatorSize.tab,
       ),
-    );
-  }
-}
-
-//==========================================================
-class HistoryListView extends StatefulWidget {
-  @override
-  _HistoryListViewState createState() => _HistoryListViewState();
-}
-
-class _HistoryListViewState extends State<HistoryListView> {
-  var refreshKey = GlobalKey<RefreshIndicatorState>();
-
-  Future<Null> refreshList() async {
-    httpRequest.getHttp();
-    refreshKey.currentState?.show(atTop: false);
-
-    await Future.delayed(Duration(seconds: 2));
-    setState(() {
-      print('set state is fired!');
-    });
-
-    return null;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: refreshList,
-      key: refreshKey,
-      child: ListView.separated(
-        itemCount: createdList.length,
-        itemBuilder: (context, index) {
-          return HistoryItem(
-            index: index,
-            // listCreated: history.createdList,
-            listCreatedItems: createdList,
-            historyItemType: HistoryItemType.createdList,
-          );
-          // return Text('abcd');
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
-      ),
-    );
-  }
-}
-
-//==========================================================
-class MyListView extends StatefulWidget {
-  @override
-  _MyListViewState createState() => _MyListViewState();
-}
-
-class _MyListViewState extends State<MyListView> {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: createdList.length,
-      itemBuilder: (context, index) {
-        return HistoryItem(
-          index: index,
-          listCreatedItems: createdList,
-          historyItemType: HistoryItemType.bookedList,
-        );
-      },
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
     );
   }
 }
