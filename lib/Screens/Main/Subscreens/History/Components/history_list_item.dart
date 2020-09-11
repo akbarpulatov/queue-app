@@ -127,7 +127,8 @@ class _HistoryItemState extends State<HistoryItem> {
                       ),
                     ),
                   ),
-                  if (historyItemType == HistoryItemType.bookedList)
+                  if (historyItemType == HistoryItemType.bookedList &&
+                      orderInQueue != '0')
                     Container(
                       margin: EdgeInsets.all(0),
                       padding:
@@ -137,12 +138,11 @@ class _HistoryItemState extends State<HistoryItem> {
                         border: Border.all(
                             color: Colors.green, style: BorderStyle.solid),
                       ),
-                      // color: Colors.red,
                       child: Column(
                         children: [
                           Text('Ваш №'),
                           Text(
-                            '1',
+                            orderInQueue,
                             style: TextStyle(
                                 fontSize: 20,
                                 fontStyle: FontStyle.italic,
