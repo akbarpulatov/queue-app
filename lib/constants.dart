@@ -13,6 +13,7 @@ class MyUrls {
   static const historyCreatedList =
       'http://192.168.233.96:3000/history-created';
   static const historyBookedList = 'http://192.168.233.96:3000/history-booked';
+  static const queueList = 'http://192.168.233.96:3000/queue-list';
 }
 
 class MyColors {

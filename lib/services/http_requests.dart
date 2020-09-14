@@ -1,6 +1,7 @@
 import 'dart:convert' as convert;
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/history.dart';
+import 'package:flutter_auth/model/queue.dart';
 import 'package:http/http.dart' as http;
 
 class HttpRequest {
@@ -21,27 +22,20 @@ class HttpRequest {
         createdList =
             createdListJson.map((e) => CreatedItem.fromJson(e)).toList();
 
-        for (var i = 0; i < createdList.length; i++) {
-          print(createdList[i].uID);
-          print(createdList[i].status);
-          print(createdList[i].name);
-          print(createdList[i].averageWaitingTime);
-          print(createdList[i].bookedTime);
-          print(createdList[i].numberOfPeopleInQueue);
-        }
+        print(createdList.toString());
       } else if (url == MyUrls.historyBookedList) {
         print('History booked list is requested!');
         var bookedListJson = convert.jsonDecode(response.body) as List;
         bookedList = bookedListJson.map((e) => BookedItem.fromJson(e)).toList();
 
-        for (var j = 0; j < bookedList.length; j++) {
-          print(bookedList[j].uID);
-          print(bookedList[j].status);
-          print(bookedList[j].name);
-          print(bookedList[j].averageWaitingTime);
-          print(bookedList[j].bookedTime);
-          print(bookedList[j].orderInQueue);
-        }
+        print(bookedList.toString());
+      } else if (url == MyUrls.queueList) {
+        print('Queue list is requested!');
+        var queueListJson = convert.jsonDecode(response.body) as List;
+        queueList =
+            queueListJson.map((e) => QueueListItem.fromJson(e)).toList();
+
+        print(queueList.toString());
       }
     } else {
       print('status is NOTok!');

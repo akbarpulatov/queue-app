@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/history.dart';
+import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/services/http_requests.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 
 class QueueScreen extends StatefulWidget {
@@ -15,14 +18,9 @@ class _QueueScreenState extends State<QueueScreen> {
     setState(() {
       //TODO: Implement what will happen after pressing add queue button
       print('Add Queue button pressed');
-      // httpRequest.getHttp();
-      final createdItem = CreatedItem(
-          '18', 'Na Priyome', 'new Clinics', '15 min', '13 min', '20');
-
-      createdList.add(createdItem);
+      httpRequest.getHttp(MyUrls.queueList);
 
       //TODO: Delete it. Cause it is for testing data model.
-      // history.updateCreatedList('jsonRaw');
     });
   }
 
@@ -44,7 +42,6 @@ class _QueueScreenState extends State<QueueScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               // Padding(
               //   padding: const EdgeInsets.all(20.0),
               //   child: Text(

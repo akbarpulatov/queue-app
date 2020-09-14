@@ -25,7 +25,7 @@ class CreatedItem extends HistoryListItemBaseClass {
 
   @override
   String toString() {
-    return '{ $this.uID, $this.status, $this.name, $this.averageWaitingTime, $this.bookedTime, $this.numberOfPeopleInQueue }';
+    return '\n\r{ ${this.uID}, ${this.status}, ${this.name}, ${this.averageWaitingTime}, ${this.bookedTime}, ${this.numberOfPeopleInQueue} }';
   }
 }
 
@@ -55,7 +55,7 @@ class BookedItem extends HistoryListItemBaseClass {
 
   @override
   String toString() {
-    return '{ $this.uID, $this.status, $this.name, $this.averageWaitingTime, $this.bookedTime, $this.orderInQueue }';
+    return '\n\r{ ${this.uID}, ${this.status}, ${this.name}, ${this.averageWaitingTime}, ${this.bookedTime}, ${this.orderInQueue} }';
   }
 }
 

@@ -90,7 +90,26 @@
       "bookedTime": "11.09.2020 10:42",
       "numberOfPeopleInQueue": "2"
     }
+  ],
+  "queue-list": [
+    {
+      "uID": "000001", 
+      "currentOrder": "15", 
+      "name": "Клиника AkfaMedline", 
+      "createdTime": "10.07.2020 9:00"
+    },
+    {
+      "uID": "000002", 
+      "currentOrder": "34",
+      "name": "Клиника ShoxMed", 
+      "createdTime": "10.07.2020 10:00"
+    },
+    {
+      "uID": "000003", 
+      "currentOrder": "34",
+      "name": "Технический осмотр автомобиля в ГАИ", 
+      "createdTime": "15:09:2020 07:26"
+    }
   ]
-
 }
   
