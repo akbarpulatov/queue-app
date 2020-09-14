@@ -22,15 +22,9 @@ class _QueueListViewState extends State<QueueListView> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   Future<Null> refreshList(HistoryItemType historyItemType) async {
-    String url;
+    final url = MyUrls.queueList;
 
-    if (historyItemType == HistoryItemType.createdList) {
-      url = MyUrls.historyCreatedList;
-    } else {
-      url = MyUrls.historyBookedList;
-    }
-
-    // httpRequest.getHttp(url);
+    httpRequest.getHttp(url);
     refreshKey.currentState?.show(atTop: false);
 
     await Future.delayed(Duration(seconds: 2));
