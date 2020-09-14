@@ -19,8 +19,9 @@ class MyUrls {
 class MyColors {
   static const enabled = Colors.lightGreen;
   static const disabled = Colors.black26;
-  static const secondaryColor = Colors.black26;
-  static const kSecondaryLightColor = Color(0xFF838383);
+  static const secondaryDarkColor = Colors.black;
+  static const secondaryLightColor = Color(0xFF838383);
+  static const secondaryColor = Colors.black12;
 }
 
 class MyAssets {

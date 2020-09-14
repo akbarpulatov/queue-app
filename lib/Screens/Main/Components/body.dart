@@ -23,7 +23,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {

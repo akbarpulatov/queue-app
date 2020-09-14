@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/components/text_field_container.dart';
+import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/constants.dart';
 
 class SquaredInputField extends StatelessWidget {
@@ -15,15 +15,21 @@ class SquaredInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFieldContainer(
+    return FlatTextFieldContainer(
       child: TextField(
         onChanged: onChanged,
-        cursorColor: kPrimaryColor,
+        cursorColor: MyColors.secondaryColor,
         decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: kPrimaryColor,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: MyColors.secondaryLightColor),
           ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: MyColors.secondaryColor),
+          ),
+          // icon: Icon(
+          //   icon,
+          //   color: kPrimaryColor,
+          // ),
           hintText: hintText,
           border: InputBorder.none,
         ),
