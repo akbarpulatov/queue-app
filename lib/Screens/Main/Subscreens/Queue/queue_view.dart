@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_item.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_view.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/model/queue.dart';
@@ -29,56 +30,58 @@ class _QueueScreenState extends State<QueueScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: Text(
-            'Очередь',
-            style: TextStyle(color: Colors.black),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'Очередь',
+          style: TextStyle(color: Colors.black),
         ),
-        //TODO: body will be changed according to
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // TODO: queue list item view should be implemented
-              QueueListItemView(
-                index: null,
-                historyItemType: HistoryItemType.bookedList,
-              ),
+      ),
+      //TODO: body will be changed according to
+      body: QueueListView(),
 
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Text(
-              //     'У вас еще нет созданных очередей',
-              //     style: TextStyle(
-              //         fontSize: 20,
-              //         // fontStyle: FontStyle.italic,
-              //         fontWeight: FontWeight.bold),
-              //     textAlign: TextAlign.center,
-              //   ),
-              // ),
-              // Text(
-              //   'Добавьте новую очередь с помощью кнопки',
-              //   style: TextStyle(
-              //     fontSize: 14,
-              //     // fontStyle: FontStyle.italic,
-              //     // fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-            ],
-          ),
-        ),
-        floatingActionButton: Container(
-          child: FloatingActionButton(
-            onPressed: _onPressedAddQueue,
-            child: Icon(Icons.add),
-            // child: Text('Создать'),
-          ),
+      // body: Column(
+      //   // mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+      //     // TODO: queue list item view should be implemented
+      //     QueueListItemView(
+      //       index: 0,
+      //       historyItemType: HistoryItemType.bookedList,
+      //     ),
+      //     QueueListItemView(
+      //       index: 1,
+      //       historyItemType: HistoryItemType.bookedList,
+      //     ),
+
+      //     // Padding(
+      //     //   padding: const EdgeInsets.all(20.0),
+      //     //   child: Text(
+      //     //     'У вас еще нет созданных очередей',
+      //     //     style: TextStyle(
+      //     //         fontSize: 20,
+      //     //         // fontStyle: FontStyle.italic,
+      //     //         fontWeight: FontWeight.bold),
+      //     //     textAlign: TextAlign.center,
+      //     //   ),
+      //     // ),
+      //     // Text(
+      //     //   'Добавьте новую очередь с помощью кнопки',
+      //     //   style: TextStyle(
+      //     //     fontSize: 14,
+      //     //     // fontStyle: FontStyle.italic,
+      //     //     // fontWeight: FontWeight.bold,
+      //     //   ),
+      //     // ),
+      //   ],
+      // ),
+      floatingActionButton: Container(
+        child: FloatingActionButton(
+          onPressed: _onPressedAddQueue,
+          child: Icon(Icons.add),
+          // child: Text('Создать'),
         ),
       ),
     );
