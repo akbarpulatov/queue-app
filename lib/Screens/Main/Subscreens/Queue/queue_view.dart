@@ -22,7 +22,7 @@ class _QueueScreenState extends State<QueueScreen> {
       createdList.add(createdItem);
 
       //TODO: Delete it. Cause it is for testing data model.
-      history.updateCreatedList('jsonRaw');
+      // history.updateCreatedList('jsonRaw');
     });
   }
 
@@ -44,25 +44,26 @@ class _QueueScreenState extends State<QueueScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'У вас еще нет созданных очередей',
-                  style: TextStyle(
-                      fontSize: 20,
-                      // fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Text(
-                'Добавьте новую очередь с помощью кнопки',
-                style: TextStyle(
-                  fontSize: 14,
-                  // fontStyle: FontStyle.italic,
-                  // fontWeight: FontWeight.bold,
-                ),
-              ),
+
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Text(
+              //     'У вас еще нет созданных очередей',
+              //     style: TextStyle(
+              //         fontSize: 20,
+              //         // fontStyle: FontStyle.italic,
+              //         fontWeight: FontWeight.bold),
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
+              // Text(
+              //   'Добавьте новую очередь с помощью кнопки',
+              //   style: TextStyle(
+              //     fontSize: 14,
+              //     // fontStyle: FontStyle.italic,
+              //     // fontWeight: FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
         ),
