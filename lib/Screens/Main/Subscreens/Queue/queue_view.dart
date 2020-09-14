@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_view.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_item.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_view.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/history.dart';
-import 'package:flutter_auth/model/queue.dart';
-import 'package:flutter_auth/services/http_requests.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 
 class QueueScreen extends StatefulWidget {
@@ -40,41 +34,33 @@ class _QueueScreenState extends State<QueueScreen> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      //TODO: body will be changed according to
+      //TODO: body will be changed according to queuelist items count
       body: QueueListView(),
 
       // body: Column(
       //   // mainAxisAlignment: MainAxisAlignment.center,
       //   children: [
-      //     // TODO: queue list item view should be implemented
-      //     QueueListItemView(
-      //       index: 0,
-      //       historyItemType: HistoryItemType.bookedList,
-      //     ),
-      //     QueueListItemView(
-      //       index: 1,
-      //       historyItemType: HistoryItemType.bookedList,
-      //     ),
+      // TODO: queue list item view should be implemented
 
-      //     // Padding(
-      //     //   padding: const EdgeInsets.all(20.0),
-      //     //   child: Text(
-      //     //     'У вас еще нет созданных очередей',
-      //     //     style: TextStyle(
-      //     //         fontSize: 20,
-      //     //         // fontStyle: FontStyle.italic,
-      //     //         fontWeight: FontWeight.bold),
-      //     //     textAlign: TextAlign.center,
-      //     //   ),
-      //     // ),
-      //     // Text(
-      //     //   'Добавьте новую очередь с помощью кнопки',
-      //     //   style: TextStyle(
-      //     //     fontSize: 14,
-      //     //     // fontStyle: FontStyle.italic,
-      //     //     // fontWeight: FontWeight.bold,
-      //     //   ),
-      //     // ),
+      // Padding(
+      //   padding: const EdgeInsets.all(20.0),
+      //   child: Text(
+      //     'У вас еще нет созданных очередей',
+      //     style: TextStyle(
+      //         fontSize: 20,
+      //         // fontStyle: FontStyle.italic,
+      //         fontWeight: FontWeight.bold),
+      //     textAlign: TextAlign.center,
+      //   ),
+      // ),
+      // Text(
+      //   'Добавьте новую очередь с помощью кнопки',
+      //   style: TextStyle(
+      //     fontSize: 14,
+      //     // fontStyle: FontStyle.italic,
+      //     // fontWeight: FontWeight.bold,
+      //   ),
+      // ),
       //   ],
       // ),
       floatingActionButton: Container(

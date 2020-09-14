@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
-import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -3,15 +3,10 @@ import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/services/http_requests.dart';
-import 'package:flutter_auth/model/history.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
 
 class QueueListView extends StatefulWidget {
-  final HistoryItemType historyItemType;
-
   QueueListView({
     Key key,
-    @required this.historyItemType,
   }) : super(key: key);
 
   @override
@@ -21,7 +16,7 @@ class QueueListView extends StatefulWidget {
 class _QueueListViewState extends State<QueueListView> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
-  Future<Null> refreshList(HistoryItemType historyItemType) async {
+  Future<Null> refreshList() async {
     final url = MyUrls.queueList;
 
     httpRequest.getHttp(url);
@@ -37,11 +32,10 @@ class _QueueListViewState extends State<QueueListView> {
 
   @override
   Widget build(BuildContext context) {
-    final historyItemType = widget.historyItemType;
     final int length = queueList.length;
 
     return RefreshIndicator(
-      onRefresh: () => refreshList(historyItemType),
+      onRefresh: refreshList,
       key: refreshKey,
       child: ListView.separated(
           itemCount: length,
