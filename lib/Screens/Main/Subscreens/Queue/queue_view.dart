@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_item.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/History/Components/history_list_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_item.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/model/queue.dart';
@@ -42,6 +45,12 @@ class _QueueScreenState extends State<QueueScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // TODO: queue list item view should be implemented
+              QueueListItemView(
+                index: null,
+                historyItemType: HistoryItemType.bookedList,
+              ),
+
               // Padding(
               //   padding: const EdgeInsets.all(20.0),
               //   child: Text(
