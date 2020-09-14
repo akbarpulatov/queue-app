@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Subscreens/create_queue_view.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 
@@ -16,9 +17,6 @@ class _QueueScreenState extends State<QueueScreen> {
     setState(() {
       //TODO: Implement what will happen after pressing add queue button
       print('Add Queue button pressed');
-      httpRequest.getHttp(MyUrls.queueList);
-
-      //TODO: Delete it. Cause it is for testing data model.
     });
   }
 
