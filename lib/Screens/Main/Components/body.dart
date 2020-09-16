@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Components/background.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/History/history_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/home_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Profile/profile_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Subscreens/create_queue_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_view.dart';
 
@@ -39,7 +40,7 @@ class _MainPageState extends State<MainPage> {
     CreateQueueScreen(),
     HistoryView(),
     // Center(child: Text('Здесь будеть страница История')),
-    Center(child: Text('Здесь будеть страница Профилья')),
+    ProfileViewScreen(),
   ];
 
   final botNavigationBarItems = [
