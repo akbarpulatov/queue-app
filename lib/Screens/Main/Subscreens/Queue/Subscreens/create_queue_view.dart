@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/squared_input_field.dart';
+import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/services/http_requests.dart';
 
-class CreateQueueScreen extends StatelessWidget {
+class CreateQueueScreen extends StatefulWidget {
   const CreateQueueScreen({Key key}) : super(key: key);
+
+  @override
+  _CreateQueueScreenState createState() => _CreateQueueScreenState();
+}
+
+class _CreateQueueScreenState extends State<CreateQueueScreen> {
+  TextEditingController queueFormName = new TextEditingController();
+  TextEditingController queueFormStart = new TextEditingController();
+  TextEditingController queueFormEnd = new TextEditingController();
+  TextEditingController queueFormBreak = new TextEditingController();
+  TextEditingController queueFormMaxQueue = new TextEditingController();
+  TextEditingController queueFormDescription = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +37,60 @@ class CreateQueueScreen extends StatelessWidget {
       body: Column(
         children: [
           SquaredInputField(
+            controller: queueFormName,
             hintText: 'Название очереди',
           ),
           SquaredInputField(
+            controller: queueFormStart,
             hintText: 'Начало',
           ),
           SquaredInputField(
+            controller: queueFormEnd,
             hintText: 'Конец',
           ),
           SquaredInputField(
+            controller: queueFormBreak,
             hintText: 'Перерыв',
           ),
           SquaredInputField(
+            controller: queueFormMaxQueue,
             hintText: 'Макс. длина',
           ),
           SquaredInputField(
+            controller: queueFormDescription,
             hintText:
                 'Описание (Например: при себе необходимо иметь ксерокопию паспорта)',
+          ),
+          RoundedButton(
+            text: "Создать",
+            color: kPrimaryColor,
+            textColor: kBackgroundLightColor,
+            press: () {
+              // TODO: make HTTP Post
+              print(queueFormName.text);
+              print(queueFormStart.text);
+              print(queueFormEnd.text);
+              print(queueFormBreak.text);
+              print(queueFormMaxQueue.text);
+              print(queueFormDescription.text);
+
+              httpRequest.postHttp(MyUrls.postQueueList);
+              // queueFormName.text = '';
+              // queueFormStart.text = '';
+              // queueFormEnd.text = '';
+              // queueFormBreak.text = '';
+              // queueFormMaxQueue.text = '';
+              // queueFormDescription.text = '';
+
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) {
+              //       return SignUpScreen();
+              //     },
+              //   ),
+              // );
+            },
           ),
         ],
       ),

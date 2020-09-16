@@ -1,41 +1,49 @@
 {
+  "queue-post": [
+    {
+      "title2": "Akbar"
+    },
+    {
+      "title1": "Akbar"
+    }
+  ],
   "history-booked": [
     {
-      "uID": "000001", 
-      "status": "В ожидании", 
-      "name": "Клиника ShoxMed", 
+      "uID": "000001",
+      "status": "В ожидании",
+      "name": "Клиника ShoxMed",
       "averageWaitingTime": "22 min",
       "bookedTime": "12.08.2020 08:22",
       "orderInQueue": "10"
     },
     {
-      "uID": "000002", 
-      "status": "На приеме", 
-      "name": "Клиника AkfaMedline", 
+      "uID": "000002",
+      "status": "На приеме",
+      "name": "Клиника AkfaMedline",
       "averageWaitingTime": "0 min",
       "bookedTime": "8.08.2020 08:51",
       "orderInQueue": "1"
     },
     {
-      "uID": "000003", 
-      "status": "Завершено", 
-      "name": "Паспортный стол", 
+      "uID": "000003",
+      "status": "Завершено",
+      "name": "Паспортный стол",
       "averageWaitingTime": "0 min",
       "bookedTime": "11.09.2020 09:35",
       "orderInQueue": "0"
     },
     {
-      "uID": "000004", 
-      "status": "Пропущенно", 
-      "name": "Национальный банк", 
+      "uID": "000004",
+      "status": "Пропущенно",
+      "name": "Национальный банк",
       "averageWaitingTime": "0 min",
       "bookedTime": "11.09.2020 09:35",
       "orderInQueue": "0"
     },
     {
-      "uID": "000005", 
-      "status": "Отменено", 
-      "name": "Национальный банк", 
+      "uID": "000005",
+      "status": "Отменено",
+      "name": "Национальный банк",
       "averageWaitingTime": "0 min",
       "bookedTime": "11.09.2020 09:35",
       "orderInQueue": "0"
@@ -43,49 +51,49 @@
   ],
   "history-created": [
     {
-      "uID": "000001", 
-      "status": "Завершено", 
-      "name": "Клиника AkfaMedline", 
+      "uID": "000001",
+      "status": "Завершено",
+      "name": "Клиника AkfaMedline",
       "averageWaitingTime": "5 min",
       "bookedTime": "10.07.2020 11:51",
       "numberOfPeopleInQueue": "12"
     },
     {
-      "uID": "000002", 
-      "status": "Закрыто", 
-      "name": "Клиника ShoxMed", 
+      "uID": "000002",
+      "status": "Закрыто",
+      "name": "Клиника ShoxMed",
       "averageWaitingTime": "10 min",
       "bookedTime": "12.08.2020 08:22",
       "numberOfPeopleInQueue": "5"
     },
     {
-      "uID": "000003", 
-      "status": "Открыто", 
-      "name": "Клиника DoctorPlus", 
+      "uID": "000003",
+      "status": "Открыто",
+      "name": "Клиника DoctorPlus",
       "averageWaitingTime": "22 min",
       "bookedTime": "11.09.2020 09:35",
       "numberOfPeopleInQueue": "14"
     },
     {
-      "uID": "000004", 
-      "status": "Закрыто", 
-      "name": "Клиника Doctor+", 
+      "uID": "000004",
+      "status": "Закрыто",
+      "name": "Клиника Doctor+",
       "averageWaitingTime": "26 min",
       "bookedTime": "11.09.2020 15:26",
       "numberOfPeopleInQueue": "29"
     },
     {
-      "uID": "000005", 
-      "status": "Открыто", 
-      "name": "Клиника MedService", 
+      "uID": "000005",
+      "status": "Открыто",
+      "name": "Клиника MedService",
       "averageWaitingTime": "17 min",
       "bookedTime": "11.09.2020 09:35",
       "numberOfPeopleInQueue": "11"
     },
     {
-      "uID": "000006", 
-      "status": "Завершено", 
-      "name": "Клиника DoctorPlus", 
+      "uID": "000006",
+      "status": "Завершено",
+      "name": "Клиника DoctorPlus",
       "averageWaitingTime": "6 min",
       "bookedTime": "11.09.2020 10:42",
       "numberOfPeopleInQueue": "2"
@@ -93,23 +101,22 @@
   ],
   "queue-list": [
     {
-      "uID": "000001", 
-      "currentOrder": "15", 
-      "name": "Клиника AkfaMedline", 
+      "uID": "000001",
+      "currentOrder": "15",
+      "name": "Клиника AkfaMedline",
       "createdTime": "10.07.2020 9:00"
     },
     {
-      "uID": "000002", 
+      "uID": "000002",
       "currentOrder": "34",
-      "name": "Клиника ShoxMed", 
+      "name": "Клиника ShoxMed",
       "createdTime": "10.07.2020 10:00"
     },
     {
-      "uID": "000003", 
+      "uID": "000003",
       "currentOrder": "34",
-      "name": "Технический осмотр автомобиля в ГАИ", 
+      "name": "Технический осмотр автомобиля в ГАИ",
       "createdTime": "15:09:2020 07:26"
     }
   ]
 }
-  

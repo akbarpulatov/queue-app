@@ -7,9 +7,21 @@ import 'package:http/http.dart' as http;
 class HttpRequest {
   HttpRequest();
 
-  void getHttp(String url) async {
-    // var url = MyUrls.historyCreatedList;
+  void postHttp(String url) async {
+    var headers = {
+      'Key_1': 'Value_1',
+      'Key_2': 'Value_2',
+    };
+    var body;
 
+    var response = await http.post(url, body: 'asdf', headers: headers);
+    print(response.body);
+    if (response.statusCode == 200) {
+      print('Status is OK!');
+    }
+  }
+
+  void getHttp(String url) async {
     // Await the http get response, then decode the json-formatted response.
     var response = await http.get(url);
     // print(response.body);
