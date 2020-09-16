@@ -29,6 +29,9 @@ class ProfileViewScreen extends StatelessWidget {
           ),
         ],
       ),
+      onTap: () {
+        document.reference.update({'votes': getDocs['votes'] + 1});
+      },
     );
   }
 
