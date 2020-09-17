@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileViewScreenFireBase extends StatelessWidget {
-  final databaseReference = Firestore.instance;
+  final databaseReference = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -45,33 +45,31 @@ class ProfileViewScreenFireBase extends StatelessWidget {
   }
 
   void createRecord() async {
-    await databaseReference.collection("books").document("1").setData({
-      'title': 'Mastering Flutter',
-      'description': 'Programming Guide for Dart'
+    await databaseReference.collection('users').doc('777777').set({
+      'phone': '994174969',
+      'email': 'akbarpulatov7@gmail.com',
+      'name': 'Akbar'
     });
 
-    DocumentReference ref = await databaseReference.collection("books").add({
-      'title': 'Flutter in Action',
-      'description': 'Complete Programming Guide to learn Flutter'
-    });
-    print(ref.documentID);
+    // DocumentReference ref = await databaseReference.collection("books").add({
+    //   'title': 'Flutter in Action',
+    //   'description': 'Complete Programming Guide to learn Flutter'
+    // });
+    // print(ref.id);
   }
 
   void getData() {
-    databaseReference
-        .collection("books")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
+    databaseReference.collection("users").get().then((QuerySnapshot snapshot) {
+      snapshot.docs.forEach((f) => print('${f.data}}'));
     });
   }
 
   void updateData() {
     try {
       databaseReference
-          .collection('books')
-          .document('1')
-          .updateData({'description': 'Head First Flutter'});
+          .collection('users')
+          .doc('777777')
+          .update({'name': 'Akbar Pulatov'});
     } catch (e) {
       print(e.toString());
     }
@@ -79,7 +77,7 @@ class ProfileViewScreenFireBase extends StatelessWidget {
 
   void deleteData() {
     try {
-      databaseReference.collection('books').document('1').delete();
+      databaseReference.collection('users').doc('123456').delete();
     } catch (e) {
       print(e.toString());
     }
