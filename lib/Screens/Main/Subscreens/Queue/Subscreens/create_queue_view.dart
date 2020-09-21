@@ -34,65 +34,67 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Column(
-        children: [
-          SquaredInputField(
-            controller: queueFormName,
-            hintText: 'Название очереди',
-          ),
-          SquaredInputField(
-            controller: queueFormStart,
-            hintText: 'Начало',
-          ),
-          SquaredInputField(
-            controller: queueFormEnd,
-            hintText: 'Конец',
-          ),
-          SquaredInputField(
-            controller: queueFormBreak,
-            hintText: 'Перерыв',
-          ),
-          SquaredInputField(
-            controller: queueFormMaxQueue,
-            hintText: 'Макс. длина',
-          ),
-          SquaredInputField(
-            controller: queueFormDescription,
-            hintText:
-                'Описание (Например: при себе необходимо иметь ксерокопию паспорта)',
-          ),
-          RoundedButton(
-            text: "Создать",
-            color: kPrimaryColor,
-            textColor: kBackgroundLightColor,
-            press: () {
-              // TODO: make HTTP Post
-              print(queueFormName.text);
-              print(queueFormStart.text);
-              print(queueFormEnd.text);
-              print(queueFormBreak.text);
-              print(queueFormMaxQueue.text);
-              print(queueFormDescription.text);
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SquaredInputField(
+              controller: queueFormName,
+              hintText: 'Название очереди',
+            ),
+            SquaredInputField(
+              controller: queueFormStart,
+              hintText: 'Начало',
+            ),
+            SquaredInputField(
+              controller: queueFormEnd,
+              hintText: 'Конец',
+            ),
+            SquaredInputField(
+              controller: queueFormBreak,
+              hintText: 'Перерыв',
+            ),
+            SquaredInputField(
+              controller: queueFormMaxQueue,
+              hintText: 'Макс. длина',
+            ),
+            SquaredInputField(
+              controller: queueFormDescription,
+              hintText:
+                  'Описание (Например: при себе необходимо иметь ксерокопию паспорта)',
+            ),
+            RoundedButton(
+              text: "Создать",
+              color: kPrimaryColor,
+              textColor: kBackgroundLightColor,
+              press: () {
+                // TODO: make HTTP Post
+                print(queueFormName.text);
+                print(queueFormStart.text);
+                print(queueFormEnd.text);
+                print(queueFormBreak.text);
+                print(queueFormMaxQueue.text);
+                print(queueFormDescription.text);
 
-              httpRequest.postHttp(MyUrls.postQueueList);
-              // queueFormName.text = '';
-              // queueFormStart.text = '';
-              // queueFormEnd.text = '';
-              // queueFormBreak.text = '';
-              // queueFormMaxQueue.text = '';
-              // queueFormDescription.text = '';
+                httpRequest.postHttp(MyUrls.postQueueList);
+                // queueFormName.text = '';
+                // queueFormStart.text = '';
+                // queueFormEnd.text = '';
+                // queueFormBreak.text = '';
+                // queueFormMaxQueue.text = '';
+                // queueFormDescription.text = '';
 
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return SignUpScreen();
-              //     },
-              //   ),
-              // );
-            },
-          ),
-        ],
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return SignUpScreen();
+                //     },
+                //   ),
+                // );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

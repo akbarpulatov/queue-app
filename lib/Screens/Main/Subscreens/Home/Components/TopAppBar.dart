@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -48,17 +50,21 @@ class MainScreenTopAppBar extends StatelessWidget
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.supervised_user_circle,
-            color: Colors.green,
-            size: 50,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(
+              'assets/icons/small_icons.svg',
+              color: MyColors.enabled,
+              height: 26,
+              width: 26,
+            ),
           ),
           Column(
             children: [
               Text(
                 'Navbat',
                 style: TextStyle(
-                    color: Colors.green,
+                    color: MyColors.enabled,
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
               ),
