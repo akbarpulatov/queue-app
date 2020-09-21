@@ -1,10 +1,22 @@
 {
-  "queue-post": [
+  "booked-list": [
     {
-      "title2": "Akbar"
+      "uID": "11111",
+      "name": "Технический осмотр автомобиля в ГАИ",
+      "createdTime": "10.07.2020   10:20",
+      "order": "137",
+      "averageWaitingTime": "30 min",
+      "currentOrder": "15",
+      "note": "При себе необходимо иметь ксерокопию паспорта"
     },
     {
-      "title1": "Akbar"
+      "uID": "11111",
+      "name": "Клиника DoctorPlus",
+      "createdTime": "10.07.2020   17:35",
+      "order": "10",
+      "averageWaitingTime": "15 min",
+      "currentOrder": "3",
+      "note": "При себе необходимо иметь ксерокопию паспорта"
     }
   ],
   "history-booked": [

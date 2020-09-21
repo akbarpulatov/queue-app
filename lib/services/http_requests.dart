@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_auth/model/history.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:http/http.dart' as http;
@@ -46,6 +47,13 @@ class HttpRequest {
         var queueListJson = convert.jsonDecode(response.body) as List;
         queueList =
             queueListJson.map((e) => QueueListItem.fromJson(e)).toList();
+
+        print(queueList.toString());
+      } else if (url == MyUrls.bookedQueueList) {
+        print('Booked Queue list is requested!');
+        var bookedQueueListJson = convert.jsonDecode(response.body) as List;
+        bookedQueueList =
+            bookedQueueListJson.map((e) => BookedQueue.fromJson(e)).toList();
 
         print(queueList.toString());
       }

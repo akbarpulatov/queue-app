@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/TopAppBar.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/queue_item_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/booked_queue_item_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/booked_queue_list_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/search_field_widget.dart';
 import 'package:flutter_auth/constants.dart';
 
@@ -14,16 +15,16 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainScreenTopAppBar(),
+      // body: BookedQueueListView(),
       body: Column(
         children: [
           SearchFieldWidget(),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                QueueItemView(),
-              ],
-            ),
-          )
+          Container(
+            child: BookedQueueListView(),
+            color: Colors.black38,
+            width: double.infinity,
+            height: 500,
+          ),
         ],
       ),
     );

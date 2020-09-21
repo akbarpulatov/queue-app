@@ -37,17 +37,20 @@ class _HistoryItemState extends State<HistoryItem> {
     String name;
     String averageWaitingTime;
     String bookedTime;
+    String labelDate;
 
     if (historyItemType == HistoryItemType.createdList) {
       status = createdList[index].status;
       name = createdList[index].name;
       averageWaitingTime = createdList[index].averageWaitingTime;
       bookedTime = createdList[index].bookedTime;
+      labelDate = 'Дата создания';
     } else {
       status = bookedList[index].status;
       name = bookedList[index].name;
       averageWaitingTime = bookedList[index].averageWaitingTime;
       bookedTime = bookedList[index].bookedTime;
+      labelDate = 'Вы в очереди с';
     }
 
     // Created List parameters
@@ -165,7 +168,7 @@ class _HistoryItemState extends State<HistoryItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Дата создания',
+                          labelDate,
                           style:
                               TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
