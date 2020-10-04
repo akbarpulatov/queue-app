@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,8 @@ class BookedQueueItemView extends StatefulWidget {
 
 class _BookedQueueItemViewState extends State<BookedQueueItemView> {
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     final index = widget.index;
 
     final String uID = bookedQueueList[index].uID;
@@ -26,6 +29,9 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
     final String note = bookedQueueList[index].note;
 
     Color colorAverageWaitingTime = MyColors.enabled;
+
+    final String exitText = 'Выйти';
+    final String shareText = 'Поделиться';
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -114,18 +120,53 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
               )
             ],
           ),
+//=====================< Row #3 >=======================
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Icon(LineAwesomeIcons.info),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Заметка',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: MyColors.disabled),
+                    ),
+                    Container(
+                      child: Text(note),
+                      width: width * 0.8,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+//=====================< Row #4 >=======================
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Icon(LineAwesomeIcons.info),
+              FlatRoundedButton(
+                text: exitText,
+                icon: LineAwesomeIcons.door_open,
+                color: Colors.red,
+                textColor: Colors.white,
+                flex: exitText.length + 3,
               ),
-              Column(
-                children: [
-                  Text('data'),
-                  Text('data'),
-                ],
-              )
+              SizedBox(
+                width: 10,
+              ),
+              FlatRoundedButton(
+                text: shareText,
+                icon: LineAwesomeIcons.share,
+                color: MyColors.disabled,
+                textColor: Colors.white,
+                flex: shareText.length + 3,
+              ),
             ],
           )
         ],

@@ -6,6 +6,7 @@ import 'package:flutter_auth/Screens/Main/Subscreens/Profile/profile_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/profile_view_add_document.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Subscreens/create_queue_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_view.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -47,19 +48,19 @@ class _MainPageState extends State<MainPage> {
 
   final botNavigationBarItems = [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: Icon(LineAwesomeIcons.home),
       title: Text('Главная'),
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.queue),
+      icon: Icon(LineAwesomeIcons.calendar_plus),
       title: Text('Очередь'),
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.history),
+      icon: Icon(LineAwesomeIcons.history),
       title: Text('История'),
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.account_circle),
+      icon: Icon(LineAwesomeIcons.user),
       title: Text('Профиль'),
     ),
   ];

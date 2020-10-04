@@ -17,6 +17,24 @@
       "averageWaitingTime": "15 min",
       "currentOrder": "3",
       "note": "При себе необходимо иметь ксерокопию паспорта"
+    },
+    {
+      "uID": "11111",
+      "name": "Клиника DoctorPlus",
+      "createdTime": "10.07.2020   17:35",
+      "order": "10",
+      "averageWaitingTime": "15 min",
+      "currentOrder": "3",
+      "note": "При себе необходимо иметь ксерокопию паспорта"
+    },
+    {
+      "uID": "11111",
+      "name": "Клиника DoctorPlus",
+      "createdTime": "10.07.2020   17:35",
+      "order": "10",
+      "averageWaitingTime": "15 min",
+      "currentOrder": "3",
+      "note": "При себе необходимо иметь ксерокопию паспорта"
     }
   ],
   "history-booked": [
