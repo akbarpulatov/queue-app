@@ -15,16 +15,10 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainScreenTopAppBar(),
-      // body: BookedQueueListView(),
       body: Column(
         children: [
           SearchFieldWidget(),
-          Container(
-            child: BookedQueueListView(),
-            color: Colors.black38,
-            width: double.infinity,
-            height: 500,
-          ),
+          BookedQueueListView(),
         ],
       ),
     );

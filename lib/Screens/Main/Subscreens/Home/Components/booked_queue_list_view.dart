@@ -35,19 +35,21 @@ class _BookedQueueListViewState extends State<BookedQueueListView> {
   Widget build(BuildContext context) {
     final int length = bookedQueueList.length;
 
-    return RefreshIndicator(
-      onRefresh: refreshList,
-      key: refreshKey,
-      child: ListView.separated(
-          itemCount: length,
-          itemBuilder: (context, index) {
-            return BookedQueueItemView(
-              index: index,
-            );
-          },
-          separatorBuilder: (context, index) {
-            return Divider();
-          }),
+    return Expanded(
+      child: RefreshIndicator(
+        onRefresh: refreshList,
+        key: refreshKey,
+        child: ListView.separated(
+            itemCount: length,
+            itemBuilder: (context, index) {
+              return BookedQueueItemView(
+                index: index,
+              );
+            },
+            separatorBuilder: (context, index) {
+              return Divider();
+            }),
+      ),
     );
   }
 }
