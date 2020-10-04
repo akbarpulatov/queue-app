@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class BookedQueueItemView extends StatefulWidget {
   @required
@@ -23,11 +24,14 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
     final String averageWaitingTime = bookedQueueList[index].averageWaitingTime;
     final String currentOrder = bookedQueueList[index].currentOrder;
     final String note = bookedQueueList[index].note;
+
+    Color colorAverageWaitingTime = MyColors.enabled;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-//=====================< Row #2 >=======================
+//=====================< Row #1 >=======================
           Row(
             children: [
               Expanded(
@@ -71,13 +75,16 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
               )
             ],
           ),
-          // Container(child: Text('Среднее ожидание: $averageWaitingTime.')),
-          //=====================< Row #3 >=======================
+//=====================< Row #2 >=======================
           Row(
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.check_circle_outline),
+                child: Icon(
+                  LineAwesomeIcons.calendar_check,
+                  size: 30.0,
+                  color: MyColors.disabled,
+                ),
               ),
               Expanded(
                 child: Column(
@@ -85,7 +92,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                   children: [
                     Text(
                       'Вы в очереди с',
-                      style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 15, color: MyColors.disabled),
                     ),
                     Text('$createdTime'),
                   ],
@@ -97,11 +104,26 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                     children: [
                       Text(
                         'Текущий №',
-                        style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                        style:
+                            TextStyle(fontSize: 15, color: MyColors.disabled),
                       ),
                       Text('$currentOrder'),
                     ],
                   )
+                ],
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Icon(LineAwesomeIcons.info),
+              ),
+              Column(
+                children: [
+                  Text('data'),
+                  Text('data'),
                 ],
               )
             ],
