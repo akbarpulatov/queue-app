@@ -49,19 +49,19 @@ class _MainPageState extends State<MainPage> {
   final botNavigationBarItems = [
     BottomNavigationBarItem(
       icon: Icon(LineAwesomeIcons.home),
-      title: Text('Главная'),
+      label: 'Главная',
     ),
     BottomNavigationBarItem(
       icon: Icon(LineAwesomeIcons.calendar_plus),
-      title: Text('Очередь'),
+      label: 'Очередь',
     ),
     BottomNavigationBarItem(
       icon: Icon(LineAwesomeIcons.history),
-      title: Text('История'),
+      label: 'История',
     ),
     BottomNavigationBarItem(
       icon: Icon(LineAwesomeIcons.user),
-      title: Text('Профиль'),
+      label: 'Профиль',
     ),
   ];
 

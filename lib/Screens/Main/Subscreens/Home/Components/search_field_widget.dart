@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/rounded_input_field.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/search_field_container.dart';
 import 'package:flutter_auth/constants.dart';
 
 class SearchFieldWidget extends StatelessWidget {
@@ -6,13 +8,18 @@ class SearchFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Container(
-        height: 80,
-        width: double.infinity,
-        child: Text('SearchFiledHere'),
-        color: MyColors.secondaryLightColor,
-      ),
+    return RoundedSearchInputField(
+      hintText: 'type here',
+      icon: Icons.ac_unit,
+      onChanged: (value) {
+        print(value);
+      },
     );
+    // return TextField();
   }
 }
+
+// RoundedInputField(
+//   hintText: "Логин",
+//   onChanged: (value) {},
+// ),

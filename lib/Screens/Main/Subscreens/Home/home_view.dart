@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/TopAppBar.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/booked_queue_item_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/booked_queue_list_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/rounded_input_field.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/search_field_container.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/search_field_widget.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -17,7 +21,17 @@ class _HomeViewState extends State<HomeView> {
       appBar: MainScreenTopAppBar(),
       body: Column(
         children: [
-          SearchFieldWidget(),
+          RoundedSearchInputField(
+            hintText: 'Ввести код',
+            onChanged: (value) {
+              print(value);
+            },
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text('Ваши очереди'),
+            alignment: Alignment.centerLeft,
+          ),
           BookedQueueListView(),
         ],
       ),

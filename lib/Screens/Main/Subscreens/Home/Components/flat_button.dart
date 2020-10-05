@@ -27,7 +27,6 @@ class FlatRoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Container(
           height: 50,
-          // width: 140,
           color: color,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,6 +35,7 @@ class FlatRoundedButton extends StatelessWidget {
                 icon,
                 color: Colors.white,
               ),
+              SizedBox(width: 3),
               Text(
                 text,
                 style: TextStyle(
