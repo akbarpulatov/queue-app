@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
+import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/squared_input_field.dart';
 import 'package:flutter_auth/constants.dart';
@@ -37,6 +39,15 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // TimeWheel(
+            //   divisorSpacing: 0.0,
+            //   fontSize: 17,
+            //   height: 50,
+            //   // width: 100,
+            //   updateTimeChanged: (val) {
+            //     print(val);
+            //   },
+            // ),
             SquaredInputField(
               controller: queueFormName,
               hintText: 'Название очереди',
@@ -45,6 +56,8 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
               controller: queueFormStart,
               hintText: 'Начало',
             ),
+            DateTimeFieldContainer(),
+
             SquaredInputField(
               controller: queueFormEnd,
               hintText: 'Конец',
