@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_picker.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/time_picker.dart';
 import 'package:flutter_auth/components/flat_text_field_container.dart';
@@ -24,6 +25,10 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Divider divider = Divider(
+      indent: 20,
+    );
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -46,9 +51,21 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             ),
             SquaredInputField(
               controller: queueFormStart,
-              hintText: 'Начало',
+              hintText: 'label',
             ),
+            divider,
             DateTimeFieldContainer(
+              label: 'Начало',
+              child: Row(
+                children: [
+                  DatePicker(),
+                  TimePicker(),
+                ],
+              ),
+            ),
+            divider,
+            DateTimeFieldContainer(
+              label: 'Конец',
               child: TimePicker(),
             ),
             SquaredInputField(
