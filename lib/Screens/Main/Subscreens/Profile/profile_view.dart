@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/flat_button_for_profile_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -29,16 +30,56 @@ class ProfileViewScreen extends StatelessWidget {
                 children: [
                   Text('Login'),
                   Text('John'),
-                  Divider(
-                    indent: 0,
-                    height: 20,
-                    endIndent: 0,
-                  ),
+                  Divider(),
                   Text('Tarif: Free'),
                 ],
               ),
             ),
           ],
+        ),
+        RoundedButton(
+          text: "Сменить тариф",
+          color: kBackgroundLightColor,
+          borderColor: MyColors.disabled,
+          textColor: Colors.black,
+          press: () {
+            print('Button pressed: Сменить тариф');
+          },
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Divider(),
+        FlatButtonForProfileScreen(
+          icon: LineAwesomeIcons.history,
+          text: 'История очередей',
+          press: () {
+            print('История очередей');
+          },
+        ),
+        Divider(
+          indent: 50,
+        ),
+        FlatButtonForProfileScreen(
+          icon: LineAwesomeIcons.lock,
+          text: 'Сменить пароль',
+          press: () {
+            print('Сменить пароль');
+          },
+        ),
+        Divider(),
+        Expanded(child: SizedBox()),
+        RoundedButton(
+          text: "Выход",
+          color: kBackgroundLightColor,
+          borderColor: MyColors.redLight,
+          textColor: MyColors.redDark,
+          press: () {
+            print('Выход');
+          },
+        ),
+        SizedBox(
+          height: 7,
         ),
       ],
     );
