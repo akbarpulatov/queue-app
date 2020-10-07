@@ -36,6 +36,7 @@ class FlatButtonForProfileScreen extends StatelessWidget {
                     text,
                     style: TextStyle(
                       color: MyColors.secondaryDarkColor,
+                      fontSize: 17,
                     ),
                   ),
                 ),
@@ -45,7 +46,7 @@ class FlatButtonForProfileScreen extends StatelessWidget {
                     Icons.arrow_forward_ios_rounded,
                     size: 20,
                   ),
-                )
+                ),
               ],
             ),
           ),

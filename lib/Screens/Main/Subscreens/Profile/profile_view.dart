@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/flat_button_for_profile_screen.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/user_profile_info.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -13,30 +14,20 @@ class ProfileViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(
-          child: Text('Личный кабинет'),
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(
-              LineAwesomeIcons.user,
-              size: 30,
-              color: MyColors.disabled,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Login'),
-                  Text('John'),
-                  Divider(),
-                  Text('Tarif: Free'),
-                ],
+        Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Center(
+            child: Text(
+              'Личный кабинет',
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
+          ),
         ),
+        UserProfileInfo(),
+        SizedBox(height: 5),
         RoundedButton(
           text: "Сменить тариф",
           color: kBackgroundLightColor,
