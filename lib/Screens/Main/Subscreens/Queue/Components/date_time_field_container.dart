@@ -3,12 +3,14 @@ import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/constants.dart';
 
 class DateTimeFieldContainer extends StatefulWidget {
+  final bool isStretched;
   final String label;
   final Widget child;
   const DateTimeFieldContainer({
     Key key,
     this.child,
     this.label,
+    this.isStretched,
   }) : super(key: key);
 
   @override
@@ -20,17 +22,15 @@ class _DateTimeFieldContainerState extends State<DateTimeFieldContainer> {
   Widget build(BuildContext context) {
     return FlatTextFieldContainer(
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            child: Text(
-              widget.label,
-              style: TextStyle(
-                color: MyColors.greyColorLight,
-                fontSize: 16,
-              ),
+          Text(
+            widget.label,
+            style: TextStyle(
+              color: MyColors.greyColorLight,
+              fontSize: 16,
             ),
           ),
+          if (widget.isStretched) Expanded(child: SizedBox()),
           widget.child,
         ],
       ),

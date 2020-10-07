@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 
 class TimePicker extends StatefulWidget {
+  final TimeOfDay initTime;
   const TimePicker({
     Key key,
+    this.initTime,
   }) : super(key: key);
 
   @override
@@ -27,6 +29,8 @@ class _TimePickerState extends State<TimePicker> {
 
   @override
   Widget build(BuildContext context) {
+    _time = widget.initTime;
+
     return FlatButton(
       onPressed: () {
         print('change time');

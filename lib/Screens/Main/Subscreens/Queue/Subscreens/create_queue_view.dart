@@ -55,18 +55,52 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             ),
             divider,
             DateTimeFieldContainer(
+              isStretched: true,
               label: 'Начало',
               child: Row(
                 children: [
                   DatePicker(),
-                  TimePicker(),
+                  TimePicker(
+                    initTime: TimeOfDay(hour: 9, minute: 00),
+                  ),
                 ],
               ),
             ),
             divider,
             DateTimeFieldContainer(
+              isStretched: true,
               label: 'Конец',
-              child: TimePicker(),
+              child: TimePicker(
+                initTime: TimeOfDay(hour: 18, minute: 00),
+              ),
+            ),
+            divider,
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: DateTimeFieldContainer(
+                    isStretched: false,
+                    label: 'С',
+                    child: TimePicker(
+                      initTime: TimeOfDay(hour: 13, minute: 00),
+                    ),
+                  ),
+                ),
+                Container(
+                    height: 30,
+                    child: VerticalDivider(color: MyColors.disabled)),
+                Expanded(
+                  flex: 1,
+                  child: DateTimeFieldContainer(
+                    isStretched: false,
+                    label: 'До',
+                    child: TimePicker(
+                      initTime: TimeOfDay(hour: 14, minute: 00),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SquaredInputField(
               controller: queueFormEnd,
