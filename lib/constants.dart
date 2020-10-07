@@ -26,6 +26,7 @@ class MyColors {
   static const secondaryColor = Colors.black12;
   static const redLight = Color(0xFF8DAA696);
   static const redDark = Color(0xFFFD4B13);
+  static const greyColorLight = Color(0xFF515142);
 }
 
 class MyAssets {

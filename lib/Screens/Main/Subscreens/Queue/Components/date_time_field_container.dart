@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/time_picker.dart';
 import 'package:flutter_auth/components/flat_text_field_container.dart';
+import 'package:flutter_auth/constants.dart';
 
 class DateTimeFieldContainer extends StatefulWidget {
+  final Widget child;
   const DateTimeFieldContainer({
     Key key,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -18,8 +22,8 @@ class _DateTimeFieldContainerState extends State<DateTimeFieldContainer> {
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: _date,
-        firstDate: new DateTime(2016),
-        lastDate: new DateTime(2021));
+        firstDate: new DateTime(2019),
+        lastDate: new DateTime(2022));
 
     if (picked != null && picked != _date) {
       print('Date selected: ${_date.toString()}');
@@ -51,18 +55,12 @@ class _DateTimeFieldContainerState extends State<DateTimeFieldContainer> {
             child: Text(
               'Конец',
               style: TextStyle(
-                color: Colors.black38,
+                color: MyColors.greyColorLight,
                 fontSize: 16,
               ),
             ),
           ),
-          FlatButton(
-            onPressed: () {
-              print('change time');
-              _selectTime(context);
-            },
-            child: Text('${_time.format(context) ?? '18:00'}'),
-          ),
+          widget.child,
         ],
       ),
     );
