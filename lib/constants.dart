@@ -19,7 +19,7 @@ class MyUrls {
 }
 
 class MyColors {
-  static const enabled = Colors.lightGreen;
+  static const enabled = Color(0xFF8DD636);
   static const disabled = Colors.black26;
   static const secondaryDarkColor = Colors.black;
   static const secondaryLightColor = Color(0xFF838383);

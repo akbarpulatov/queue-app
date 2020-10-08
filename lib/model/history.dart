@@ -29,7 +29,57 @@ class CreatedItem extends HistoryListItemBaseClass {
   }
 }
 
-var createdList = new List<CreatedItem>();
+// var createdList = new List<CreatedItem>();
+List<CreatedItem> createdList = [
+  CreatedItem(
+    "000001",
+    "Завершено",
+    "Клиника AkfaMedline",
+    "5 min",
+    "10.07.2020 11:51",
+    "12",
+  ),
+  CreatedItem(
+    "000002",
+    "Закрыто",
+    "Клиника ShoxMed",
+    "10 min",
+    "12.08.2020 08:22",
+    "5",
+  ),
+  CreatedItem(
+    "000003",
+    "Открыто",
+    "Клиника DoctorPlus",
+    "22 min",
+    "11.09.2020 09:35",
+    "14",
+  ),
+  CreatedItem(
+    "000004",
+    "Закрыто",
+    "Клиника Doctor+",
+    "26 min",
+    "11.09.2020 15:26",
+    "29",
+  ),
+  CreatedItem(
+    "000005",
+    "Открыто",
+    "Клиника MedService",
+    "17 min",
+    "11.09.2020 09:35",
+    "11",
+  ),
+  CreatedItem(
+    "000006",
+    "Завершено",
+    "Клиника DoctorPlus",
+    "6 min",
+    "11.09.2020 10:42",
+    "2",
+  ),
+];
 
 //============================< BookedItem Class >============================
 class BookedItem extends HistoryListItemBaseClass {
@@ -59,4 +109,45 @@ class BookedItem extends HistoryListItemBaseClass {
   }
 }
 
-var bookedList = new List<BookedItem>();
+List<BookedItem> bookedList = [
+  BookedItem(
+    "000001",
+    "В ожидании",
+    "Клиника ShoxMed",
+    "22 min",
+    "12.08.2020 08:22",
+    "10",
+  ),
+  BookedItem(
+    "000002",
+    "На приеме",
+    "Клиника AkfaMedline",
+    "0 min",
+    "8.08.2020 08:51",
+    "1",
+  ),
+  BookedItem(
+    "000003",
+    "Завершено",
+    "Паспортный стол",
+    "0 min",
+    "11.09.2020 09:35",
+    "0",
+  ),
+  BookedItem(
+    "000004",
+    "Пропущенно",
+    "Национальный банк",
+    "0 min",
+    "11.09.2020 09:35",
+    "0",
+  ),
+  BookedItem(
+    "000005",
+    "Завершено",
+    "Клиника AkfaMedline",
+    "5 min",
+    "10.07.2020 11:51",
+    "12",
+  ),
+];

@@ -164,6 +164,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
       isStretched: true,
       label: 'Перерыв',
       child: CupertinoSwitch(
+          activeColor: MyColors.enabled,
           value: _switchValue,
           onChanged: (value) {
             setState(() {

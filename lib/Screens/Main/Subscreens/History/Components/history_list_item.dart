@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_auth/model/history.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 enum HistoryItemType {
   createdList,
@@ -180,7 +181,11 @@ class _HistoryItemState extends State<HistoryItem> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.supervised_user_circle),
+                          child: Icon(
+                            LineAwesomeIcons.user,
+                            color: MyColors.disabled,
+                            size: 30,
+                          ),
                         ),
                         Column(
                           children: [
