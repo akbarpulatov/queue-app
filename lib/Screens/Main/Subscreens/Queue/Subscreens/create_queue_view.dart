@@ -89,33 +89,41 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
                     });
                   }),
             ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: DateTimeFieldContainer(
-                    isStretched: false,
-                    label: 'С',
-                    child: TimePicker(
-                      initTime: TimeOfDay(hour: 13, minute: 00),
+
+            ///=======================< Break >=====================
+            AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              height: _switchValue == false ? 0 : 40,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: DateTimeFieldContainer(
+                      isStretched: false,
+                      label: 'С',
+                      child: TimePicker(
+                        initTime: TimeOfDay(hour: 13, minute: 00),
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                    height: 30,
-                    child: VerticalDivider(color: MyColors.disabled)),
-                Expanded(
-                  flex: 1,
-                  child: DateTimeFieldContainer(
-                    isStretched: false,
-                    label: 'До',
-                    child: TimePicker(
-                      initTime: TimeOfDay(hour: 14, minute: 00),
+                  Container(
+                      height: 30,
+                      child: VerticalDivider(color: MyColors.disabled)),
+                  Expanded(
+                    flex: 1,
+                    child: DateTimeFieldContainer(
+                      isStretched: false,
+                      label: 'До',
+                      child: TimePicker(
+                        initTime: TimeOfDay(hour: 14, minute: 00),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+
+            ///======================< Max Length >====================
             divider,
             SquaredInputField(
               controller: queueFormMaxQueue,
