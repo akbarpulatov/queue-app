@@ -122,7 +122,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             SquaredInputField(
               controller: queueFormDescription,
               hintText:
-                  'Описание (Например: при себе необходимо иметь ксерокопию паспорта)',
+                  'Описание\n(Например: при себе необходимо иметь ксерокопию паспорта)',
             ),
             divider,
             RoundedButton(
