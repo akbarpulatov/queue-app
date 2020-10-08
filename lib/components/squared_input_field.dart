@@ -23,17 +23,14 @@ class SquaredInputField extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: MyColors.secondaryColor,
         decoration: InputDecoration(
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: MyColors.secondaryLightColor),
-          ),
+          // enabledBorder: UnderlineInputBorder(
+          //   borderSide: BorderSide(color: MyColors.secondaryLightColor),
+          // ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: MyColors.secondaryColor),
           ),
-          // icon: Icon(
-          //   icon,
-          //   color: kPrimaryColor,
-          // ),
           hintText: hintText,
+          hintStyle: MyStyles.dimmedText,
           border: InputBorder.none,
         ),
       ),

@@ -42,7 +42,7 @@ class _TimePickerState extends State<TimePicker> {
       },
       child: Text(
         '${_time.format(context)}',
-        style: TextStyle(color: MyColors.greyColorLight, fontSize: 17),
+        style: MyStyles.dimmedText,
       ),
     );
   }

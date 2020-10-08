@@ -35,3 +35,10 @@ class MyAssets {
   static const leftArrow = "assets/icons/left-arrow.svg";
   static const cancel = "assets/icons/cancel.svg";
 }
+
+class MyStyles {
+  static const TextStyle dimmedText = TextStyle(
+    color: MyColors.greyColorLight,
+    fontSize: 17,
+  );
+}

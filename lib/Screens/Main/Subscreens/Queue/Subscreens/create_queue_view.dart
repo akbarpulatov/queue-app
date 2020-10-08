@@ -49,10 +49,6 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
               controller: queueFormName,
               hintText: 'Название очереди',
             ),
-            SquaredInputField(
-              controller: queueFormStart,
-              hintText: 'label',
-            ),
             divider,
             DateTimeFieldContainer(
               isStretched: true,
@@ -102,23 +98,23 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
                 ),
               ],
             ),
-            SquaredInputField(
-              controller: queueFormEnd,
-              hintText: 'Конец',
-            ),
+            divider,
             SquaredInputField(
               controller: queueFormBreak,
               hintText: 'Перерыв',
             ),
+            divider,
             SquaredInputField(
               controller: queueFormMaxQueue,
               hintText: 'Макс. длина',
             ),
+            divider,
             SquaredInputField(
               controller: queueFormDescription,
               hintText:
                   'Описание (Например: при себе необходимо иметь ксерокопию паспорта)',
             ),
+            divider,
             RoundedButton(
               text: "Создать",
               color: kPrimaryColor,

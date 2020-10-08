@@ -38,7 +38,7 @@ class _DatePickerState extends State<DatePicker> {
       },
       child: Text(
         '${DateFormat('yyyy-MM-dd').format(_date)}',
-        style: TextStyle(color: MyColors.greyColorLight, fontSize: 17),
+        style: MyStyles.dimmedText,
       ),
     );
   }

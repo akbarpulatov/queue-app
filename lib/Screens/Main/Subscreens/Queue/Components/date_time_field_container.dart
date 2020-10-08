@@ -25,10 +25,7 @@ class _DateTimeFieldContainerState extends State<DateTimeFieldContainer> {
         children: [
           Text(
             widget.label,
-            style: TextStyle(
-              color: MyColors.greyColorLight,
-              fontSize: 16,
-            ),
+            style: MyStyles.dimmedText,
           ),
           if (widget.isStretched) Expanded(child: SizedBox()),
           widget.child,
