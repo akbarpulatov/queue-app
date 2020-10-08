@@ -20,18 +20,31 @@ class CreateQueueScreen extends StatefulWidget {
 class _CreateQueueScreenState extends State<CreateQueueScreen> {
   String _name;
   TimeOfDay _startTime;
+  DateTime _startDate;
   TimeOfDay _endTime;
-
-  String _email;
-  String _password;
-  String _url;
-  String _phoneNumber;
-  String _calories;
+  String _maxQueue;
   bool _switchValue = false;
+  String _description;
+
+  final _nameController = TextEditingController();
+  final _startTimeController = TextEditingController();
+  final _startDateController = TextEditingController();
+  final _endTimeController = TextEditingController();
+  final _maxQueueController = TextEditingController();
+  final _switchValueController = TextEditingController();
+  final _descriptionController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void clearFields() {
     print('Fields are cleared');
+    _nameController.clear();
+    _startTimeController.clear();
+    _startDateController.clear();
+    _endTimeController.clear();
+    _maxQueueController.clear();
+    _switchValueController.clear();
+    _descriptionController.clear();
   }
 
   void _onPress() {
@@ -43,36 +56,48 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     _formKey.currentState.save();
 
     print(_name);
-    print(_email);
-    print(_phoneNumber);
-    print(_url);
-    print(_password);
-    print(_calories);
+    print(_startTime);
+    print(_startDate);
+    print(_endTime);
+    print(_maxQueue);
+    print(_switchValue);
+    print(_description);
 
     //Send to API
   }
 
-  Widget _buildName() {
-    return Container(
-      child: FlatTextFieldContainer(
-        child: TextFormField(
-          decoration: InputDecoration(
-            labelText: 'Название очереди',
-            labelStyle: MyStyles.dimmedText,
-          ),
-          maxLength: 10,
-          maxLengthEnforced: true,
-          validator: (String value) {
-            if (value.isEmpty) {
-              return 'Название очереди необходимо';
-            }
+  final Divider divider = Divider(
+    indent: 20,
+    thickness: 1.2,
+    height: 1,
+  );
 
-            return null;
-          },
-          onSaved: (String value) {
-            _name = value;
-          },
+  Widget _buildName() {
+    return FlatTextFieldContainer(
+      child: TextFormField(
+        controller: _nameController,
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black,
+            ),
+          ),
+          counterText: '',
+          labelText: 'Название очереди',
+          labelStyle: MyStyles.dimmedText,
         ),
+        maxLength: 16,
+        maxLengthEnforced: true,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return 'Название очереди необходимо';
+          }
+
+          return null;
+        },
+        onSaved: (String value) {
+          _name = value;
+        },
       ),
     );
   }
@@ -168,7 +193,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
           return null;
         },
         onSaved: (String value) {
-          _url = value;
+          _maxQueue = value;
         },
       ),
     );
@@ -176,58 +201,38 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
 
   Widget _buildDescription() {
     return Container(
-      child: FlatTextFieldContainer(
-        child: TextFormField(
-          decoration: InputDecoration(
-            labelText: 'Описание',
-            hintText: 'Например: при себе необходимо иметь ксерокопию паспорта',
-            labelStyle: MyStyles.dimmedText,
-            hintMaxLines: 3,
-          ),
-          maxLength: 10,
-          maxLengthEnforced: true,
-          validator: (String value) {
-            if (value.isEmpty) {
-              return 'Название очереди необходимо';
-            }
-
-            return null;
-          },
-          onSaved: (String value) {
-            _name = value;
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPhoneNumber() {
-    return FlatTextFieldContainer(
+      margin: EdgeInsets.symmetric(vertical: 0),
+      padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
       child: TextFormField(
-        decoration: InputDecoration(labelText: 'Phone number'),
-        keyboardType: TextInputType.phone,
+        controller: _descriptionController,
+        decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelText: 'Описание',
+          alignLabelWithHint: false,
+          hintText: 'Например: при себе необходимо иметь ксерокопию паспорта',
+          labelStyle: MyStyles.dimmedText,
+          hintMaxLines: 3,
+        ),
+        maxLength: 50,
+        maxLengthEnforced: true,
+        maxLines: 3,
         validator: (String value) {
           if (value.isEmpty) {
-            return 'Phone number is Required';
+            return 'Название очереди необходимо';
           }
 
           return null;
         },
         onSaved: (String value) {
-          _url = value;
+          _name = value;
         },
       ),
     );
   }
 
+  ///======================< Build Method >====================
   @override
   Widget build(BuildContext context) {
-    final Divider divider = Divider(
-      indent: 20,
-      thickness: 1.2,
-      height: 1,
-    );
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -269,17 +274,17 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             children: [
               _buildName(),
               _buildStartTime(),
-              // divider,
+              divider,
               _buildEndTime(),
+              divider,
               _buildBreakSwitch(),
               _buildBreakTime(),
+              divider,
               _buildMaxQueue(),
               _buildDescription(),
-
               SizedBox(
                 height: 20,
               ),
-
               RoundedButton(
                 text: "Создать",
                 color: kPrimaryColor,
