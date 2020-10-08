@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/background.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_picker.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/time_picker.dart';
@@ -48,6 +49,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SquaredInputField(
               controller: queueFormName,
@@ -126,6 +128,10 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
                   'Описание\n(Например: при себе необходимо иметь ксерокопию паспорта)',
             ),
             divider,
+            // Expanded(child: SizedBox()),
+            SizedBox(
+              height: 20,
+            ),
             RoundedButton(
               text: "Создать",
               color: kPrimaryColor,
