@@ -30,6 +30,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
   Widget build(BuildContext context) {
     final Divider divider = Divider(
       indent: 20,
+      height: 1,
     );
 
     return Scaffold(
