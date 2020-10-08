@@ -28,9 +28,13 @@ class _TimePickerState extends State<TimePicker> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     _time = widget.initTime;
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
         print('change time');
