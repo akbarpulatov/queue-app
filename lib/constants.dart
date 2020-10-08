@@ -42,3 +42,10 @@ class MyStyles {
     fontSize: 17,
   );
 }
+
+class DisplaySize {
+  static Size size;
+  DisplaySize(context) {
+    size = MediaQuery.of(context).size;
+  }
+}
