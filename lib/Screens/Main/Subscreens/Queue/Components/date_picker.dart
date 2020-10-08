@@ -16,10 +16,11 @@ class _DatePickerState extends State<DatePicker> {
 
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: _date,
-        firstDate: new DateTime(2019),
-        lastDate: new DateTime(2022));
+      context: context,
+      initialDate: _date,
+      firstDate: new DateTime(2019),
+      lastDate: new DateTime(2022),
+    );
 
     if (picked != null && picked != _date) {
       print('Date selected: ${_date.toString()}');

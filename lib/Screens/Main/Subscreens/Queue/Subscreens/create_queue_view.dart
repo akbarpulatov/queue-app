@@ -19,19 +19,47 @@ class CreateQueueScreen extends StatefulWidget {
 
 class _CreateQueueScreenState extends State<CreateQueueScreen> {
   String _name;
+  TimeOfDay _startTime;
+  TimeOfDay _endTime;
+
   String _email;
   String _password;
   String _url;
   String _phoneNumber;
   String _calories;
-
+  bool _switchValue = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void clearFields() {
+    print('Fields are cleared');
+  }
+
+  void _onPress() {
+    print('Submit is pressed');
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    _formKey.currentState.save();
+
+    print(_name);
+    print(_email);
+    print(_phoneNumber);
+    print(_url);
+    print(_password);
+    print(_calories);
+
+    //Send to API
+  }
 
   Widget _buildName() {
     return Container(
       child: FlatTextFieldContainer(
         child: TextFormField(
-          decoration: InputDecoration(labelText: 'Название очереди'),
+          decoration: InputDecoration(
+            labelText: 'Название очереди',
+            labelStyle: MyStyles.dimmedText,
+          ),
           maxLength: 10,
           maxLengthEnforced: true,
           validator: (String value) {
@@ -49,57 +77,92 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
-  Widget _buildEmail() {
-    return FlatTextFieldContainer(
-      child: TextFormField(
-        decoration: InputDecoration(labelText: 'Email'),
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'Email is Required';
-          }
-
-          if (!RegExp(
-                  r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-              .hasMatch(value)) {
-            return 'Please enter a valid email Address';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _email = value;
-        },
+  Widget _buildStartTime() {
+    return DateTimeFieldContainer(
+      isStretched: true,
+      label: 'Начало',
+      child: Row(
+        children: [
+          DatePicker(),
+          TimePicker(
+            initTime: TimeOfDay(hour: 9, minute: 00),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildPassword() {
-    return FlatTextFieldContainer(
-      child: TextFormField(
-        decoration: InputDecoration(labelText: 'Password'),
-        keyboardType: TextInputType.visiblePassword,
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'Password is Required';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _password = value;
-        },
+  Widget _buildEndTime() {
+    return DateTimeFieldContainer(
+      isStretched: true,
+      label: 'Конец',
+      child: TimePicker(
+        initTime: TimeOfDay(hour: 18, minute: 00),
       ),
     );
   }
 
-  Widget _builURL() {
+  ///=======================< Break >=====================
+  Widget _buildBreakTime() {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 200),
+      height: _switchValue == false ? 0 : 40,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: DateTimeFieldContainer(
+              isStretched: false,
+              label: 'С',
+              child: TimePicker(
+                initTime: TimeOfDay(hour: 13, minute: 00),
+              ),
+            ),
+          ),
+          Container(
+              height: 30, child: VerticalDivider(color: MyColors.disabled)),
+          Expanded(
+            flex: 1,
+            child: DateTimeFieldContainer(
+              isStretched: false,
+              label: 'До',
+              child: TimePicker(
+                initTime: TimeOfDay(hour: 14, minute: 00),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBreakSwitch() {
+    return DateTimeFieldContainer(
+      isStretched: true,
+      label: 'Перерыв',
+      child: CupertinoSwitch(
+          value: _switchValue,
+          onChanged: (value) {
+            setState(() {
+              _switchValue = value;
+              print('switch value changed');
+            });
+          }),
+    );
+  }
+
+  ///======================< Max Length >====================
+  Widget _buildMaxQueue() {
     return FlatTextFieldContainer(
       child: TextFormField(
-        decoration: InputDecoration(labelText: 'Url'),
-        keyboardType: TextInputType.url,
+        decoration: InputDecoration(
+          labelText: 'Макс. длина',
+          labelStyle: MyStyles.dimmedText,
+        ),
+        keyboardType: TextInputType.phone,
         validator: (String value) {
           if (value.isEmpty) {
-            return 'URL is Required';
+            return 'Phone number is Required';
           }
 
           return null;
@@ -107,6 +170,33 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
         onSaved: (String value) {
           _url = value;
         },
+      ),
+    );
+  }
+
+  Widget _buildDescription() {
+    return Container(
+      child: FlatTextFieldContainer(
+        child: TextFormField(
+          decoration: InputDecoration(
+            labelText: 'Описание',
+            hintText: 'Например: при себе необходимо иметь ксерокопию паспорта',
+            labelStyle: MyStyles.dimmedText,
+            hintMaxLines: 3,
+          ),
+          maxLength: 10,
+          maxLengthEnforced: true,
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Название очереди необходимо';
+            }
+
+            return null;
+          },
+          onSaved: (String value) {
+            _name = value;
+          },
+        ),
       ),
     );
   }
@@ -130,49 +220,11 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
-  Widget _buildCalories() {
-    return FlatTextFieldContainer(
-      child: TextFormField(
-        decoration: InputDecoration(labelText: 'Calories'),
-        keyboardType: TextInputType.number,
-        validator: (String value) {
-          int calories = int.tryParse(value);
-
-          if (calories == null || calories <= 0) {
-            return 'Calories must be greater than 0';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _calories = value;
-        },
-      ),
-    );
-  }
-
-  bool _switchValue = false;
-
-  TextEditingController queueFormName = new TextEditingController();
-  TextEditingController queueFormStart = new TextEditingController();
-  TextEditingController queueFormEnd = new TextEditingController();
-  TextEditingController queueFormBreak = new TextEditingController();
-  TextEditingController queueFormMaxQueue = new TextEditingController();
-  TextEditingController queueFormDescription = new TextEditingController();
-
-  void clearFields() {
-    queueFormName.text = '';
-    queueFormStart.text = '';
-    queueFormEnd.text = '';
-    queueFormBreak.text = '';
-    queueFormMaxQueue.text = '';
-    queueFormDescription.text = '';
-  }
-
   @override
   Widget build(BuildContext context) {
     final Divider divider = Divider(
       indent: 20,
+      thickness: 1.2,
       height: 1,
     );
 
@@ -216,149 +268,23 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildName(),
-              _buildEmail(),
-              _buildPassword(),
-              _builURL(),
-              _buildPhoneNumber(),
-              _buildCalories(),
-              SizedBox(height: 100),
-              RaisedButton(
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-                onPressed: () {
-                  print('Submit is pressed');
-                  if (!_formKey.currentState.validate()) {
-                    return;
-                  }
+              _buildStartTime(),
+              // divider,
+              _buildEndTime(),
+              _buildBreakSwitch(),
+              _buildBreakTime(),
+              _buildMaxQueue(),
+              _buildDescription(),
 
-                  _formKey.currentState.save();
-
-                  print(_name);
-                  print(_email);
-                  print(_phoneNumber);
-                  print(_url);
-                  print(_password);
-                  print(_calories);
-
-                  //Send to API
-                },
-              ),
-
-              SquaredInputField(
-                controller: queueFormName,
-                hintText: 'Название очереди',
-              ),
-              divider,
-              DateTimeFieldContainer(
-                isStretched: true,
-                label: 'Начало',
-                child: Row(
-                  children: [
-                    DatePicker(),
-                    TimePicker(
-                      initTime: TimeOfDay(hour: 9, minute: 00),
-                    ),
-                  ],
-                ),
-              ),
-              divider,
-              DateTimeFieldContainer(
-                isStretched: true,
-                label: 'Конец',
-                child: TimePicker(
-                  initTime: TimeOfDay(hour: 18, minute: 00),
-                ),
-              ),
-              divider,
-              DateTimeFieldContainer(
-                isStretched: true,
-                label: 'Перерыв',
-                child: CupertinoSwitch(
-                    value: _switchValue,
-                    onChanged: (value) {
-                      setState(() {
-                        _switchValue = value;
-                        print('switch value changed');
-                      });
-                    }),
-              ),
-
-              ///=======================< Break >=====================
-              AnimatedContainer(
-                duration: Duration(milliseconds: 200),
-                height: _switchValue == false ? 0 : 40,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: DateTimeFieldContainer(
-                        isStretched: false,
-                        label: 'С',
-                        child: TimePicker(
-                          initTime: TimeOfDay(hour: 13, minute: 00),
-                        ),
-                      ),
-                    ),
-                    Container(
-                        height: 30,
-                        child: VerticalDivider(color: MyColors.disabled)),
-                    Expanded(
-                      flex: 1,
-                      child: DateTimeFieldContainer(
-                        isStretched: false,
-                        label: 'До',
-                        child: TimePicker(
-                          initTime: TimeOfDay(hour: 14, minute: 00),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              ///======================< Max Length >====================
-              divider,
-              SquaredInputField(
-                  controller: queueFormMaxQueue,
-                  hintText: 'Макс. длина',
-                  keyboardType: TextInputType.number),
-              divider,
-              SquaredInputField(
-                controller: queueFormDescription,
-                hintText:
-                    'Описание\n(Например: при себе необходимо иметь ксерокопию паспорта)',
-              ),
-              divider,
-              // Expanded(child: SizedBox()),
               SizedBox(
                 height: 20,
               ),
+
               RoundedButton(
                 text: "Создать",
                 color: kPrimaryColor,
                 textColor: kBackgroundLightColor,
-                press: () {
-                  // TODO: make HTTP Post
-                  print(queueFormName.text);
-                  print(queueFormStart.text);
-                  print(queueFormEnd.text);
-                  print(queueFormBreak.text);
-                  print(queueFormMaxQueue.text);
-                  print(queueFormDescription.text);
-
-                  httpRequest.postHttp(MyUrls.postQueueList);
-
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return SignUpScreen();
-                  //     },
-                  //   ),
-                  // );
-                },
+                press: _onPress,
               ),
             ],
           ),
