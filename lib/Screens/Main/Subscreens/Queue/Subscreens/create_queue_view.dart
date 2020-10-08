@@ -153,9 +153,9 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             ///======================< Max Length >====================
             divider,
             SquaredInputField(
-              controller: queueFormMaxQueue,
-              hintText: 'Макс. длина',
-            ),
+                controller: queueFormMaxQueue,
+                hintText: 'Макс. длина',
+                keyboardType: TextInputType.number),
             divider,
             SquaredInputField(
               controller: queueFormDescription,

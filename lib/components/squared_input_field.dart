@@ -7,12 +7,15 @@ class SquaredInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
+  final TextInputType keyboardType;
+
   const SquaredInputField({
     Key key,
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
     this.controller,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -31,6 +34,7 @@ class SquaredInputField extends StatelessWidget {
           hintMaxLines: 3,
           border: InputBorder.none,
         ),
+        keyboardType: keyboardType ?? TextInputType.name,
       ),
     );
   }
