@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_picker.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
@@ -16,6 +17,8 @@ class CreateQueueScreen extends StatefulWidget {
 }
 
 class _CreateQueueScreenState extends State<CreateQueueScreen> {
+  bool _switchValue = false;
+
   TextEditingController queueFormName = new TextEditingController();
   TextEditingController queueFormStart = new TextEditingController();
   TextEditingController queueFormEnd = new TextEditingController();
@@ -71,6 +74,18 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
               ),
             ),
             divider,
+            DateTimeFieldContainer(
+              isStretched: true,
+              label: 'Перерыв',
+              child: CupertinoSwitch(
+                  value: _switchValue,
+                  onChanged: (value) {
+                    setState(() {
+                      _switchValue = value;
+                      print('switch value changed');
+                    });
+                  }),
+            ),
             Row(
               children: [
                 Expanded(
@@ -97,11 +112,6 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
                   ),
                 ),
               ],
-            ),
-            divider,
-            SquaredInputField(
-              controller: queueFormBreak,
-              hintText: 'Перерыв',
             ),
             divider,
             SquaredInputField(

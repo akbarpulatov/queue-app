@@ -28,7 +28,7 @@ class _DateTimeFieldContainerState extends State<DateTimeFieldContainer> {
             style: MyStyles.dimmedText,
           ),
           if (widget.isStretched) Expanded(child: SizedBox()),
-          widget.child,
+          if (widget.child != null) widget.child,
         ],
       ),
     );
