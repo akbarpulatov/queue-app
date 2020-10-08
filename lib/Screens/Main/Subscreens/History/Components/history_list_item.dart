@@ -11,7 +11,6 @@ enum HistoryItemType {
 //==========================================================
 class HistoryItem extends StatefulWidget {
   final int index;
-  // final List<CreatedItem> listCreatedItems;
   final HistoryItemType historyItemType;
 
   const HistoryItem({

@@ -27,6 +27,15 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
   TextEditingController queueFormMaxQueue = new TextEditingController();
   TextEditingController queueFormDescription = new TextEditingController();
 
+  void clearFields() {
+    queueFormName.text = '';
+    queueFormStart.text = '';
+    queueFormEnd.text = '';
+    queueFormBreak.text = '';
+    queueFormMaxQueue.text = '';
+    queueFormDescription.text = '';
+  }
+
   @override
   Widget build(BuildContext context) {
     final Divider divider = Divider(
@@ -46,6 +55,24 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
           'Создать очередь',
           style: TextStyle(color: Colors.black),
         ),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  clearFields();
+                },
+                child: Center(
+                  child: Text(
+                    'Очистить',
+                    style: TextStyle(
+                      color: MyColors.disabled,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              )),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -154,12 +181,6 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
                 print(queueFormDescription.text);
 
                 httpRequest.postHttp(MyUrls.postQueueList);
-                // queueFormName.text = '';
-                // queueFormStart.text = '';
-                // queueFormEnd.text = '';
-                // queueFormBreak.text = '';
-                // queueFormMaxQueue.text = '';
-                // queueFormDescription.text = '';
 
                 // Navigator.push(
                 //   context,
