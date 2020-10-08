@@ -18,6 +18,124 @@ class CreateQueueScreen extends StatefulWidget {
 }
 
 class _CreateQueueScreenState extends State<CreateQueueScreen> {
+  String _name;
+  String _email;
+  String _password;
+  String _url;
+  String _phoneNumber;
+  String _calories;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Widget _buildName() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Name'),
+      maxLength: 10,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Name is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _name = value;
+      },
+    );
+  }
+
+  Widget _buildEmail() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Email'),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Email is Required';
+        }
+
+        if (!RegExp(
+                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+            .hasMatch(value)) {
+          return 'Please enter a valid email Address';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _email = value;
+      },
+    );
+  }
+
+  Widget _buildPassword() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Password'),
+      keyboardType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Password is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _password = value;
+      },
+    );
+  }
+
+  Widget _builURL() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Url'),
+      keyboardType: TextInputType.url,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'URL is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _url = value;
+      },
+    );
+  }
+
+  Widget _buildPhoneNumber() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Phone number'),
+      keyboardType: TextInputType.phone,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Phone number is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _url = value;
+      },
+    );
+  }
+
+  Widget _buildCalories() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Calories'),
+      keyboardType: TextInputType.number,
+      validator: (String value) {
+        int calories = int.tryParse(value);
+
+        if (calories == null || calories <= 0) {
+          return 'Calories must be greater than 0';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _calories = value;
+      },
+    );
+  }
+
   bool _switchValue = false;
 
   TextEditingController queueFormName = new TextEditingController();
@@ -74,125 +192,161 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
               )),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SquaredInputField(
-              controller: queueFormName,
-              hintText: 'Название очереди',
-            ),
-            divider,
-            DateTimeFieldContainer(
-              isStretched: true,
-              label: 'Начало',
-              child: Row(
-                children: [
-                  DatePicker(),
-                  TimePicker(
-                    initTime: TimeOfDay(hour: 9, minute: 00),
-                  ),
-                ],
-              ),
-            ),
-            divider,
-            DateTimeFieldContainer(
-              isStretched: true,
-              label: 'Конец',
-              child: TimePicker(
-                initTime: TimeOfDay(hour: 18, minute: 00),
-              ),
-            ),
-            divider,
-            DateTimeFieldContainer(
-              isStretched: true,
-              label: 'Перерыв',
-              child: CupertinoSwitch(
-                  value: _switchValue,
-                  onChanged: (value) {
-                    setState(() {
-                      _switchValue = value;
-                      print('switch value changed');
-                    });
-                  }),
-            ),
 
-            ///=======================< Break >=====================
-            AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              height: _switchValue == false ? 0 : 40,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: DateTimeFieldContainer(
-                      isStretched: false,
-                      label: 'С',
-                      child: TimePicker(
-                        initTime: TimeOfDay(hour: 13, minute: 00),
+      ///==============< Column >==============
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildName(),
+              _buildEmail(),
+              _buildPassword(),
+              _builURL(),
+              _buildPhoneNumber(),
+              _buildCalories(),
+              SizedBox(height: 100),
+              RaisedButton(
+                child: Text(
+                  'Submit',
+                  style: TextStyle(color: Colors.blue, fontSize: 16),
+                ),
+                onPressed: () {
+                  print('Submit is pressed');
+                  if (!_formKey.currentState.validate()) {
+                    return;
+                  }
+
+                  _formKey.currentState.save();
+
+                  print(_name);
+                  print(_email);
+                  print(_phoneNumber);
+                  print(_url);
+                  print(_password);
+                  print(_calories);
+
+                  //Send to API
+                },
+              ),
+
+              SquaredInputField(
+                controller: queueFormName,
+                hintText: 'Название очереди',
+              ),
+              divider,
+              DateTimeFieldContainer(
+                isStretched: true,
+                label: 'Начало',
+                child: Row(
+                  children: [
+                    DatePicker(),
+                    TimePicker(
+                      initTime: TimeOfDay(hour: 9, minute: 00),
+                    ),
+                  ],
+                ),
+              ),
+              divider,
+              DateTimeFieldContainer(
+                isStretched: true,
+                label: 'Конец',
+                child: TimePicker(
+                  initTime: TimeOfDay(hour: 18, minute: 00),
+                ),
+              ),
+              divider,
+              DateTimeFieldContainer(
+                isStretched: true,
+                label: 'Перерыв',
+                child: CupertinoSwitch(
+                    value: _switchValue,
+                    onChanged: (value) {
+                      setState(() {
+                        _switchValue = value;
+                        print('switch value changed');
+                      });
+                    }),
+              ),
+
+              ///=======================< Break >=====================
+              AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                height: _switchValue == false ? 0 : 40,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: DateTimeFieldContainer(
+                        isStretched: false,
+                        label: 'С',
+                        child: TimePicker(
+                          initTime: TimeOfDay(hour: 13, minute: 00),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                      height: 30,
-                      child: VerticalDivider(color: MyColors.disabled)),
-                  Expanded(
-                    flex: 1,
-                    child: DateTimeFieldContainer(
-                      isStretched: false,
-                      label: 'До',
-                      child: TimePicker(
-                        initTime: TimeOfDay(hour: 14, minute: 00),
+                    Container(
+                        height: 30,
+                        child: VerticalDivider(color: MyColors.disabled)),
+                    Expanded(
+                      flex: 1,
+                      child: DateTimeFieldContainer(
+                        isStretched: false,
+                        label: 'До',
+                        child: TimePicker(
+                          initTime: TimeOfDay(hour: 14, minute: 00),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
 
-            ///======================< Max Length >====================
-            divider,
-            SquaredInputField(
-                controller: queueFormMaxQueue,
-                hintText: 'Макс. длина',
-                keyboardType: TextInputType.number),
-            divider,
-            SquaredInputField(
-              controller: queueFormDescription,
-              hintText:
-                  'Описание\n(Например: при себе необходимо иметь ксерокопию паспорта)',
-            ),
-            divider,
-            // Expanded(child: SizedBox()),
-            SizedBox(
-              height: 20,
-            ),
-            RoundedButton(
-              text: "Создать",
-              color: kPrimaryColor,
-              textColor: kBackgroundLightColor,
-              press: () {
-                // TODO: make HTTP Post
-                print(queueFormName.text);
-                print(queueFormStart.text);
-                print(queueFormEnd.text);
-                print(queueFormBreak.text);
-                print(queueFormMaxQueue.text);
-                print(queueFormDescription.text);
+              ///======================< Max Length >====================
+              divider,
+              SquaredInputField(
+                  controller: queueFormMaxQueue,
+                  hintText: 'Макс. длина',
+                  keyboardType: TextInputType.number),
+              divider,
+              SquaredInputField(
+                controller: queueFormDescription,
+                hintText:
+                    'Описание\n(Например: при себе необходимо иметь ксерокопию паспорта)',
+              ),
+              divider,
+              // Expanded(child: SizedBox()),
+              SizedBox(
+                height: 20,
+              ),
+              RoundedButton(
+                text: "Создать",
+                color: kPrimaryColor,
+                textColor: kBackgroundLightColor,
+                press: () {
+                  // TODO: make HTTP Post
+                  print(queueFormName.text);
+                  print(queueFormStart.text);
+                  print(queueFormEnd.text);
+                  print(queueFormBreak.text);
+                  print(queueFormMaxQueue.text);
+                  print(queueFormDescription.text);
 
-                httpRequest.postHttp(MyUrls.postQueueList);
+                  httpRequest.postHttp(MyUrls.postQueueList);
 
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return SignUpScreen();
-                //     },
-                //   ),
-                // );
-              },
-            ),
-          ],
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) {
+                  //       return SignUpScreen();
+                  //     },
+                  //   ),
+                  // );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
