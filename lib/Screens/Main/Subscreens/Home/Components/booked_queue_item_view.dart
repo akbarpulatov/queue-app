@@ -154,7 +154,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                 text: exitText,
                 icon: LineAwesomeIcons.door_open,
                 color: Colors.red,
-                textColor: Colors.white,
+                // textColor: Colors.white,
                 flex: exitText.length + 3,
               ),
               SizedBox(
@@ -164,7 +164,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                 text: shareText,
                 icon: LineAwesomeIcons.share,
                 color: MyColors.disabled,
-                textColor: Colors.white,
+                // textColor: Colors.white,
                 flex: shareText.length + 3,
               ),
             ],

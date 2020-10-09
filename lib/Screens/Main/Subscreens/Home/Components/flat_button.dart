@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FlatRoundedButton extends StatelessWidget {
+  final TextStyle textStyle;
   final String text;
   final Function onPressed;
-  final Color color, textColor;
+  final Color color;
   final IconData icon;
+  final double width;
   final int flex;
 
   const FlatRoundedButton({
@@ -12,9 +14,10 @@ class FlatRoundedButton extends StatelessWidget {
     this.text,
     this.onPressed,
     this.color,
-    this.textColor,
     this.icon,
     this.flex,
+    this.textStyle,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -31,18 +34,13 @@ class FlatRoundedButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: Colors.white,
-              ),
-              SizedBox(width: 3),
-              Text(
-                text,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 17,
+              if (icon != null)
+                Icon(
+                  icon,
+                  color: Colors.white,
                 ),
-              )
+              if (icon != null) SizedBox(width: 3),
+              Text(text, style: textStyle)
             ],
           ),
         ),
