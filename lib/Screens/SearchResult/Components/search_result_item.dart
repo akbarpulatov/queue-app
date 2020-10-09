@@ -54,6 +54,7 @@ class SearchResultItem extends StatelessWidget {
             children: [
               Expanded(
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     IconContainer(iconData: LineAwesomeIcons.clock),
                     Column(
