@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/icon_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
@@ -17,15 +16,16 @@ class SearchResultItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorIcon = Color(0xFFDEDED5);
-
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ///=====================< Row #1 >=======================
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 3,
+            ),
             child: Text(
               'Технический осмотр автомобиля в ГАИ',
               style: TextStyle(fontSize: 19),
@@ -34,7 +34,10 @@ class SearchResultItem extends StatelessWidget {
 
           ///=====================< Row #2 >=======================
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 3,
+            ),
             child: Text(
               'Ср. время ожидания: 15 мин.',
               style: TextStyle(
@@ -43,65 +46,67 @@ class SearchResultItem extends StatelessWidget {
               ),
             ),
           ),
-          // padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          SizedBox(height: 20),
 
           ///=====================< Row #3 >=======================
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17),
-                child: Icon(
-                  LineAwesomeIcons.clock,
-                  size: 26,
-                  color: Color(0xFFDEDED5),
+              Expanded(
+                child: Row(
+                  children: [
+                    IconContainer(iconData: LineAwesomeIcons.clock),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Часы работы',
+                          style: Styles.dimmedTextStyle,
+                        ),
+                        Text(
+                          '9:00 - 18:00',
+                          style: Styles.textStyle1,
+                        ),
+                        Text(
+                          'Обед 13:00-14:00',
+                          style: Styles.textStyle2,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Часы работы',
-                    style: Styles.dimmedTextStyle,
-                  ),
-                  Text(
-                    '9:00 - 18:00',
-                    style: Styles.textStyle1,
-                  ),
-                  Text(
-                    'Обед 13:00-14:00',
-                    style: Styles.textStyle2,
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconContainer(iconData: LineAwesomeIcons.user),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Очередь',
-                        style: Styles.dimmedTextStyle,
-                      ),
-                      Text(
-                        '107 чел.',
-                        style: Styles.textStyle1,
-                      ),
-                    ],
-                  )
-                ],
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    IconContainer(iconData: LineAwesomeIcons.user),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Очередь',
+                          style: Styles.dimmedTextStyle,
+                        ),
+                        Text(
+                          '107 чел.',
+                          style: Styles.textStyle1,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               )
             ],
           ),
+          SizedBox(height: 20),
 
           ///=====================< Row #4 >=======================
           Row(
             children: [
               IconContainer(iconData: LineAwesomeIcons.info),
               Container(
-                width: DisplaySize.size.width - 50,
+                width: DisplaySize.size.width - 60,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -119,6 +124,7 @@ class SearchResultItem extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(height: 18),
 
           ///=====================< Row #5 >=======================
           Center(
@@ -127,6 +133,7 @@ class SearchResultItem extends StatelessWidget {
               style: Styles.textStyle3,
             ),
           ),
+          SizedBox(height: 5),
 
           ///=====================< Row #6 >=======================
           Center(
@@ -135,6 +142,7 @@ class SearchResultItem extends StatelessWidget {
               style: Styles.textStyle4,
             ),
           ),
+          SizedBox(height: 15),
 
           ///=====================< Row #7 >=======================
           Row(

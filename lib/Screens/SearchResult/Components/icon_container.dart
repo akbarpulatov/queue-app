@@ -10,10 +10,13 @@ class IconContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      iconData,
-      color: Color(0xFFDEDED5),
-      size: 26,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Icon(
+        iconData,
+        color: Color(0xFFDEDED5),
+        size: 26,
+      ),
     );
   }
 }
