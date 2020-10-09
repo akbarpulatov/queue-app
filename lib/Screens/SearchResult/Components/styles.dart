@@ -47,4 +47,17 @@ class Styles {
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
   );
+
+  static const textStyleAlertHeader = TextStyle(
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 19,
+    height: 25 / 19,
+  );
+
+  static const textStyleAlertBody = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 17,
+  );
 }
