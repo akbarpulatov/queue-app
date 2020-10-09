@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/SearchResult/search_result_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundLightColor,
       ),
-      home: WelcomeScreen(),
+      home: SearchResultScreen(),
+      // home: WelcomeScreen(),
     );
   }
 }
