@@ -5,24 +5,8 @@ import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 
-class QueueScreen extends StatefulWidget {
-  QueueScreen({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _QueueScreenState createState() => _QueueScreenState();
-}
-
-class _QueueScreenState extends State<QueueScreen> {
-  void _onPressedAddQueue() {
-    setState(() {
-      //TODO: Implement what will happen after pressing add queue button
-      print('Add Queue button pressed');
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return CreateQueueScreen();
-      }));
-    });
-  }
+class QueueScreen extends StatelessWidget {
+  const QueueScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +16,8 @@ class _QueueScreenState extends State<QueueScreen> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(
-          'Очередь',
-          style: TextStyle(color: Colors.black),
+          queueList.length == 0 ? 'Очередь' : 'Список очередей',
+          style: Theme.of(context).textTheme.headline3,
         ),
       ),
       body: queueList.length == 0
@@ -70,9 +54,17 @@ class _QueueScreenState extends State<QueueScreen> {
       floatingActionButton: Container(
         child: FloatingActionButton(
           backgroundColor: MyColors.enabled,
-          onPressed: _onPressedAddQueue,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return CreateQueueScreen();
+                },
+              ),
+            );
+          },
           child: Icon(Icons.add),
-          // child: Text('Создать'),
         ),
       ),
     );
