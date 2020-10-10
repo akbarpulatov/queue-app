@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/icon_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
+import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -211,7 +212,11 @@ class SearchResultItem extends StatelessWidget {
               SizedBox(width: 16),
               ButtonContainer(
                 flex: 1,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return WatchScreen();
+                  }));
+                },
                 borderColor: MyColors.disabled,
                 child: Text(
                   textWatchButton,

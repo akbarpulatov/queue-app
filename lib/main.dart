@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundLightColor,
       ),
-      home: WatchScreen(),
-      // home: WelcomeScreen(),
+      // home: WatchScreen(),
+      home: WelcomeScreen(),
     );
   }
 

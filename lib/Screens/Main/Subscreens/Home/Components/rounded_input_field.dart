@@ -7,11 +7,14 @@ class RoundedSearchInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
+  final Function onPressed;
+
   const RoundedSearchInputField({
     Key key,
     this.hintText,
     this.icon = Icons.ac_unit_sharp,
     this.onChanged,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -27,9 +30,14 @@ class RoundedSearchInputField extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: hintText,
                 border: InputBorder.none,
-                suffixIcon: SvgPicture.asset(
-                  'assets/icons/arrow_search_field.svg',
-                  fit: BoxFit.none,
+                suffixIcon: FlatButton(
+                  minWidth: 30,
+                  padding: EdgeInsets.all(0),
+                  onPressed: onPressed,
+                  child: SvgPicture.asset(
+                    'assets/icons/arrow_search_field.svg',
+                    height: 26,
+                  ),
                 ),
               ),
             ),
