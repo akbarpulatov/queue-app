@@ -61,6 +61,20 @@ class QueueManagementItem extends StatelessWidget {
     );
   }
 
+  static const _textStyle1 = TextStyle(
+    fontSize: 17,
+    color: Color(0xFFBDBDB2),
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+  );
+
+  static const _textStyle2 = TextStyle(
+    fontSize: 33,
+    color: Color(0xFF282826),
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+  );
+
   @override
   Widget build(BuildContext context) {
     final divider = Divider(
@@ -103,8 +117,21 @@ class QueueManagementItem extends StatelessWidget {
               'При себе необходимо иметь \nксерокопию паспорта', null),
           null,
         ),
-        Text('Текущий №'),
-        Text('15'),
+        SizedBox(height: 18),
+        Center(
+          child: Text(
+            'Текущий №',
+            style: _textStyle1,
+          ),
+        ),
+        SizedBox(height: 5),
+        Center(
+          child: Text(
+            '15',
+            style: _textStyle2,
+          ),
+        ),
+        SizedBox(height: 15),
       ],
     );
   }
