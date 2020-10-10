@@ -19,7 +19,7 @@ class FlatAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         label,
-        style: TextStyle(color: Colors.black),
+        style: Theme.of(context).textTheme.headline3,
       ),
     );
   }

@@ -1,13 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
 import 'package:flutter_auth/Screens/SearchResult/search_result_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundLightColor,
       ),
-      // home: WatchScreen(),
+      // home: QueueManagementScreen(),
       home: WelcomeScreen(),
     );
   }
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         fontSize: 33,
       ),
       headline5: TextStyle(
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
         color: Color(0xFF282826),
         fontSize: 19,
         height: 25 / 19,
