@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Styles {
+  static const header1 = TextStyle(
+    fontSize: 19,
+    color: Color(0xFF282826),
+    fontWeight: FontWeight.w600,
+    fontStyle: FontStyle.normal,
+    height: 25 / 19,
+  );
+
   static const dimmedTextStyle = TextStyle(
     fontSize: 15,
     color: Color(0xFFB2B2A5),

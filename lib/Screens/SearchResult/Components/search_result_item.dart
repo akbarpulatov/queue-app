@@ -88,7 +88,7 @@ class SearchResultItem extends StatelessWidget {
             ),
             child: Text(
               'Технический осмотр автомобиля в ГАИ',
-              style: TextStyle(fontSize: 19),
+              style: Styles.header1,
             ),
           ),
 
