@@ -31,6 +31,11 @@ class MyApp extends StatelessWidget {
 
   TextTheme textTheme() {
     return TextTheme(
+      headline2: TextStyle(
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF282826),
+        fontSize: 21,
+      ),
       headline3: TextStyle(
         fontWeight: FontWeight.w700,
         color: Color(0xFF282826),
@@ -47,6 +52,17 @@ class MyApp extends StatelessWidget {
         fontSize: 19,
         height: 25 / 19,
         letterSpacing: 0.5,
+      ),
+      headline6: TextStyle(
+        fontWeight: FontWeight.w400,
+        color: Color(0xFFBDBDB2),
+        fontSize: 15,
+        height: 18 / 15,
+      ),
+      bodyText1: TextStyle(
+        fontWeight: FontWeight.w500,
+        color: Color(0xFF515142),
+        fontSize: 17,
       ),
       caption: TextStyle(
         fontWeight: FontWeight.w700,

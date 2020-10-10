@@ -45,7 +45,9 @@ class _QueueListViewState extends State<QueueListView> {
             );
           },
           separatorBuilder: (context, index) {
-            return Divider();
+            return Divider(
+              height: 1,
+            );
           }),
     );
   }

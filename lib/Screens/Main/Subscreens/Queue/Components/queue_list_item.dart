@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class QueueListItemView extends StatelessWidget {
   const QueueListItemView({
@@ -19,48 +20,71 @@ class QueueListItemView extends StatelessWidget {
     return Container(
       width: DisplaySize.size.width,
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 //=====================< Row #1 >=======================
-          Text(
-            name,
-            style: Theme.of(context).textTheme.headline5,
-            maxLines: 3,
-          ),
-//=====================< Row #2 >=======================
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.check_circle_outline),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Дата создания',
-                      style: TextStyle(fontSize: 15, color: Colors.grey[600]),
-                    ),
-                    Text(createdTime),
-                  ],
+                Text(
+                  name,
+                  style: Theme.of(context).textTheme.headline5,
+                  maxLines: 3,
                 ),
-              ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        'Текущий №',
-                        style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                SizedBox(height: 15),
+//=====================< Row #2 >=======================
+                Row(
+                  children: [
+                    Icon(
+                      LineAwesomeIcons.calendar_plus,
+                      color: Color(0xFFDEDED5),
+                      size: 30,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Дата создания',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          Text(
+                            createdTime,
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
                       ),
-                      Text(currentOrder),
-                    ],
-                  ),
-                ],
-              )
-            ],
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Текущий №',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          Text(
+                            currentOrder,
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(width: 5),
+          FlatButton(
+            minWidth: 0,
+            padding: EdgeInsets.all(0),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            child: Icon(
+              LineAwesomeIcons.angle_right,
+            ),
+            onPressed: () {},
           )
         ],
       ),
