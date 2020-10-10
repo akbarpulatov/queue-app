@@ -21,6 +21,7 @@ dependencies:
   line_awesome_flutter: ^1.0.1
   intl: ^0.16.1
   rflutter_alert: ^1.1.0
+  qr_flutter: ^3.2.0
 
 dev_dependencies:
   flutter_test:
