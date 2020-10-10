@@ -71,6 +71,11 @@ class MyApp extends StatelessWidget {
         color: Color(0xFFBDBDB2),
         fontSize: 17,
       ),
+      subtitle1: TextStyle(
+        fontWeight: FontWeight.w400,
+        color: Color(0xFF515142),
+        fontSize: 13,
+      ),
     );
   }
 }

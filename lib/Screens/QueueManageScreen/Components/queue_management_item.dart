@@ -4,13 +4,23 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 class QueueManagementItem extends StatelessWidget {
   const QueueManagementItem({Key key}) : super(key: key);
 
-  Widget _buildingBlock(
-      final String upperText, final String middleText, final String lowerText) {
+  Widget _buildingBlock(context, final String upperText,
+      final String middleText, final String lowerText) {
     return Column(
       children: [
-        Text(upperText),
-        Text(middleText),
-        if (lowerText != null) Text(lowerText),
+        Text(
+          upperText,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        Text(
+          middleText,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        if (lowerText != null)
+          Text(
+            lowerText,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
       ],
     );
   }
@@ -30,26 +40,30 @@ class QueueManagementItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Клиника DoctorPlus'),
+        Text(
+          'Клиника DoctorPlus',
+          style: Theme.of(context).textTheme.headline5,
+        ),
         _row(
           LineAwesomeIcons.user,
-          _buildingBlock('Очередь', '100 чел.', null),
-          _buildingBlock('Макс. длина', '150 чел.', null),
+          _buildingBlock(context, 'Очередь', '100 чел.', null),
+          _buildingBlock(context, 'Макс. длина', '150 чел.', null),
         ),
         _row(
           LineAwesomeIcons.calendar_plus,
-          _buildingBlock('Дата создания', '10.07.2020   9:00', null),
-          _buildingBlock('Дата окончания', '10.07.2020   18:00', null),
+          _buildingBlock(context, 'Дата создания', '10.07.2020   9:00', null),
+          _buildingBlock(context, 'Дата окончания', '10.07.2020   18:00', null),
         ),
         _row(
           LineAwesomeIcons.clock,
-          _buildingBlock('Часы работы', 'Обед 13:00-14:00', 'Обед 13:00-14:00'),
+          _buildingBlock(
+              context, 'Часы работы', 'Обед 13:00-14:00', 'Обед 13:00-14:00'),
           null,
         ),
         _row(
           LineAwesomeIcons.info,
-          _buildingBlock(
-              'Заметка', 'При себе необходимо иметь ксерокопию паспорта', null),
+          _buildingBlock(context, 'Заметка',
+              'При себе необходимо иметь ксерокопию паспорта', null),
           null,
         ),
         Text('Текущий №'),
