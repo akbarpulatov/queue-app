@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundLightColor,
       ),
-      // home: QueueManagementScreen(),
-      home: WelcomeScreen(),
+      home: QueueManagementScreen(),
+      // home: WelcomeScreen(),
     );
   }
 
