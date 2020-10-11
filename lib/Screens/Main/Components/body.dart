@@ -4,7 +4,7 @@ import 'package:flutter_auth/Screens/Main/Subscreens/History/history_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/home_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/profile_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Subscreens/create_queue_view.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_view.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Body extends StatelessWidget {

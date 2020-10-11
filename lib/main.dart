@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Login/login_screen.dart';
+import 'package:flutter_auth/Screens/Main/main_screen.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
 import 'package:flutter_auth/Screens/SearchResult/search_result_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
@@ -25,8 +27,12 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundLightColor,
       ),
-      home: QueueManagementScreen(),
-      // home: WelcomeScreen(),
+      // initialRoute: '/home',
+      routes: {
+        '/': (context) => MainScreen(),
+        '/welcome': (context) => WelcomeScreen(),
+        '/login': (context) => LoginScreen(),
+      },
     );
   }
 
@@ -76,6 +82,11 @@ class MyApp extends StatelessWidget {
         fontWeight: FontWeight.w400,
         color: Color(0xFF515142),
         fontSize: 13,
+      ),
+      button: TextStyle(
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF515142),
+        fontSize: 17,
       ),
     );
   }
