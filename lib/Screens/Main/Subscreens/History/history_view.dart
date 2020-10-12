@@ -65,13 +65,15 @@ class HistoryAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selectedLabelStyle = Theme.of(context).textTheme.headline3;
+
     return AppBar(
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       centerTitle: true,
       title: Text(
         'История',
-        style: TextStyle(color: Colors.black),
+        style: Theme.of(context).textTheme.headline3,
       ),
       bottom: TabBar(
         controller: tabController,
@@ -83,7 +85,8 @@ class HistoryAppBar extends StatelessWidget implements PreferredSizeWidget {
             text: 'Созданные',
           ),
         ],
-        unselectedLabelColor: Colors.grey[600],
+        labelStyle: selectedLabelStyle,
+        unselectedLabelColor: Color(0xFFC1C1B6),
         indicatorColor: Colors.transparent,
         labelColor: Colors.black,
         indicatorSize: TabBarIndicatorSize.tab,

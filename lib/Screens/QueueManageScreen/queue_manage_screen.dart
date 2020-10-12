@@ -12,6 +12,8 @@ class QueueManagementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sizedbox = SizedBox(width: 3);
+
     return Scaffold(
       appBar: FlatAppBar(label: 'Очередь'),
       body: Stack(
@@ -31,6 +33,7 @@ class QueueManagementScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(LineAwesomeIcons.arrow_right),
+                        sizedbox,
                         Text('Следующий'),
                       ],
                     ),
@@ -50,6 +53,7 @@ class QueueManagementScreen extends StatelessWidget {
                               LineAwesomeIcons.hourglass,
                               color: Colors.white,
                             ),
+                            sizedbox,
                             Text(
                               'Перерыв',
                               style: Theme.of(context)
@@ -73,6 +77,7 @@ class QueueManagementScreen extends StatelessWidget {
                               LineAwesomeIcons.times,
                               color: Colors.white,
                             ),
+                            sizedbox,
                             Text(
                               'Завершить',
                               style: Theme.of(context)

@@ -34,7 +34,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
     final String exitText = 'Выйти';
     final String shareText = 'Поделиться';
 
-    final SizedBox sizedBox = SizedBox(width: 3);
+    final SizedBox sizedBox = SizedBox(width: 7);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kBackgroundLightColor,
         ),
-        initialRoute: '/welcome',
+        // initialRoute: '/welcome',
         routes: {
           '/': (context) => MainScreen(),
           '/welcome': (context) => WelcomeScreen(),
@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
       ),
       button: TextStyle(
         fontWeight: FontWeight.w700,
-        color: Color(0xFF515142),
+        color: Color(0xFF282826),
         fontSize: 17,
       ),
     );
