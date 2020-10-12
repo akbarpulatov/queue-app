@@ -25,14 +25,7 @@ class Body extends StatelessWidget {
               color: kPrimaryColor,
               textColor: kBackgroundLightColor,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                Navigator.pushNamed(context, '/sign-up');
               },
             ),
             RoundedButton(
@@ -40,14 +33,7 @@ class Body extends StatelessWidget {
               color: kBackgroundLightColor,
               textColor: Colors.black,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MainScreen();
-                    },
-                  ),
-                );
+                Navigator.pushNamed(context, '/');
               },
             ),
             SizedBox(height: size.height * 0.03),

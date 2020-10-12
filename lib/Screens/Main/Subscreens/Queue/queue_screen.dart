@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_view.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/Components/queue_management_item.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/view_models/queue_view_model.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 enum StateOfQueueScreen {
@@ -23,64 +25,25 @@ class QueueScreenState extends State<QueueScreen> {
   Widget build(BuildContext context) {
     final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
 
-    switch (queueViewModel.stateOfQueueScreen) {
-
-      /// Showing the empty list
-      case StateOfQueueScreen.emptylist:
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 0.0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              'Очередь',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-          ),
-          body: EmptyListView(),
-        );
-        break;
-
-      /// Showing the queue list
-      case StateOfQueueScreen.showList:
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 0.0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              'Список очередей',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-          ),
-          body: QueueListView(),
-        );
-        break;
-
-      /// Showing the queue info
-      case StateOfQueueScreen.showQueueInfo:
-        return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.black),
-              // onPressed: () => Navigator.of(context).pop(),
-              onPressed: () {
-                queueViewModel.setQueueScreenState =
-                    StateOfQueueScreen.showList;
-              },
-            ),
-            elevation: 0.0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              'Очередь',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-          ),
-          body: QueueManagementItem(),
-        );
-    }
-    return SizedBox();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'Список очередей',
+          style: Theme.of(context).textTheme.headline3,
+        ),
+      ),
+      body: queueList.length == 0 ? EmptyListView() : QueueListView(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: MyColors.enabled,
+        child: Icon(LineAwesomeIcons.plus),
+        onPressed: () {
+          Navigator.pushNamed(context, '/create-queue');
+        },
+      ),
+    );
   }
 }
 

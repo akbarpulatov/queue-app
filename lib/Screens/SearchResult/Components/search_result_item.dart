@@ -213,9 +213,7 @@ class SearchResultItem extends StatelessWidget {
               ButtonContainer(
                 flex: 1,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return WatchScreen();
-                  }));
+                  Navigator.pushNamed(context, '/watch');
                 },
                 borderColor: MyColors.disabled,
                 child: Text(

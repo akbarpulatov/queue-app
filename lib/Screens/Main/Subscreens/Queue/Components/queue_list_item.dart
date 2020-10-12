@@ -90,9 +90,7 @@ class QueueListItemView extends StatelessWidget {
             ),
             onPressed: () {
               print('Queue info button is pressed');
-              // TODO: change the state enum of queuescreen and call setstate method of it
-              queueViewModel.setQueueScreenState =
-                  StateOfQueueScreen.showQueueInfo;
+              Navigator.pushNamed(context, '/queue-management');
             },
           )
         ],
