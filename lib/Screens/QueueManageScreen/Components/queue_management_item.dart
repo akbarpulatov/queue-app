@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class QueueManagementItem extends StatelessWidget {
-  const QueueManagementItem({Key key}) : super(key: key);
+  const QueueManagementItem({
+    Key key,
+    this.name,
+    this.totalQueue,
+    this.maxQueue,
+    this.dateCreated,
+    this.dateFinish,
+    this.workingTime,
+    this.breakTime,
+    this.note,
+    this.currentOrder,
+    this.index,
+  }) : super(key: key);
+
+  final String name;
+  final String totalQueue;
+  final String maxQueue;
+  final String dateCreated;
+  final String dateFinish;
+  final String workingTime;
+  final String breakTime;
+  final String note;
+  final int currentOrder;
+  @required
+  final int index;
 
   Widget _buildingBlock(context, final String upperText,
       final String middleText, final String lowerText) {
@@ -70,13 +96,6 @@ class QueueManagementItem extends StatelessWidget {
     fontStyle: FontStyle.normal,
   );
 
-  static const _textStyle2 = TextStyle(
-    fontSize: 33,
-    color: Color(0xFF282826),
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-  );
-
   @override
   Widget build(BuildContext context) {
     final divider = Divider(
@@ -90,33 +109,32 @@ class QueueManagementItem extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Text(
-            'Клиника DoctorPlus',
+            name,
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
         _row(
           LineAwesomeIcons.user,
-          _buildingBlock(context, 'Очередь', '100 чел.', null),
-          _buildingBlock(context, 'Макс. длина', '150 чел.', null),
+          _buildingBlock(context, 'Очередь', '$totalQueue чел.', null),
+          _buildingBlock(context, 'Макс. длина', '$maxQueue чел.', null),
         ),
         divider,
         _row(
           LineAwesomeIcons.calendar_plus,
-          _buildingBlock(context, 'Дата создания', '10.07.2020   9:00', null),
-          _buildingBlock(context, 'Дата окончания', '10.07.2020   18:00', null),
+          _buildingBlock(context, 'Дата создания', dateCreated, null),
+          _buildingBlock(context, 'Дата окончания', dateFinish, null),
         ),
         divider,
         _row(
           LineAwesomeIcons.clock,
           _buildingBlock(
-              context, 'Часы работы', 'Обед 13:00-14:00', 'Обед 13:00-14:00'),
+              context, 'Часы работы', workingTime, 'Обед $breakTime'),
           null,
         ),
         divider,
         _row(
           LineAwesomeIcons.info,
-          _buildingBlock(context, 'Заметка',
-              'При себе необходимо иметь \nксерокопию паспорта', null),
+          _buildingBlock(context, 'Заметка', note, null),
           null,
         ),
         SizedBox(height: 18),
@@ -128,13 +146,31 @@ class QueueManagementItem extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Center(
-          child: Text(
-            '15',
-            style: _textStyle2,
-          ),
+          child: CurrentOrderView(index: index),
         ),
         SizedBox(height: 15),
       ],
+    );
+  }
+}
+
+class CurrentOrderView extends StatelessWidget {
+  const CurrentOrderView({
+    Key key,
+    this.index,
+  }) : super(key: key);
+
+  @required
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    print(index);
+    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
+
+    return Text(
+      currentOrderViewModel.currentOrder(index),
+      style: Theme.of(context).textTheme.headline4,
     );
   }
 }

@@ -5,15 +5,23 @@ import 'package:flutter_auth/Screens/SearchResult/Components/button_container.da
 import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
 import 'package:flutter_auth/components/AppBar.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/current_order_view_model.dart';
+import 'package:flutter_auth/model/queue.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class QueueManagementScreen extends StatelessWidget {
-  const QueueManagementScreen({Key key}) : super(key: key);
+  @required
+  final index;
+  const QueueManagementScreen({Key key, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
+
     final sizedbox = SizedBox(width: 3);
 
+    // currentOrderViewModel.currentOrder = 15;
     return Scaffold(
       appBar: FlatAppBar(label: 'Очередь'),
       body: Stack(
@@ -27,7 +35,9 @@ class QueueManagementScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ButtonContainer(
-                    onPressed: () {},
+                    onPressed: () {
+                      currentOrderViewModel.increment(index);
+                    },
                     borderColor: Color(0xFFB5B5AD),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +104,18 @@ class QueueManagementScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(child: QueueManagementItem()),
+          Positioned(
+              child: QueueManagementItem(
+            name: queueList[index].name,
+            dateCreated: queueList[index].createdTime,
+            totalQueue: '100',
+            maxQueue: '150',
+            workingTime: '9:00 - 18:00',
+            breakTime: '13:00-14:00',
+            dateFinish: '10.07.2020   18:00',
+            note: 'При себе необходимо иметь \nксерокопию паспорта',
+            index: index,
+          )),
         ],
       ),
     );

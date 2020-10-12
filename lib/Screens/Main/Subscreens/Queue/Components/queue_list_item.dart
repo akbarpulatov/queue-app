@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
+import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -16,7 +18,9 @@ class QueueListItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
+    final queueViewModel = Provider.of<QueueViewModel>(context);
+    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
+
     final String name = queueList[index].name;
     final String createdTime = queueList[index].createdTime;
     final String currentOrder = queueList[index].currentOrder;
@@ -90,7 +94,10 @@ class QueueListItemView extends StatelessWidget {
             ),
             onPressed: () {
               print('Queue info button is pressed');
-              Navigator.pushNamed(context, '/queue-management');
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return QueueManagementScreen(index: index);
+              }));
+              // currentOrderViewModel.onFocus = index;
             },
           )
         ],

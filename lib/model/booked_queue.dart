@@ -75,7 +75,7 @@ List<BookedQueue> bookedQueueList = [
   BookedQueue(
     "11111",
     "Клиника MedService",
-    "11.09.2020 09:35",
+    "11.09.2020    09:35",
     "10",
     "15 min",
     "3",
@@ -84,7 +84,7 @@ List<BookedQueue> bookedQueueList = [
   BookedQueue(
     "11111",
     "Клиника Doctor+",
-    "11.09.2020 10:42",
+    "11.09.2020    10:42",
     "10",
     "15 min",
     "3",

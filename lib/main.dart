@@ -10,6 +10,7 @@ import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<QueueViewModel>.value(value: QueueViewModel()),
+        ChangeNotifierProvider<CreatedQueueModel>.value(
+            value: CreatedQueueModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
