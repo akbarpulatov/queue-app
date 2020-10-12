@@ -9,38 +9,40 @@ class QueueManagementItem extends StatelessWidget {
     const double horizontalPadding = 3;
     const double verticalPadding = 1;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: horizontalPadding, vertical: verticalPadding),
-          child: Text(
-            upperText,
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: horizontalPadding, vertical: verticalPadding),
-          child: Text(
-            middleText,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-        ),
-        if (lowerText != null)
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 3,
-              vertical: 3,
-            ),
+                horizontal: horizontalPadding, vertical: verticalPadding),
             child: Text(
-              lowerText,
-              style: Theme.of(context).textTheme.subtitle1,
-              maxLines: 5,
+              upperText,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: horizontalPadding, vertical: verticalPadding),
+            child: Text(
+              middleText,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
+          if (lowerText != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 3,
+                vertical: 3,
+              ),
+              child: Text(
+                lowerText,
+                style: Theme.of(context).textTheme.subtitle1,
+                maxLines: 5,
+              ),
+            ),
+        ],
+      ),
     );
   }
 
