@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
+import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +33,8 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
 
     final String exitText = 'Выйти';
     final String shareText = 'Поделиться';
+
+    final SizedBox sizedBox = SizedBox(width: 3);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -150,22 +153,52 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FlatRoundedButton(
-                text: exitText,
-                icon: LineAwesomeIcons.door_open,
-                color: Colors.red,
-                // textColor: Colors.white,
-                flex: exitText.length + 3,
+              ButtonContainer(
+                flex: exitText.length + 9,
+                onPressed: () {},
+                borderColor: Color(0xFFE0503D),
+                fillColor: Color(0xFFE0503D),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      LineAwesomeIcons.door_open,
+                      color: Colors.white,
+                    ),
+                    sizedBox,
+                    Text(
+                      exitText,
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          .merge(TextStyle(color: Color(0xFFFFFFFF))),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(
-                width: 10,
-              ),
-              FlatRoundedButton(
-                text: shareText,
-                icon: LineAwesomeIcons.share,
-                color: MyColors.disabled,
-                // textColor: Colors.white,
-                flex: shareText.length + 3,
+              SizedBox(width: 15),
+              ButtonContainer(
+                flex: shareText.length + 9,
+                onPressed: () {},
+                borderColor: Color(0xFFADADA5),
+                fillColor: Color(0xFFADADA5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      LineAwesomeIcons.share,
+                      color: Colors.white,
+                    ),
+                    sizedBox,
+                    Text(
+                      shareText,
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          .merge(TextStyle(color: Color(0xFFFFFFFF))),
+                    ),
+                  ],
+                ),
               ),
             ],
           )
