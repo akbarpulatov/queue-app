@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list_view.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/Components/queue_management_item.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/queue_view_model.dart';
+import 'package:provider/provider.dart';
 
 enum StateOfQueueScreen {
   emptylist,
@@ -14,15 +15,15 @@ class QueueScreen extends StatefulWidget {
   QueueScreen({Key key}) : super(key: key);
 
   @override
-  _QueueScreenState createState() => _QueueScreenState();
+  QueueScreenState createState() => QueueScreenState();
 }
 
-class _QueueScreenState extends State<QueueScreen> {
-  var _state = StateOfQueueScreen.showQueueInfo;
-
+class QueueScreenState extends State<QueueScreen> {
   @override
   Widget build(BuildContext context) {
-    switch (_state) {
+    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
+
+    switch (queueViewModel.stateOfQueueScreen) {
 
       /// Showing the empty list
       case StateOfQueueScreen.emptylist:
@@ -60,6 +61,14 @@ class _QueueScreenState extends State<QueueScreen> {
       case StateOfQueueScreen.showQueueInfo:
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              // onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                queueViewModel.setQueueScreenState =
+                    StateOfQueueScreen.showList;
+              },
+            ),
             elevation: 0.0,
             backgroundColor: Colors.transparent,
             centerTitle: true,
@@ -80,6 +89,8 @@ class EmptyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

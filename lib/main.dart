@@ -7,6 +7,8 @@ import 'package:flutter_auth/Screens/SearchResult/search_result_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/view_models/queue_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -18,21 +20,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Auth',
-      theme: ThemeData(
-        textTheme: textTheme(),
-        fontFamily: 'SFProDisplay',
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: kBackgroundLightColor,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<QueueViewModel>.value(value: QueueViewModel()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Navbat',
+        theme: ThemeData(
+          textTheme: textTheme(),
+          fontFamily: 'SFProDisplay',
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kBackgroundLightColor,
+        ),
+        // initialRoute: '/home',
+        routes: {
+          '/': (context) => MainScreen(),
+          '/welcome': (context) => WelcomeScreen(),
+          '/login': (context) => LoginScreen(),
+        },
       ),
-      // initialRoute: '/home',
-      routes: {
-        '/': (context) => MainScreen(),
-        '/welcome': (context) => WelcomeScreen(),
-        '/login': (context) => LoginScreen(),
-      },
     );
   }
 

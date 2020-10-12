@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class QueueListItemView extends StatelessWidget {
   const QueueListItemView({
@@ -13,6 +16,7 @@ class QueueListItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
     final String name = queueList[index].name;
     final String createdTime = queueList[index].createdTime;
     final String currentOrder = queueList[index].currentOrder;
@@ -84,7 +88,12 @@ class QueueListItemView extends StatelessWidget {
             child: Icon(
               LineAwesomeIcons.angle_right,
             ),
-            onPressed: () {},
+            onPressed: () {
+              print('Queue info button is pressed');
+              // TODO: change the state enum of queuescreen and call setstate method of it
+              queueViewModel.setQueueScreenState =
+                  StateOfQueueScreen.showQueueInfo;
+            },
           )
         ],
       ),
