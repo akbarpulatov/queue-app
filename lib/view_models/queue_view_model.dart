@@ -8,11 +8,6 @@ class QueueViewModel with ChangeNotifier {
   set setQueueScreenState(StateOfQueueScreen val) {
     _stateOfQueueScreen = val;
 
-    // switch (val) {
-    //   case StateOfQueueScreen.emptylist:
-    //     _label = 'Очередь';
-    //     break;
-    // }
     notifyListeners();
   }
 

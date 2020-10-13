@@ -6,7 +6,9 @@ import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/time_picke
 import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/create_queue_view_model.dart';
 import 'package:flutter_auth/services/http_requests.dart';
+import 'package:provider/provider.dart';
 
 class CreateQueueScreen extends StatefulWidget {
   const CreateQueueScreen({Key key}) : super(key: key);
@@ -232,6 +234,8 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
   ///======================< Build Method >====================
   @override
   Widget build(BuildContext context) {
+    // final createQueueViewModel = Provider.of<CreateQueueViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(

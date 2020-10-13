@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_picker.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
 
 class QueueListItem {
   QueueListItem(
@@ -10,12 +7,12 @@ class QueueListItem {
     int totalQueue,
     int maxQueue,
     DateTime dateCreated,
-    DateTime dateFinish,
+    DateTime dateEnd,
     TimeOfDay breakTimeBegin,
-    TimeOfDay workingTimeFinish,
+    TimeOfDay workingTimeEnd,
     bool hasBreak,
     TimeOfDay breakTime,
-    TimeOfDay breakTimeFinish,
+    TimeOfDay breakTimeEnd,
     String note,
     int currentQueue,
   ) {
@@ -23,12 +20,12 @@ class QueueListItem {
     this.totalQueue = totalQueue;
     this.maxQueue = maxQueue;
     this.dateCreated = dateCreated;
-    this.dateFinish = dateFinish;
+    this.dateEnd = dateEnd;
     this.workingTimeBegin = workingTimeBegin;
-    this.workingTimeFinish = workingTimeFinish;
+    this.workingTimeEnd = workingTimeEnd;
     this.hasBreak = hasBreak;
     this.breakTimeBegin = breakTimeBegin;
-    this.breakTimeFinish = breakTimeFinish;
+    this.breakTimeEnd = breakTimeEnd;
     this.note = note;
     this.currentQueue = currentQueue;
   }
@@ -38,12 +35,12 @@ class QueueListItem {
   int totalQueue;
   int maxQueue;
   DateTime dateCreated;
-  DateTime dateFinish;
+  DateTime dateEnd;
   TimeOfDay workingTimeBegin;
-  TimeOfDay workingTimeFinish;
+  TimeOfDay workingTimeEnd;
   bool hasBreak;
   TimeOfDay breakTimeBegin;
-  TimeOfDay breakTimeFinish;
+  TimeOfDay breakTimeEnd;
   String note;
   int currentQueue;
 
@@ -54,12 +51,12 @@ class QueueListItem {
       json['totalQueue'],
       json['maxQueue'],
       json['dateCreated'],
-      json['dateFinish'],
+      json['dateEnd'],
       json['workingTimeBegin'],
-      json['workingTimeFinish'],
+      json['workingTimeEnd'],
       json['hasBreak'],
       json['breakTimeBegin'],
-      json['breakTimeFinish'],
+      json['breakTimeEnd'],
       json['note'],
       json['currentQueue'],
     );
@@ -73,32 +70,36 @@ class QueueListItem {
 
 // var queueList = List<QueueListItem>();
 
+var newCreate = QueueListItem(
+  "",
+  "",
+  0,
+  0,
+  DateTime.now(),
+  DateTime.now(),
+  TimeOfDay(hour: 9, minute: 00),
+  TimeOfDay(hour: 18, minute: 00),
+  true,
+  TimeOfDay(hour: 13, minute: 00),
+  TimeOfDay(hour: 14, minute: 00),
+  '',
+  0,
+);
+
 List<QueueListItem> queueList = [
   QueueListItem(
     "000001",
-    "Клиника AkfaMedline",
-    100,
-    150,
+    "",
+    0,
+    0,
     DateTime(2020, 10, 7, 9, 00),
     DateTime(2020, 10, 20, 18, 00),
-    TimeOfDay(hour: 9, minute: 0),
-    TimeOfDay(hour: 9, minute: 0),
+    TimeOfDay(hour: 9, minute: 00),
+    TimeOfDay(hour: 9, minute: 00),
     true,
     TimeOfDay(hour: 13, minute: 0),
     TimeOfDay(hour: 14, minute: 0),
     'При себе необходимо иметь \nксерокопию паспорта',
     5,
   ),
-  // QueueListItem(
-  //   "000002",
-  //   "34",
-  //   "Клиника ShoxMed",
-  //   "10.07.2020   10:00",
-  // ),
-  // QueueListItem(
-  //   "000003",
-  //   "34",
-  //   "Технический осмотр автомобиля \nв ГАИ",
-  //   "15:09:2020   07:26",
-  // ),
 ];

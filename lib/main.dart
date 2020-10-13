@@ -10,9 +10,11 @@ import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/create_queue_view_model.dart';
 import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:provider/provider.dart';
+import 'Screens/CreateQueue/create_queue_screen.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<QueueViewModel>.value(value: QueueViewModel()),
+        ChangeNotifierProvider<CreateQueueViewModel>.value(
+            value: CreateQueueViewModel()),
         ChangeNotifierProvider<CreatedQueueModel>.value(
             value: CreatedQueueModel()),
       ],
@@ -47,7 +51,8 @@ class MyApp extends StatelessWidget {
           '/sign-up': (context) => SignUpScreen(),
           '/queue-screen': (context) => QueueScreen(),
           '/queue-management': (context) => QueueManagementScreen(),
-          '/create-queue': (context) => CreateQueueScreen(),
+          '/create-queue': (context) => CreateQueueScreen2(),
+          // '/create-queue': (context) => CreateQueueScreen(),
           '/search-result': (context) => SearchResultScreen(),
           '/watch': (context) => WatchScreen(),
         },

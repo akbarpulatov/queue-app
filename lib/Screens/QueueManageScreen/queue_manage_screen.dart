@@ -35,9 +35,7 @@ class QueueManagementScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ButtonContainer(
-                    onPressed: () {
-                      currentOrderViewModel.increment(index);
-                    },
+                    onPressed: currentOrderViewModel.increment(index),
                     borderColor: Color(0xFFB5B5AD),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

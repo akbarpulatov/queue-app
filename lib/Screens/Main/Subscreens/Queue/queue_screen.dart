@@ -23,8 +23,6 @@ class QueueScreen extends StatefulWidget {
 class QueueScreenState extends State<QueueScreen> {
   @override
   Widget build(BuildContext context) {
-    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -52,8 +50,6 @@ class EmptyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final QueueViewModel queueViewModel = Provider.of<QueueViewModel>(context);
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -63,10 +59,7 @@ class EmptyListView extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Text(
               'У вас еще нет \n созданных очередей',
-              style: TextStyle(
-                  fontSize: 20,
-                  // fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
