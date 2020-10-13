@@ -107,7 +107,7 @@ class QueueManagementScreen extends StatelessWidget {
           Positioned(
               child: QueueManagementItem(
             name: queueList[index].name,
-            dateCreated: queueList[index].createdTime,
+            dateCreated: queueList[index].dateCreated.toString(),
             totalQueue: '100',
             maxQueue: '150',
             workingTime: '9:00 - 18:00',

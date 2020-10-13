@@ -22,8 +22,8 @@ class QueueListItemView extends StatelessWidget {
     final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
 
     final String name = queueList[index].name;
-    final String createdTime = queueList[index].createdTime;
-    final String currentOrder = queueList[index].currentOrder;
+    final String createdTime = queueList[index].dateCreated.toString();
+    final String currentOrder = queueList[index].dateCreated.toString();
 
     return Container(
       width: DisplaySize.size.width,

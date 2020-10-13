@@ -169,7 +169,7 @@ class CurrentOrderView extends StatelessWidget {
     final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
 
     return Text(
-      currentOrderViewModel.currentOrder(index),
+      currentOrderViewModel.currentOrder(index).toString(),
       style: Theme.of(context).textTheme.headline4,
     );
   }
