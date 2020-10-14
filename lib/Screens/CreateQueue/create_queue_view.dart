@@ -82,6 +82,34 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
+  Widget _buildMaxQueue() {
+    return TextFormField(
+      decoration: FlatInputDecoration(labelText: 'Макс. длина'),
+      onSaved: (val) {},
+      validator: (val) {
+        return;
+      },
+      maxLength: 3,
+      keyboardType: TextInputType.number,
+    );
+  }
+
+  Widget _buildNote() {
+    return TextFormField(
+      decoration: FlatInputDecoration(
+        labelText: 'Описание',
+        hintText: 'Например: при себе необходимо \n иметь ксерокопию паспорта',
+      ),
+      onSaved: (val) {},
+      validator: (val) {
+        return;
+      },
+      maxLength: 50,
+    );
+  }
+
+  ///========================================================
+  ///========================================================
   Widget _buildStartTime() {
     return DateTimeFieldContainer(
       isStretched: true,
@@ -158,7 +186,7 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
   }
 
   ///======================< Max Length >====================
-  Widget _buildMaxQueue() {
+  Widget _buildMaxQueue1() {
     return TextFormField(
       decoration: InputDecoration(
         labelText: 'Макс. длина',
@@ -209,6 +237,8 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
+  ///========================================================
+
   ///======================< Build Method >====================
   @override
   Widget build(BuildContext context) {
@@ -254,6 +284,9 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildName(),
+              _buildMaxQueue(),
+              _buildNote(),
+
               // TextFormField(),
               // divider,
               // _buildStartTime(),
@@ -293,6 +326,7 @@ class FlatInputDecoration extends InputDecoration {
     this.hintText,
   }) : super(
           counterText: "",
+          hintMaxLines: 3,
         );
 }
 
@@ -349,7 +383,6 @@ class FlatTextFormField extends StatelessWidget {
   final String labelText;
   final FormFieldSetter<String> onSaved;
   final String Function(String value) validator;
-// typedef FormFieldValidator<T> = String Function(T value);
 
   @override
   Widget build(BuildContext context) {
