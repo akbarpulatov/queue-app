@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Subscreens/create_queue_view.dart';
+import 'package:flutter_auth/Screens/CreateQueue/create_queue_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
 import 'package:flutter_auth/Screens/Main/main_screen.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_auth/model/create_queue_view_model.dart';
 import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:provider/provider.dart';
-import 'Screens/CreateQueue/create_queue_screen.dart';
+import 'Screens/CreateQueue2/create_queue_screen2.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
           '/sign-up': (context) => SignUpScreen(),
           '/queue-screen': (context) => QueueScreen(),
           '/queue-management': (context) => QueueManagementScreen(),
-          '/create-queue': (context) => CreateQueueScreen2(),
-          // '/create-queue': (context) => CreateQueueScreen(),
+          // '/create-queue': (context) => CreateQueueScreen2(),
+          '/create-queue': (context) => CreateQueueScreen(),
           '/search-result': (context) => SearchResultScreen(),
           '/watch': (context) => WatchScreen(),
         },

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_picker.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/date_time_field_container.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/date_picker.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/date_time_field_container.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
 import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';

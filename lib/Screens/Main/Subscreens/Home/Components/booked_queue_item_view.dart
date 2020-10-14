@@ -99,7 +99,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Вы в очереди с',
                       style: TextStyle(fontSize: 15, color: MyColors.disabled),
                     ),
