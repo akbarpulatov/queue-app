@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/date_picker.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/date_time_field_container.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
 import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
@@ -66,39 +67,18 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     //Send to API
   }
 
-  final Divider divider = Divider(
-    indent: 20,
-    thickness: 1.2,
-    height: 1,
-  );
+  InputDecoration inputDecoration() {
+    return InputDecoration();
+  }
 
   Widget _buildName() {
-    return FlatTextFieldContainer(
-      child: TextFormField(
-        controller: _nameController,
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.black,
-            ),
-          ),
-          counterText: '',
-          labelText: 'Название очереди',
-          labelStyle: MyStyles.dimmedText,
-        ),
-        maxLength: 16,
-        maxLengthEnforced: true,
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'Название очереди необходимо';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _name = value;
-        },
-      ),
+    return TextFormField(
+      decoration: FlatInputDecoration(labelText: 'Название очереди'),
+      onSaved: (val) {},
+      validator: (val) {
+        return;
+      },
+      maxLength: 20,
     );
   }
 
@@ -124,6 +104,22 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
       child: TimePicker(
         initTime: TimeOfDay(hour: 18, minute: 00),
       ),
+    );
+  }
+
+  Widget _buildBreakSwitch() {
+    return DateTimeFieldContainer(
+      isStretched: true,
+      label: 'Перерыв',
+      child: CupertinoSwitch(
+          activeColor: MyColors.enabled,
+          value: _switchValue,
+          onChanged: (value) {
+            setState(() {
+              _switchValue = value;
+              print('switch value changed');
+            });
+          }),
     );
   }
 
@@ -161,42 +157,24 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
-  Widget _buildBreakSwitch() {
-    return DateTimeFieldContainer(
-      isStretched: true,
-      label: 'Перерыв',
-      child: CupertinoSwitch(
-          activeColor: MyColors.enabled,
-          value: _switchValue,
-          onChanged: (value) {
-            setState(() {
-              _switchValue = value;
-              print('switch value changed');
-            });
-          }),
-    );
-  }
-
   ///======================< Max Length >====================
   Widget _buildMaxQueue() {
-    return FlatTextFieldContainer(
-      child: TextFormField(
-        decoration: InputDecoration(
-          labelText: 'Макс. длина',
-          labelStyle: MyStyles.dimmedText,
-        ),
-        keyboardType: TextInputType.phone,
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'Phone number is Required';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _maxQueue = value;
-        },
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Макс. длина',
+        labelStyle: MyStyles.dimmedText,
       ),
+      keyboardType: TextInputType.phone,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Phone number is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _maxQueue = value;
+      },
     );
   }
 
@@ -276,28 +254,116 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildName(),
-              _buildStartTime(),
-              divider,
-              _buildEndTime(),
-              divider,
-              _buildBreakSwitch(),
-              _buildBreakTime(),
-              divider,
-              _buildMaxQueue(),
-              _buildDescription(),
-              SizedBox(
-                height: 20,
-              ),
-              RoundedButton(
-                text: "Создать",
-                color: kPrimaryColor,
-                textColor: kBackgroundLightColor,
-                press: _onPress,
-              ),
+              // TextFormField(),
+              // divider,
+              // _buildStartTime(),
+              // divider,
+              // _buildEndTime(),
+              // divider,
+              // _buildBreakSwitch(),
+              // _buildBreakTime(),
+              // divider,
+              // _buildMaxQueue(),
+              // _buildDescription(),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              // RoundedButton(
+              //   text: "Создать",
+              //   color: kPrimaryColor,
+              //   textColor: kBackgroundLightColor,
+              //   press: _onPress,
+              // ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class FlatInputDecoration extends InputDecoration {
+  @override
+  final String labelText;
+  @override
+  final String hintText;
+
+  FlatInputDecoration({
+    this.labelText,
+    this.hintText,
+  }) : super(
+          counterText: "",
+        );
+}
+
+///==================================================
+class FlatFormField<T> extends StatelessWidget {
+  const FlatFormField({
+    Key key,
+    this.validator,
+    this.onSaved,
+  }) : super(key: key);
+
+  final String Function(T val) validator;
+  final void Function(T val) onSaved;
+
+  @override
+  Widget build(BuildContext context) {
+    return FormField<T>(
+      builder: (FormFieldState formFieldState) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'С',
+                  style: TextStyle(color: Colors.black),
+                ),
+                TimePicker(
+                  initTime: TimeOfDay(hour: 15, minute: 00),
+                  onChanged: (val) {
+                    formFieldState.didChange(val);
+                  },
+                ),
+              ],
+            ),
+            if (formFieldState.hasError)
+              Text(formFieldState.errorText, style: Styles.errorStyle)
+          ],
+        );
+      },
+      validator: validator,
+      onSaved: onSaved,
+    );
+  }
+}
+
+class FlatTextFormField extends StatelessWidget {
+  const FlatTextFormField({
+    Key key,
+    this.labelText,
+    this.onSaved,
+    this.validator,
+  }) : super(key: key);
+
+  final String labelText;
+  final FormFieldSetter<String> onSaved;
+  final String Function(String value) validator;
+// typedef FormFieldValidator<T> = String Function(T value);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        counterText: '',
+        labelText: labelText,
+        labelStyle: MyStyles.dimmedText,
+        errorStyle: Styles.errorStyle,
+      ),
+      maxLength: 16,
+      maxLengthEnforced: true,
+      validator: validator,
+      onSaved: onSaved,
     );
   }
 }
