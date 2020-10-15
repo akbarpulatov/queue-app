@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/CreateNewQueue/create_new_queue.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/create_new_queue_screen.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/CreateQueue/create_queue_screen.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';

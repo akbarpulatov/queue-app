@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/break_time_widget.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/flat_input_decoration.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
 import 'package:flutter_auth/constants.dart';
 
 class CreateNewQueueScreen extends StatelessWidget {
@@ -54,6 +58,20 @@ class CreateNewQueueScreen extends StatelessWidget {
                   return;
                 },
                 maxLength: 20,
+              ),
+              // =============== < Begin DateTime of queue> ==============
+
+              // =============== < End Time of queue> ==============
+
+              // =============== < Break Time of queue> ==============
+              FormField<Break>(
+                builder: (formFieldState) {
+                  return BreakTimeWidget();
+                },
+                onSaved: (val) {},
+                validator: (val) {
+                  return;
+                },
               ),
               // =============== < Max order in new queue> ==============
               TextFormField(
