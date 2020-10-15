@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/styles.dart';
-import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 
 class FormFieldTimePicker<T> extends StatelessWidget {
   const FormFieldTimePicker({

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
-import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 
 class BreakTimeWidget extends StatefulWidget {
   final FormFieldState formFieldState;
@@ -18,7 +17,6 @@ class BreakTimeWidget extends StatefulWidget {
 class _BreakTimeWidgetState extends State<BreakTimeWidget>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  var breakData = Break();
 
   @override
   void initState() {
@@ -37,6 +35,8 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
 
   @override
   Widget build(BuildContext context) {
+    var breakData = widget.formFieldState.value;
+
     if (breakData.hasBreak) {
       _controller.forward();
     } else {

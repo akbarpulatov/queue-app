@@ -3,7 +3,7 @@ import 'package:flutter_auth/constants.dart';
 
 class TimePicker extends StatefulWidget {
   final TimeOfDay initTime;
-  final Function onChanged;
+  final void Function(TimeOfDay val) onChanged;
   const TimePicker({
     Key key,
     this.initTime,

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateQueue2/Components/FieldContainer.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/date_time_field_container.dart';
-import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/create_queue_view_model.dart';

@@ -3,8 +3,11 @@ import 'package:flutter_auth/constants.dart';
 import 'package:intl/intl.dart';
 
 class DatePicker extends StatefulWidget {
+  final void Function(DateTime val) onChanged;
+
   const DatePicker({
     Key key,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -18,14 +21,14 @@ class _DatePickerState extends State<DatePicker> {
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: _date,
-      firstDate: new DateTime(2019),
-      lastDate: new DateTime(2022),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2023),
     );
 
     if (picked != null && picked != _date) {
-      print('Date selected: ${_date.toString()}');
       setState(() {
         _date = picked;
+        widget.onChanged(_date);
       });
     }
   }
@@ -34,7 +37,7 @@ class _DatePickerState extends State<DatePicker> {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        print('change time');
+        // print('change time');
         _selectDate(context);
       },
       child: Text(

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/begin_date_time_widget.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/break_time_widget.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/flat_input_decoration.dart';
-import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 
@@ -46,6 +47,7 @@ class CreateNewQueueScreen extends StatelessWidget {
               )),
         ],
       ),
+
       // =================== < Forms > ==================
       body: Form(
           key: _formKey,
@@ -60,12 +62,38 @@ class CreateNewQueueScreen extends StatelessWidget {
                 },
                 maxLength: 20,
               ),
+
               // =============== < Begin DateTime of queue> ==============
+              FormField<DateAndTime>(
+                initialValue: DateAndTime(),
+                builder: (state) {
+                  return BeginDateTimeWidget(
+                    state: state,
+                  );
+                },
+                validator: (val) {
+                  print('Begin DateTime is : $val');
+                  return;
+                },
+                onSaved: (val) {},
+              ),
 
               // =============== < End Time of queue> ==============
+              FormField<TimeOfDay>(builder: (state) {
+                return Row(
+                  children: [
+                    Expanded(child: Text('Конец')),
+                    TimePicker(
+                      initTime: TimeOfDay(hour: 18, minute: 00),
+                      onChanged: (val) {},
+                    ),
+                  ],
+                );
+              }),
 
               // =============== < Break Time of queue> ==============
               FormField<Break>(
+                initialValue: Break(),
                 builder: (formFieldState) {
                   return BreakTimeWidget(formFieldState: formFieldState);
                 },
@@ -75,7 +103,8 @@ class CreateNewQueueScreen extends StatelessWidget {
                   return;
                 },
               ),
-              // =============== < Max order in new queue> ==============
+
+              // =============== < Max order in new queue > ==============
               TextFormField(
                 decoration: FlatInputDecoration(labelText: 'Макс. длина'),
                 onSaved: (val) {},
@@ -97,6 +126,8 @@ class CreateNewQueueScreen extends StatelessWidget {
                 },
                 maxLength: 50,
               ),
+
+              // =================== < Submit Form > ==================
               ButtonContainer(
                 child: Text('submit'),
                 onPressed: () {
