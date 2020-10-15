@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
+import 'package:flutter_auth/constants.dart';
 
 class BreakTimeWidget extends StatefulWidget {
-  final FormFieldState formFieldState;
+  final FormFieldState state;
 
   const BreakTimeWidget({
     Key key,
-    @required this.formFieldState,
+    @required this.state,
   }) : super(key: key);
 
   @override
@@ -36,7 +37,7 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
 
   @override
   Widget build(BuildContext context) {
-    var breakData = widget.formFieldState.value;
+    var breakData = widget.state.value;
 
     if (breakData.hasBreak) {
       _controller.forward();
@@ -50,11 +51,12 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
           children: [
             Expanded(child: Text('Перерыв', style: TextStyles.labelStyle)),
             CupertinoSwitch(
+                activeColor: kPrimaryColor,
                 value: breakData.hasBreak,
                 onChanged: (val) {
                   setState(() {
                     breakData.hasBreak = val;
-                    widget.formFieldState.didChange(breakData);
+                    widget.state.didChange(breakData);
                   });
                 })
           ],
@@ -67,13 +69,13 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                 flex: 1,
                 child: Row(
                   children: [
-                    Text('С', style: TextStyles.labelStyle),
+                    Text('С', style: TextStyles.labelStyle1),
                     // ============< Begin Time >============
                     TimePicker(
                       initTime: TimeOfDay(hour: 13, minute: 00),
                       onChanged: (val) {
                         breakData.beginTime = val;
-                        widget.formFieldState.didChange(breakData);
+                        widget.state.didChange(breakData);
                       },
                     ),
                   ],
@@ -84,13 +86,13 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                 flex: 1,
                 child: Row(
                   children: [
-                    Text('До', style: TextStyles.labelStyle),
+                    Text('До', style: TextStyles.labelStyle1),
                     // ============< End Time >============
                     TimePicker(
                       initTime: TimeOfDay(hour: 14, minute: 00),
                       onChanged: (val) {
                         breakData.endTime = val;
-                        widget.formFieldState.didChange(breakData);
+                        widget.state.didChange(breakData);
                       },
                     ),
                   ],

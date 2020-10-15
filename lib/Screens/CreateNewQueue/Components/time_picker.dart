@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 
 class TimePicker extends StatefulWidget {
   final TimeOfDay initTime;
@@ -44,7 +44,7 @@ class _TimePickerState extends State<TimePicker> {
       },
       child: Text(
         '${_time.format(context)}',
-        style: MyStyles.dimmedText,
+        style: TextStyles.textStyle,
       ),
     );
   }

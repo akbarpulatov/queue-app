@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:intl/intl.dart';
 
@@ -41,7 +42,7 @@ class _DatePickerState extends State<DatePicker> {
       },
       child: Text(
         '${DateFormat('yyyy-MM-dd').format(_date)}',
-        style: MyStyles.dimmedText,
+        style: TextStyles.textStyle,
       ),
     );
   }

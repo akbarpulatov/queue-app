@@ -65,11 +65,12 @@ class CreateNewQueueScreen extends StatelessWidget {
                 TextFormField(
                   decoration:
                       FlatInputDecoration(labelText: 'Название очереди'),
-                  onSaved: (val) {},
+                  maxLength: 20,
                   validator: (val) {
+                    print('Name: $val');
                     return;
                   },
-                  maxLength: 20,
+                  onSaved: (val) {},
                 ),
 
                 // =============== < Begin DateTime of queue> ==============
@@ -81,7 +82,7 @@ class CreateNewQueueScreen extends StatelessWidget {
                     );
                   },
                   validator: (val) {
-                    print('Begin DateTime is : $val');
+                    print('BeginDate: $val');
                     return;
                   },
                   onSaved: (val) {},
@@ -89,55 +90,67 @@ class CreateNewQueueScreen extends StatelessWidget {
                 divider,
 
                 // =============== < End Time of queue> ==============
-                FormField<TimeOfDay>(builder: (state) {
-                  return Row(
-                    children: [
-                      Expanded(
-                          child: Text('Конец', style: TextStyles.labelStyle)),
-                      TimePicker(
-                        initTime: TimeOfDay(hour: 18, minute: 00),
-                        onChanged: (val) {},
-                      ),
-                    ],
-                  );
-                }),
+                FormField<TimeOfDay>(
+                  initialValue: TimeOfDay(hour: 18, minute: 00),
+                  builder: (state) {
+                    return Row(
+                      children: [
+                        Expanded(
+                            child: Text('Конец', style: TextStyles.labelStyle)),
+                        TimePicker(
+                          initTime: state.value,
+                          onChanged: state.didChange,
+                        ),
+                      ],
+                    );
+                  },
+                  validator: (val) {
+                    print('EndTime: $val');
+                    return;
+                  },
+                  onSaved: (val) {},
+                ),
                 divider,
 
                 // =============== < Break Time of queue> ==============
                 FormField<Break>(
                   initialValue: Break(),
-                  builder: (formFieldState) {
-                    return BreakTimeWidget(formFieldState: formFieldState);
+                  builder: (state) {
+                    return BreakTimeWidget(state: state);
                   },
-                  onSaved: (val) {},
                   validator: (val) {
-                    print(val);
+                    print('BreakTime: $val');
                     return;
                   },
+                  onSaved: (val) {},
                 ),
                 divider,
 
                 // =============== < Max order in new queue > ==============
                 TextFormField(
                   decoration: FlatInputDecoration(labelText: 'Макс. длина'),
-                  onSaved: (val) {},
-                  validator: (val) {
-                    return;
-                  },
                   maxLength: 3,
                   keyboardType: TextInputType.number,
+                  validator: (val) {
+                    print('MaxQueue: $val');
+                    return;
+                  },
+                  onSaved: (val) {},
                 ),
+
+                // ================== < Note Form Field > =================
                 TextFormField(
                   decoration: FlatInputDecoration(
                     labelText: 'Описание',
                     hintText:
                         'Например: при себе необходимо \n иметь ксерокопию паспорта',
                   ),
-                  onSaved: (val) {},
+                  maxLength: 50,
                   validator: (val) {
+                    print('Note: $val');
                     return;
                   },
-                  maxLength: 50,
+                  onSaved: (val) {},
                 ),
 
                 // =================== < Submit Form > ==================
