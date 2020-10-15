@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
 
 class BreakTimeWidget extends StatefulWidget {
+  final FormFieldState formFieldState;
+
   const BreakTimeWidget({
     Key key,
+    @required this.formFieldState,
   }) : super(key: key);
 
   @override
@@ -13,8 +17,8 @@ class BreakTimeWidget extends StatefulWidget {
 
 class _BreakTimeWidgetState extends State<BreakTimeWidget>
     with SingleTickerProviderStateMixin {
-  bool hasBreak = true;
   AnimationController _controller;
+  var breakData = Break();
 
   @override
   void initState() {
@@ -33,7 +37,7 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (hasBreak) {
+    if (breakData.hasBreak) {
       _controller.forward();
     } else {
       _controller.reverse();
@@ -45,10 +49,11 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
           children: [
             Text('Перерыв'),
             CupertinoSwitch(
-                value: hasBreak,
+                value: breakData.hasBreak,
                 onChanged: (val) {
                   setState(() {
-                    hasBreak = val;
+                    breakData.hasBreak = val;
+                    widget.formFieldState.didChange(breakData);
                   });
                 })
           ],
@@ -68,7 +73,8 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                     TimePicker(
                       initTime: TimeOfDay(hour: 13, minute: 00),
                       onChanged: (val) {
-                        // formFieldState.didChange(val);
+                        breakData.beginTime = val;
+                        widget.formFieldState.didChange(breakData);
                       },
                     ),
                   ],
@@ -86,6 +92,8 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                     TimePicker(
                       initTime: TimeOfDay(hour: 14, minute: 00),
                       onChanged: (val) {
+                        breakData.endTime = val;
+                        widget.formFieldState.didChange(breakData);
                         // formFieldState.didChange(val);
                       },
                     ),

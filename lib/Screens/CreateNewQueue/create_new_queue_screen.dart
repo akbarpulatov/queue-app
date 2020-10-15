@@ -4,6 +4,7 @@ import 'package:flutter_auth/Screens/CreateNewQueue/Components/break_time_widget
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/flat_input_decoration.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 
 class CreateNewQueueScreen extends StatelessWidget {
@@ -66,10 +67,11 @@ class CreateNewQueueScreen extends StatelessWidget {
               // =============== < Break Time of queue> ==============
               FormField<Break>(
                 builder: (formFieldState) {
-                  return BreakTimeWidget();
+                  return BreakTimeWidget(formFieldState: formFieldState);
                 },
                 onSaved: (val) {},
                 validator: (val) {
+                  print(val);
                   return;
                 },
               ),
@@ -95,6 +97,12 @@ class CreateNewQueueScreen extends StatelessWidget {
                 },
                 maxLength: 50,
               ),
+              ButtonContainer(
+                child: Text('submit'),
+                onPressed: () {
+                  _formKey.currentState.validate();
+                },
+              )
             ],
           )),
     );
