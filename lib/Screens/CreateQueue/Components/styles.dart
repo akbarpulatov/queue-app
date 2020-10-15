@@ -14,3 +14,4 @@ final Divider divider = Divider(
   thickness: 1.2,
   height: 1,
 );
+ 

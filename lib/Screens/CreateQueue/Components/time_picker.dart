@@ -38,6 +38,7 @@ class _TimePickerState extends State<TimePicker> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      minWidth: 0,
       onPressed: () {
         print('change time');
         _selectTime(context);

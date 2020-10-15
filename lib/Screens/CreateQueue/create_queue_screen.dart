@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/date_picker.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/date_time_field_container.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/flat_input_decoration.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/form_field_time_picker.dart';
+import 'package:flutter_auth/Screens/CreateQueue/Components/form_field_toggle_button.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateQueue/Components/time_picker.dart';
+import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/components/flat_text_field_container.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
@@ -185,64 +189,13 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
     );
   }
 
-  ///======================< Max Length >====================
-  Widget _buildMaxQueue1() {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: 'Макс. длина',
-        labelStyle: MyStyles.dimmedText,
-      ),
-      keyboardType: TextInputType.phone,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Phone number is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _maxQueue = value;
-      },
-    );
-  }
-
-  Widget _buildDescription() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 0),
-      padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
-      child: TextFormField(
-        controller: _descriptionController,
-        decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelText: 'Описание',
-          alignLabelWithHint: false,
-          hintText: 'Например: при себе необходимо иметь ксерокопию паспорта',
-          labelStyle: MyStyles.dimmedText,
-          hintMaxLines: 3,
-        ),
-        maxLength: 50,
-        maxLengthEnforced: true,
-        maxLines: 3,
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'Название очереди необходимо';
-          }
-
-          return null;
-        },
-        onSaved: (String value) {
-          _name = value;
-        },
-      ),
-    );
-  }
-
   ///========================================================
 
   ///======================< Build Method >====================
   @override
   Widget build(BuildContext context) {
-    // final createQueueViewModel = Provider.of<CreateQueueViewModel>(context);
+    final createQueueViewModel =
+        Provider.of<CreateQueueViewModel>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -286,27 +239,25 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
               _buildName(),
               _buildMaxQueue(),
               _buildNote(),
-
-              // TextFormField(),
-              // divider,
-              // _buildStartTime(),
-              // divider,
-              // _buildEndTime(),
-              // divider,
               // _buildBreakSwitch(),
               // _buildBreakTime(),
-              // divider,
-              // _buildMaxQueue(),
-              // _buildDescription(),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // RoundedButton(
-              //   text: "Создать",
-              //   color: kPrimaryColor,
-              //   textColor: kBackgroundLightColor,
-              //   press: _onPress,
-              // ),
+              FormFieldToggleButton<bool>(
+                validator: (val) {
+                  return;
+                },
+                onSaved: (val) {},
+                initValue: true,
+              ),
+              BreakTime(),
+              ButtonContainer(
+                child: Text('Submit'),
+                onPressed: () {
+                  if (!_formKey.currentState.validate()) {
+                    return;
+                  }
+                  _formKey.currentState.save();
+                },
+              ),
             ],
           ),
         ),
@@ -315,88 +266,76 @@ class _CreateQueueScreenState extends State<CreateQueueScreen> {
   }
 }
 
-class FlatInputDecoration extends InputDecoration {
-  @override
-  final String labelText;
-  @override
-  final String hintText;
-
-  FlatInputDecoration({
-    this.labelText,
-    this.hintText,
-  }) : super(
-          counterText: "",
-          hintMaxLines: 3,
-        );
-}
-
-///==================================================
-class FlatFormField<T> extends StatelessWidget {
-  const FlatFormField({
+class BreakTime extends StatefulWidget {
+  const BreakTime({
     Key key,
-    this.validator,
-    this.onSaved,
   }) : super(key: key);
 
-  final String Function(T val) validator;
-  final void Function(T val) onSaved;
+  @override
+  _BreakTimeState createState() => _BreakTimeState();
+}
+
+class _BreakTimeState extends State<BreakTime>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FormField<T>(
-      builder: (FormFieldState formFieldState) {
-        return Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  'С',
-                  style: TextStyle(color: Colors.black),
-                ),
-                TimePicker(
-                  initTime: TimeOfDay(hour: 15, minute: 00),
-                  onChanged: (val) {
-                    formFieldState.didChange(val);
+    return Consumer<CreateQueueViewModel>(
+      builder:
+          (BuildContext context, CreateQueueViewModel viewModel, Widget child) {
+        if (viewModel.hasBreak) {
+          _controller.forward();
+        } else {
+          _controller.reverse();
+        }
+        return SizeTransition(
+          sizeFactor: _controller,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: FormFieldTimePicker<TimeOfDay>(
+                  initValue: TimeOfDay(hour: 13, minute: 00),
+                  label: 'С',
+                  onSaved: (val) {},
+                  validator: (val) {
+                    return 'asdf';
                   },
                 ),
-              ],
-            ),
-            if (formFieldState.hasError)
-              Text(formFieldState.errorText, style: Styles.errorStyle)
-          ],
+              ),
+              Container(
+                  height: 30, child: VerticalDivider(color: MyColors.disabled)),
+              Expanded(
+                flex: 1,
+                child: FormFieldTimePicker<TimeOfDay>(
+                  initValue: TimeOfDay(hour: 14, minute: 00),
+                  label: 'До',
+                  onSaved: (val) {},
+                  validator: (val) {
+                    return;
+                  },
+                ),
+              ),
+            ],
+          ),
         );
       },
-      validator: validator,
-      onSaved: onSaved,
-    );
-  }
-}
-
-class FlatTextFormField extends StatelessWidget {
-  const FlatTextFormField({
-    Key key,
-    this.labelText,
-    this.onSaved,
-    this.validator,
-  }) : super(key: key);
-
-  final String labelText;
-  final FormFieldSetter<String> onSaved;
-  final String Function(String value) validator;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        counterText: '',
-        labelText: labelText,
-        labelStyle: MyStyles.dimmedText,
-        errorStyle: Styles.errorStyle,
-      ),
-      maxLength: 16,
-      maxLengthEnforced: true,
-      validator: validator,
-      onSaved: onSaved,
     );
   }
 }
