@@ -4,10 +4,12 @@ import 'package:flutter_auth/Screens/CreateNewQueue/Components/begin_date_time_w
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/break_time_widget.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
-import 'package:flutter_auth/Screens/CreateQueue/Components/flat_input_decoration.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/flat_input_decoration.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/create_queue_view_model.dart';
+import 'package:provider/provider.dart';
 
 class CreateNewQueueScreen extends StatelessWidget {
   const CreateNewQueueScreen({Key key}) : super(key: key);
@@ -21,6 +23,7 @@ class CreateNewQueueScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final createQeueuViewModel = Provider.of<CreateQueueViewModel>(context);
     return Scaffold(
       // ================== < Appbar > =================
       appBar: AppBar(
@@ -155,11 +158,16 @@ class CreateNewQueueScreen extends StatelessWidget {
 
                 // =================== < Submit Form > ==================
                 ButtonContainer(
-                  child: Text('submit'),
-                  onPressed: () {
-                    _formKey.currentState.validate();
-                  },
-                )
+                    child: Text('submit'),
+                    onPressed: () {
+                      print('Submit is pressed');
+                      if (!_formKey.currentState.validate()) {
+                        return;
+                      }
+
+                      _formKey.currentState.save();
+                      //Send to API
+                    })
               ],
             )),
       ),

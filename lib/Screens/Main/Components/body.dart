@@ -3,7 +3,6 @@ import 'package:flutter_auth/Screens/Main/Components/background.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/History/history_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/home_view.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/profile_view.dart';
-import 'package:flutter_auth/Screens/CreateQueue/create_queue_screen.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
