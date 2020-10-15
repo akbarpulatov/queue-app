@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 
 class BreakTimeWidget extends StatefulWidget {
@@ -47,7 +48,7 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
       children: [
         Row(
           children: [
-            Text('Перерыв'),
+            Expanded(child: Text('Перерыв', style: TextStyles.labelStyle)),
             CupertinoSwitch(
                 value: breakData.hasBreak,
                 onChanged: (val) {
@@ -66,9 +67,7 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                 flex: 1,
                 child: Row(
                   children: [
-                    Text(
-                      'С',
-                    ),
+                    Text('С', style: TextStyles.labelStyle),
                     // ============< Begin Time >============
                     TimePicker(
                       initTime: TimeOfDay(hour: 13, minute: 00),
@@ -85,16 +84,13 @@ class _BreakTimeWidgetState extends State<BreakTimeWidget>
                 flex: 1,
                 child: Row(
                   children: [
-                    Text(
-                      'До',
-                    ),
+                    Text('До', style: TextStyles.labelStyle),
                     // ============< End Time >============
                     TimePicker(
                       initTime: TimeOfDay(hour: 14, minute: 00),
                       onChanged: (val) {
                         breakData.endTime = val;
                         widget.formFieldState.didChange(breakData);
-                        // formFieldState.didChange(val);
                       },
                     ),
                   ],

@@ -40,7 +40,6 @@ class _TimePickerState extends State<TimePicker> {
     return FlatButton(
       minWidth: 0,
       onPressed: () {
-        print('change time');
         _selectTime(context);
       },
       child: Text(

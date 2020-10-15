@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/date_picker.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 
 class BeginDateTimeWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class BeginDateTimeWidget extends StatelessWidget {
 
     return Row(
       children: [
-        Expanded(child: Text('Начало')),
+        Expanded(child: Text('Начало', style: TextStyles.labelStyle)),
         DatePicker(
           onChanged: (val) {
             dateAndTime.dateTime = val;
