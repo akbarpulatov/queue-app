@@ -72,7 +72,10 @@ class QueueManagementScreen extends StatelessWidget {
                       SizedBox(width: 20),
                       ButtonContainer(
                         flex: 1,
-                        onPressed: () {},
+                        onPressed: () {
+                          model.remove(index);
+                          Navigator.pop(context);
+                        },
                         borderColor: Color(0xFFE0503D),
                         fillColor: Color(0xFFE0503D),
                         child: Row(

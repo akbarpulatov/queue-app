@@ -6,8 +6,13 @@ class QueueManageScreenViewModel extends ChangeNotifier {
     return Navbat.queueList[index].currentQueue;
   }
 
-  increment(val) {
-    Navbat.queueList[val].currentQueue = Navbat.queueList[val].currentQueue + 1;
+  increment(int index) {
+    Navbat.queueList[index].currentQueue += 1;
+    notifyListeners();
+  }
+
+  remove(int index) {
+    Navbat.queueList.removeAt(index);
     notifyListeners();
   }
 }
