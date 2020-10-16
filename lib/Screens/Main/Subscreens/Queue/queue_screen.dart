@@ -5,6 +5,7 @@ import 'package:flutter_auth/Screens/QueueManageScreen/Components/queue_manageme
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
+import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,9 @@ class QueueScreen extends StatefulWidget {
 class QueueScreenState extends State<QueueScreen> {
   @override
   Widget build(BuildContext context) {
+    final manageModel = Provider.of<QueueManageScreenViewModel>(context);
+    final createModel = Provider.of<CreateNewQueueViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,

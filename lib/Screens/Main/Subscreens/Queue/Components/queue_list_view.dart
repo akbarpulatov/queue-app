@@ -4,7 +4,6 @@ import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/services/http_requests.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
-import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
 import 'package:provider/provider.dart';
 
 class QueueListView extends StatefulWidget {
@@ -38,8 +37,8 @@ class _QueueListViewState extends State<QueueListView> {
     return RefreshIndicator(
       onRefresh: refreshList,
       key: refreshKey,
-      child: Consumer2<CreateNewQueueViewModel, QueueManageScreenViewModel>(
-        builder: (context, createModel, manageModel, _) {
+      child: Consumer<CreateNewQueueViewModel>(
+        builder: (context, createModel, _) {
           return ListView.separated(
               itemCount: Navbat.queueList.length,
               itemBuilder: (context, index) {
