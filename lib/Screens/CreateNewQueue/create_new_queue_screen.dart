@@ -8,7 +8,7 @@ import 'package:flutter_auth/Screens/CreateNewQueue/Components/flat_input_decora
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/create_queue_view_model.dart';
+import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
 import 'package:provider/provider.dart';
 
 class CreateNewQueueScreen extends StatelessWidget {
@@ -23,7 +23,8 @@ class CreateNewQueueScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final createQeueuViewModel = Provider.of<CreateQueueViewModel>(context);
+    final model = Provider.of<CreateNewQueueViewModel>(context, listen: false);
+
     return Scaffold(
       // ================== < Appbar > =================
       appBar: AppBar(
@@ -73,7 +74,9 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('Name: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.name = val;
+                  },
                 ),
 
                 // =============== < Begin DateTime of queue> ==============
@@ -88,7 +91,10 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('BeginDate: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.workingTimeBegin = val.timeOfDay;
+                    model.dateCreated = val.dateTime;
+                  },
                 ),
                 divider,
 
@@ -111,7 +117,9 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('EndTime: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.workingTimeEnd = val;
+                  },
                 ),
                 divider,
 
@@ -125,7 +133,11 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('BreakTime: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.hasBreak = val.hasBreak;
+                    model.breakTimeBegin = val.beginTime;
+                    model.breakTimeEnd = val.endTime;
+                  },
                 ),
                 divider,
 
@@ -138,7 +150,9 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('MaxQueue: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.maxQueue = int.parse(val);
+                  },
                 ),
 
                 // ================== < Note Form Field > =================
@@ -153,7 +167,9 @@ class CreateNewQueueScreen extends StatelessWidget {
                     print('Note: $val');
                     return;
                   },
-                  onSaved: (val) {},
+                  onSaved: (val) {
+                    model.note = val;
+                  },
                 ),
 
                 // =================== < Submit Form > ==================
@@ -166,6 +182,9 @@ class CreateNewQueueScreen extends StatelessWidget {
                       }
 
                       _formKey.currentState.save();
+
+                      model.update();
+
                       //Send to API
                     })
               ],

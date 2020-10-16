@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/create_new_queue_screen.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
@@ -10,28 +9,22 @@ import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/create_queue_view_model.dart';
-import 'package:flutter_auth/model/current_order_view_model.dart';
-import 'package:flutter_auth/view_models/queue_view_model.dart';
+import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<QueueViewModel>.value(value: QueueViewModel()),
-        ChangeNotifierProvider<CreateQueueViewModel>.value(
-            value: CreateQueueViewModel()),
-        ChangeNotifierProvider<CreatedQueueModel>.value(
-            value: CreatedQueueModel()),
+        ChangeNotifierProvider<CreateNewQueueViewModel>.value(
+            value: CreateNewQueueViewModel()),
+        ChangeNotifierProvider<CreateNewQueueViewModel>.value(
+            value: CreateNewQueueViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -51,8 +44,6 @@ class MyApp extends StatelessWidget {
           '/queue-screen': (context) => QueueScreen(),
           '/queue-management': (context) => QueueManagementScreen(),
           '/create-queue': (context) => CreateNewQueueScreen(),
-          // '/create-queue': (context) => CreateQueueScreen2(),
-          // '/create-queue': (context) => CreateQueueScreen(),
           '/search-result': (context) => SearchResultScreen(),
           '/watch': (context) => WatchScreen(),
         },

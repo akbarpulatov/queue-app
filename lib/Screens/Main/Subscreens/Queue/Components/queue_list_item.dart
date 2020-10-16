@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Queue/queue_screen.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/current_order_view_model.dart';
 import 'package:flutter_auth/model/queue.dart';
-import 'package:flutter_auth/view_models/queue_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 class QueueListItemView extends StatelessWidget {
   const QueueListItemView({
@@ -18,9 +14,6 @@ class QueueListItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final queueViewModel = Provider.of<QueueViewModel>(context);
-    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
-
     final String name = queueList[index].name;
     final String createdTime = queueList[index].dateCreated.toString();
     final String currentOrder = queueList[index].dateCreated.toString();

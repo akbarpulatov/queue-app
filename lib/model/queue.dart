@@ -80,3 +80,23 @@ List<QueueListItem> queueList = [
     currentQueue: 5,
   ),
 ];
+
+class Navbat {
+  static List<QueueListItem> queueList = [
+    QueueListItem(
+      uID: "000001",
+      name: "",
+      totalQueue: 0,
+      maxQueue: 0,
+      dateCreated: DateTime(2020, 10, 7, 9, 00),
+      dateEnd: DateTime(2020, 10, 20, 18, 00),
+      workingTimeBegin: TimeOfDay(hour: 9, minute: 00),
+      workingTimeEnd: TimeOfDay(hour: 9, minute: 00),
+      hasBreak: true,
+      breakTimeBegin: TimeOfDay(hour: 13, minute: 0),
+      breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
+      note: 'При себе необходимо иметь \nксерокопию паспорта',
+      currentQueue: 5,
+    ),
+  ];
+}
