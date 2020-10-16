@@ -161,7 +161,11 @@ class _HistoryItemState extends State<HistoryItem> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.check_circle_outline),
+                    child: Icon(
+                      LineAwesomeIcons.calendar_check,
+                      size: 30,
+                      color: Color(0xFFDEDED5),
+                    ),
                   ),
                   Expanded(
                     child: Column(
@@ -169,8 +173,10 @@ class _HistoryItemState extends State<HistoryItem> {
                       children: [
                         Text(
                           labelDate,
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.grey[600]),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .merge(TextStyle(color: Color(0xFFB2B2A5))),
                         ),
                         Text(bookedTime),
                       ],

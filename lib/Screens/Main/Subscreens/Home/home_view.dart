@@ -26,14 +26,7 @@ class _HomeViewState extends State<HomeView> {
           RoundedSearchInputField(
             onPressed: () {
               print('find queue button is pressed');
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SearchResultScreen();
-                  },
-                ),
-              );
+              Navigator.pushNamed(context, '/search-result');
             },
             hintText: 'Ввести код',
             onChanged: (value) {

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 
 class TimePicker extends StatefulWidget {
   final TimeOfDay initTime;
+  final void Function(TimeOfDay val) onChanged;
   const TimePicker({
     Key key,
     this.initTime,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -20,9 +22,9 @@ class _TimePickerState extends State<TimePicker> {
         await showTimePicker(context: context, initialTime: _time);
 
     if (picked != null && picked != _time) {
-      print('Time selected: ${_time.toString()}');
       setState(() {
         _time = picked;
+        widget.onChanged(_time);
       });
     }
   }
@@ -36,13 +38,13 @@ class _TimePickerState extends State<TimePicker> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      minWidth: 0,
       onPressed: () {
-        print('change time');
         _selectTime(context);
       },
       child: Text(
         '${_time.format(context)}',
-        style: MyStyles.dimmedText,
+        style: TextStyles.textStyle,
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/QueueManageScreen/queue_manage_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class QueueListItemView extends StatelessWidget {
   const QueueListItemView({
@@ -13,9 +15,20 @@ class QueueListItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String name = queueList[index].name;
-    final String createdTime = queueList[index].createdTime;
-    final String currentOrder = queueList[index].currentOrder;
+    final name = Navbat.queueList[index].name;
+    final _dateCreatedDate = Navbat.queueList[index].dateCreated;
+    final _dateCreatedTimeOfDay = Navbat.queueList[index].workingTimeBegin;
+
+    final _createdTime = DateTime(
+      _dateCreatedDate.year,
+      _dateCreatedDate.month,
+      _dateCreatedDate.day,
+      _dateCreatedTimeOfDay.hour,
+      _dateCreatedTimeOfDay.minute,
+    );
+
+    final createdTime = DateFormat('MM.MM.yyyy  h:mm').format(_createdTime);
+    final currentOrder = Navbat.queueList[index].currentQueue;
 
     return Container(
       width: DisplaySize.size.width,
@@ -65,7 +78,7 @@ class QueueListItemView extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline6,
                           ),
                           Text(
-                            currentOrder,
+                            '$currentOrder',
                             style: Theme.of(context).textTheme.headline2,
                           ),
                         ],
@@ -84,7 +97,13 @@ class QueueListItemView extends StatelessWidget {
             child: Icon(
               LineAwesomeIcons.angle_right,
             ),
-            onPressed: () {},
+            onPressed: () {
+              print('Queue info button is pressed');
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return QueueManagementScreen(index: index);
+              }));
+              // currentOrderViewModel.onFocus = index;
+            },
           )
         ],
       ),

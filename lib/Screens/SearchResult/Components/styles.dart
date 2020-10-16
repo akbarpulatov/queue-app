@@ -35,7 +35,6 @@ class Styles {
     fontStyle: FontStyle.normal,
   );
 
-  ///Текущий №
   static const textStyle3 = TextStyle(
     fontSize: 17,
     color: Color(0xFFBDBDB2),

@@ -24,7 +24,7 @@ class ButtonContainer extends StatelessWidget {
         height: 50,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: borderColor),
+          side: BorderSide(color: borderColor ?? Colors.black45),
         ),
         onPressed: onPressed,
         child: child,

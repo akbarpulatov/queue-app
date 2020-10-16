@@ -12,8 +12,8 @@ class FlatTextFieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      margin: EdgeInsets.symmetric(vertical: 0),
-      padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+      // margin: EdgeInsets.symmetric(vertical: 0),
+      // padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
       child: child,
     );
   }
