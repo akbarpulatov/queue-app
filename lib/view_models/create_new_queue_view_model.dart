@@ -69,7 +69,7 @@ class CreateNewQueueViewModel with ChangeNotifier {
     _currentQueue = val;
   }
 
-  update() {
+  create() {
     Navbat.queueList.add(
       QueueListItem(
         uID: _uID,
@@ -84,8 +84,9 @@ class CreateNewQueueViewModel with ChangeNotifier {
         breakTimeBegin: _breakTimeBegin,
         breakTimeEnd: _breakTimeEnd,
         note: _note,
-        currentQueue: _currentQueue,
+        currentQueue: 1,
       ),
     );
+    notifyListeners();
   }
 }

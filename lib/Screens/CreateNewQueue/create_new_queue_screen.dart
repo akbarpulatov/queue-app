@@ -183,7 +183,8 @@ class CreateNewQueueScreen extends StatelessWidget {
 
                       _formKey.currentState.save();
 
-                      model.update();
+                      model.create();
+                      Navigator.pop(context);
 
                       //Send to API
                     })

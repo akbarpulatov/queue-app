@@ -3,6 +3,8 @@ import 'package:flutter_auth/Screens/Main/Subscreens/Queue/Components/queue_list
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/services/http_requests.dart';
+import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
+import 'package:provider/provider.dart';
 
 class QueueListView extends StatefulWidget {
   QueueListView({
@@ -32,23 +34,25 @@ class _QueueListViewState extends State<QueueListView> {
 
   @override
   Widget build(BuildContext context) {
-    final int length = queueList.length;
-
     return RefreshIndicator(
       onRefresh: refreshList,
       key: refreshKey,
-      child: ListView.separated(
-          itemCount: length,
-          itemBuilder: (context, index) {
-            return QueueListItemView(
-              index: index,
-            );
-          },
-          separatorBuilder: (context, index) {
-            return Divider(
-              height: 1,
-            );
-          }),
+      child: Consumer<CreateNewQueueViewModel>(
+        builder: (context, value, _) {
+          return ListView.separated(
+              itemCount: Navbat.queueList.length,
+              itemBuilder: (context, index) {
+                return QueueListItemView(
+                  index: index,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Divider(
+                  height: 1,
+                );
+              });
+        },
+      ),
     );
   }
 }
