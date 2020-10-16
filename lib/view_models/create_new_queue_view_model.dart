@@ -70,7 +70,8 @@ class CreateNewQueueViewModel with ChangeNotifier {
   }
 
   create() {
-    Navbat.queueList.add(
+    Navbat.queueList.insert(
+      0,
       QueueListItem(
         uID: _uID,
         name: _name,
