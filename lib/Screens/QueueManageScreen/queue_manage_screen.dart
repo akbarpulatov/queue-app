@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/Components/queue_management_item.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
 import 'package:flutter_auth/components/AppBar.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/current_order_view_model.dart';
-import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -17,11 +14,11 @@ class QueueManagementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
+    final model =
+        Provider.of<QueueManageScreenViewModel>(context, listen: false);
 
     final sizedbox = SizedBox(width: 3);
 
-    // currentOrderViewModel.currentOrder = 15;
     return Scaffold(
       appBar: FlatAppBar(label: 'Очередь'),
       body: Stack(
@@ -35,7 +32,7 @@ class QueueManagementScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ButtonContainer(
-                    onPressed: currentOrderViewModel.increment(index),
+                    onPressed: () => model.increment(index),
                     borderColor: Color(0xFFB5B5AD),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -102,18 +99,7 @@ class QueueManagementScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-              child: QueueManagementItem(
-            name: queueList[index].name,
-            dateCreated: queueList[index].dateCreated.toString(),
-            totalQueue: '100',
-            maxQueue: '150',
-            workingTime: '9:00 - 18:00',
-            breakTime: '13:00-14:00',
-            dateFinish: '10.07.2020   18:00',
-            note: 'При себе необходимо иметь \nксерокопию паспорта',
-            index: index,
-          )),
+          Positioned(child: QueueManagementItem(index: index)),
         ],
       ),
     );

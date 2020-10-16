@@ -10,6 +10,7 @@ import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
+import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<CreateNewQueueViewModel>.value(
             value: CreateNewQueueViewModel()),
-        ChangeNotifierProvider<CreateNewQueueViewModel>.value(
-            value: CreateNewQueueViewModel()),
+        ChangeNotifierProvider<QueueManageScreenViewModel>.value(
+            value: QueueManageScreenViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

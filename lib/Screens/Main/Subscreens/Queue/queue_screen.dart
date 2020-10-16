@@ -28,7 +28,7 @@ class QueueScreenState extends State<QueueScreen> {
           style: Theme.of(context).textTheme.headline3,
         ),
       ),
-      body: queueList.length == 0 ? EmptyListView() : QueueListView(),
+      body: Navbat.queueList.length == 0 ? EmptyListView() : QueueListView(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: MyColors.enabled,
         child: Icon(LineAwesomeIcons.plus),
