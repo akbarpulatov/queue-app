@@ -105,7 +105,7 @@ class Navbat {
   ];
 
   static SearchListItem searchResult = SearchListItem(
-    uID: '00001',
+    uID: '546401',
     name: 'Клиника DoctorPlus',
     averageWaitingTime: Duration(minutes: 30),
     workingTimeBegin: TimeOfDay(hour: 9, minute: 00),

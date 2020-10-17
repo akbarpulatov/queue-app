@@ -240,7 +240,6 @@ class SearchResultItem extends StatelessWidget {
               ButtonContainer(
                 flex: 1,
                 onPressed: () {
-                  print('Book button is pressed from SearchResult screen');
                   showDialog(
                     context: context,
                     builder: (_) => _buildAlert(context),
