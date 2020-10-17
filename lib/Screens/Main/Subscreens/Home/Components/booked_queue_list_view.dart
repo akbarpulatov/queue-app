@@ -35,7 +35,6 @@ class _BookedQueueListViewState extends State<BookedQueueListView> {
 
   @override
   Widget build(BuildContext context) {
-    final int length = bookedQueueList.length;
     final width = MediaQuery.of(context).size.width;
 
     return Expanded(
@@ -44,7 +43,7 @@ class _BookedQueueListViewState extends State<BookedQueueListView> {
               onRefresh: refreshList,
               key: refreshKey,
               child: ListView.separated(
-                  itemCount: length,
+                  itemCount: Navbat.bookedQueueList.length,
                   itemBuilder: (context, index) {
                     return BookedQueueItemView(
                       index: index,
