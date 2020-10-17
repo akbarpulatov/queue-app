@@ -20,7 +20,7 @@ class SearchResultItem extends StatelessWidget {
   Widget _buildAlert(context) {
     return AlertDialog(
       content: Container(
-        height: 210,
+        height: 250,
         width: 250,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
