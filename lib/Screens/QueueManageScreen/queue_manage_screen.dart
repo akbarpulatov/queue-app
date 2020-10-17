@@ -89,7 +89,7 @@ class QueueManagementScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
-                                    LineAwesomeIcons.hourglass,
+                                    LineAwesomeIcons.play,
                                     color: Colors.white,
                                   ),
                                   sizedbox,
