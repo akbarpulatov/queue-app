@@ -5,7 +5,9 @@ import 'package:flutter_auth/Screens/SearchResult/Components/icon_container.dart
 import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/search_result_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class SearchResultItem extends StatelessWidget {
   const SearchResultItem({
@@ -17,6 +19,8 @@ class SearchResultItem extends StatelessWidget {
   static const textBookButton = 'Занять';
 
   Widget _buildAlert(context) {
+    final model = Provider.of<SearchResultViewModel>(context, listen: false);
+
     return AlertDialog(
       content: Container(
         height: 250,
@@ -38,6 +42,7 @@ class SearchResultItem extends StatelessWidget {
             SizedBox(height: 30),
             Row(
               children: [
+//=================< Cancel Button >=================
                 ButtonContainer(
                   flex: 1,
                   onPressed: () {
@@ -51,10 +56,13 @@ class SearchResultItem extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 20),
+
+//=================< Book Approve Button >=================
                 ButtonContainer(
                   flex: 1,
                   onPressed: () {
-                    print('Let us book is pressed in alert menu!');
+                    //TODO: add change provider notifier
+                    model.addQueue();
                     Navigator.of(context).pop();
                   },
                   borderColor: MyColors.enabled,
@@ -96,7 +104,7 @@ class SearchResultItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ///=====================< Row #1 >=======================
+//=====================< Row #1 >=======================
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -108,7 +116,7 @@ class SearchResultItem extends StatelessWidget {
             ),
           ),
 
-          ///=====================< Row #2 >=======================
+//=====================< Row #2 >=======================
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -124,7 +132,7 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 20),
 
-          ///=====================< Row #3 >=======================
+//=====================< Row #3 >=======================
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -178,7 +186,7 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 20),
 
-          ///=====================< Row #4 >=======================
+//=====================< Row #4 >=======================
           Row(
             children: [
               IconContainer(iconData: LineAwesomeIcons.info),
@@ -203,7 +211,7 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 18),
 
-          ///=====================< Row #5 >=======================
+//=====================< Row #5 >=======================
           Center(
             child: Text(
               'Текущий №',
@@ -212,7 +220,7 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 5),
 
-          ///=====================< Row #6 >=======================
+//=====================< Row #6 >=======================
           Center(
             child: Text(
               '$currentQueue',
@@ -221,7 +229,7 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 15),
 
-          ///=====================< Row #7 >=======================
+//=====================< Row #7 >=======================
           Row(
             children: [
               SizedBox(width: 16),
@@ -237,6 +245,8 @@ class SearchResultItem extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 19),
+
+//=================< Let's Book Button >=================
               ButtonContainer(
                 flex: 1,
                 onPressed: () {

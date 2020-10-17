@@ -11,6 +11,7 @@ import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
 import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
+import 'package:flutter_auth/view_models/search_result_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
             value: CreateNewQueueViewModel()),
         ChangeNotifierProvider<QueueManageScreenViewModel>.value(
             value: QueueManageScreenViewModel()),
+        ChangeNotifierProvider<SearchResultViewModel>.value(
+            value: SearchResultViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
