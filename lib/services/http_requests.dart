@@ -53,7 +53,7 @@ class HttpRequest {
         print('Booked Queue list is requested!');
         var bookedQueueListJson = convert.jsonDecode(response.body) as List;
         bookedQueueList =
-            bookedQueueListJson.map((e) => BookedQueue.fromJson(e)).toList();
+            bookedQueueListJson.map((e) => BookedQueueOld.fromJson(e)).toList();
 
         print(Navbat.queueList.toString());
       }

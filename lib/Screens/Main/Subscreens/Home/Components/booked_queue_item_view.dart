@@ -3,7 +3,9 @@ import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button
 import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
+import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class BookedQueueItemView extends StatefulWidget {
@@ -21,15 +23,15 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
 
     final index = widget.index;
 
-    final String uID = bookedQueueList[index].uID;
-    final String name = bookedQueueList[index].name;
-    final String createdTime = bookedQueueList[index].createdTime;
-    final String order = bookedQueueList[index].order;
-    final String averageWaitingTime = bookedQueueList[index].averageWaitingTime;
-    final String currentOrder = bookedQueueList[index].currentOrder;
-    final String note = bookedQueueList[index].note;
-
-    Color colorAverageWaitingTime = MyColors.enabled;
+    final String uID = Navbat.bookedQueueList[index].uID;
+    final String name = Navbat.bookedQueueList[index].name;
+    final averageWaitingTime =
+        '${Navbat.bookedQueueList[index].averageWaitingTime.inMinutes} min';
+    final bookedTime = DateFormat('d.MM.yyyy  H:mm')
+        .format(Navbat.bookedQueueList[index].bookedTime);
+    final myQueue = Navbat.bookedQueueList[index].myQueue;
+    final currentQueue = Navbat.bookedQueueList[index].currentQueue;
+    final note = Navbat.bookedQueueList[index].note;
 
     final String exitText = 'Выйти';
     final String shareText = 'Поделиться';
@@ -73,7 +75,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                   children: [
                     Text('Ваш №'),
                     Text(
-                      order,
+                      '$myQueue',
                       style: TextStyle(
                           fontSize: 20,
                           fontStyle: FontStyle.italic,
@@ -103,7 +105,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                       'Вы в очереди с',
                       style: TextStyle(fontSize: 15, color: MyColors.disabled),
                     ),
-                    Text('$createdTime'),
+                    Text('$bookedTime'),
                   ],
                 ),
               ),
@@ -116,7 +118,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                         style:
                             TextStyle(fontSize: 15, color: MyColors.disabled),
                       ),
-                      Text('$currentOrder'),
+                      Text('$currentQueue'),
                     ],
                   )
                 ],

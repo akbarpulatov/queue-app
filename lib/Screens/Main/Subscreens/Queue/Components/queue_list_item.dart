@@ -27,7 +27,7 @@ class QueueListItemView extends StatelessWidget {
       _dateCreatedTimeOfDay.minute,
     );
 
-    final createdTime = DateFormat('DD.MM.yyyy  H:mm').format(_createdTime);
+    final createdTime = DateFormat('d.MM.yyyy  H:mm').format(_createdTime);
     final currentOrder = Navbat.queueList[index].currentQueue;
 
     return Container(

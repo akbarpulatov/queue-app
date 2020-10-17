@@ -1,7 +1,53 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class BookedQueue {
+  String uID;
+  String name;
+  Duration averageWaitingTime;
+  TimeOfDay workingTimeBegin;
+  TimeOfDay workingTimeEnd;
+  TimeOfDay breakTimeBegin;
+  TimeOfDay breakTimeEnd;
+  int totalQueue;
+  int myQueue;
+  String note;
+  int currentQueue;
+  bool isPaused;
+  DateTime bookedTime;
+
   BookedQueue({
+    String uID,
+    String name,
+    Duration averageWaitingTime,
+    TimeOfDay workingTimeBegin,
+    TimeOfDay workingTimeEnd,
+    TimeOfDay breakTimeBegin,
+    TimeOfDay breakTimeEnd,
+    int totalQueue,
+    int myQueue,
+    String note,
+    int currentQueue,
+    bool isPaused,
+    DateTime bookedTime,
+  }) {
+    this.uID = uID;
+    this.name = name;
+    this.averageWaitingTime = averageWaitingTime;
+    this.workingTimeBegin = workingTimeBegin;
+    this.workingTimeEnd = workingTimeEnd;
+    this.breakTimeBegin = breakTimeBegin;
+    this.breakTimeEnd = breakTimeEnd;
+    this.totalQueue = totalQueue;
+    this.myQueue = myQueue;
+    this.note = note;
+    this.currentQueue = currentQueue;
+    this.isPaused = isPaused;
+    this.bookedTime = bookedTime;
+  }
+}
+
+class BookedQueueOld {
+  BookedQueueOld({
     String uID,
     String name,
     String createdTime,
@@ -19,23 +65,16 @@ class BookedQueue {
     this.note = note;
   }
 
-  @required
   String uID;
-  @required
   String name;
-  @required
   String createdTime;
-  @required
   String order;
-  @required
   String averageWaitingTime;
-  @required
   String currentOrder;
-  @required
   String note;
 
-  factory BookedQueue.fromJson(dynamic json) {
-    return BookedQueue(
+  factory BookedQueueOld.fromJson(dynamic json) {
+    return BookedQueueOld(
       uID: json['uID'],
       name: json['name'],
       createdTime: json['createdTime'],
@@ -47,8 +86,8 @@ class BookedQueue {
   }
 }
 
-List<BookedQueue> bookedQueueList = [
-  BookedQueue(
+List<BookedQueueOld> bookedQueueList = [
+  BookedQueueOld(
     uID: "11111",
     name: "Технический осмотр автомобиля в ГАИ",
     createdTime: "10.07.2020   10:20",
@@ -57,7 +96,7 @@ List<BookedQueue> bookedQueueList = [
     currentOrder: "15",
     note: "При себе необходимо иметь ксерокопию паспорта",
   ),
-  BookedQueue(
+  BookedQueueOld(
     uID: "11111",
     name: "Клиника DoctorPlus",
     createdTime: "10.07.2020   17:35",
@@ -66,7 +105,7 @@ List<BookedQueue> bookedQueueList = [
     currentOrder: "3",
     note: "При себе необходимо иметь ксерокопию паспорта",
   ),
-  BookedQueue(
+  BookedQueueOld(
     uID: "11111",
     name: "Клиника MedService",
     createdTime: "11.09.2020    09:35",
@@ -75,7 +114,7 @@ List<BookedQueue> bookedQueueList = [
     currentOrder: "3",
     note: "При себе необходимо иметь ксерокопию паспорта",
   ),
-  BookedQueue(
+  BookedQueueOld(
     uID: "11111",
     name: "Клиника Doctor+",
     createdTime: "11.09.2020    10:42",
