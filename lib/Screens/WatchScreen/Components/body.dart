@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
+import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/icon_container.dart';
 import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
 import 'package:flutter_auth/Screens/WatchScreen/Components/qr_container.dart';

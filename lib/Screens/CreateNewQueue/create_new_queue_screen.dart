@@ -6,7 +6,7 @@ import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/styles.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/flat_input_decoration.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/time_picker.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
+import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
 import 'package:provider/provider.dart';

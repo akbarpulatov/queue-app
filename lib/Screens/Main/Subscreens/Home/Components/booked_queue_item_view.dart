@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
+import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_svg/flutter_svg.dart';

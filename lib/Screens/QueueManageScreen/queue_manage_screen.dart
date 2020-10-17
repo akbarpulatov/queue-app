@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/QueueManageScreen/Components/queue_management_item.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
+import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/components/AppBar.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/queue.dart';
