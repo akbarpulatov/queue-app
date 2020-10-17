@@ -15,4 +15,18 @@ class QueueManageScreenViewModel extends ChangeNotifier {
     Navbat.queueList.removeAt(index);
     notifyListeners();
   }
+
+  pause(int index) {
+    Navbat.queueList[index].isPaused = true;
+    notifyListeners();
+  }
+
+  cont(int index) {
+    Navbat.queueList[index].isPaused = false;
+    notifyListeners();
+  }
+
+  isPaused(index) {
+    return Navbat.queueList[index].isPaused = false;
+  }
 }

@@ -15,6 +15,7 @@ class QueueListItem {
     TimeOfDay breakTimeEnd,
     String note,
     int currentQueue,
+    bool isPaused,
   }) {
     this.name = name;
     this.totalQueue = totalQueue;
@@ -28,6 +29,7 @@ class QueueListItem {
     this.breakTimeEnd = breakTimeEnd;
     this.note = note;
     this.currentQueue = currentQueue;
+    this.isPaused = isPaused;
   }
 
   String uID;
@@ -43,6 +45,7 @@ class QueueListItem {
   TimeOfDay breakTimeEnd;
   String note;
   int currentQueue;
+  bool isPaused;
 
   factory QueueListItem.fromJson(dynamic json) {
     return QueueListItem(
@@ -59,6 +62,7 @@ class QueueListItem {
       breakTimeEnd: json['breakTimeEnd'],
       note: json['note'],
       currentQueue: json['currentQueue'],
+      isPaused: json['isPaused'],
     );
   }
 }
@@ -79,6 +83,7 @@ class Navbat {
       breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
       note: 'При себе необходимо иметь \nксерокопию паспорта',
       currentQueue: 15,
+      isPaused: false,
     ),
     QueueListItem(
       uID: "000001",
@@ -94,6 +99,7 @@ class Navbat {
       breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
       note: 'При себе необходимо иметь \nксерокопию паспорта',
       currentQueue: 34,
+      isPaused: false,
     ),
   ];
 }
