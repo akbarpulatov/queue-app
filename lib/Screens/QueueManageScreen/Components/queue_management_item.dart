@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/model/current_order_view_model.dart';
+import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
+import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class QueueManagementItem extends StatelessWidget {
   const QueueManagementItem({
     Key key,
-    this.name,
-    this.totalQueue,
-    this.maxQueue,
-    this.dateCreated,
-    this.dateFinish,
-    this.workingTime,
-    this.breakTime,
-    this.note,
-    this.currentOrder,
     this.index,
   }) : super(key: key);
 
-  final String name;
-  final String totalQueue;
-  final String maxQueue;
-  final String dateCreated;
-  final String dateFinish;
-  final String workingTime;
-  final String breakTime;
-  final String note;
-  final int currentOrder;
   @required
   final int index;
+
+  static const divider = Divider(
+    indent: 16,
+    height: 20,
+  );
 
   Widget _buildingBlock(context, final String upperText,
       final String middleText, final String lowerText) {
@@ -98,10 +87,28 @@ class QueueManagementItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final divider = Divider(
-      indent: 16,
-      height: 20,
-    );
+    final name = Navbat.queueList[index].name;
+    final totalQueue = Navbat.queueList[index].totalQueue;
+    final maxQueue = Navbat.queueList[index].maxQueue;
+
+    final _dateCreatedDate = Navbat.queueList[index].dateCreated;
+    final createdTime = DateFormat('d.MM.yyyy  H:mm').format(_dateCreatedDate);
+
+    final _dateEnd = Navbat.queueList[index].dateEnd;
+    final dateEnd = DateFormat('d.MM.yyyy  H:mm').format(_dateEnd);
+
+    final workingTimeBegin =
+        Navbat.queueList[index].workingTimeBegin.format(context);
+    final workingTimeEnd =
+        Navbat.queueList[index].workingTimeEnd.format(context);
+    final workingTime = '$workingTimeBegin - $workingTimeEnd';
+
+    final breakTimeBegin =
+        Navbat.queueList[index].breakTimeBegin.format(context);
+    final breakTimeEnd = Navbat.queueList[index].breakTimeEnd.format(context);
+    final breakTime = '$breakTimeBegin-$breakTimeEnd';
+
+    final note = Navbat.queueList[index].note;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,8 +128,8 @@ class QueueManagementItem extends StatelessWidget {
         divider,
         _row(
           LineAwesomeIcons.calendar_plus,
-          _buildingBlock(context, 'Дата создания', dateCreated, null),
-          _buildingBlock(context, 'Дата окончания', dateFinish, null),
+          _buildingBlock(context, 'Дата создания', createdTime, null),
+          _buildingBlock(context, 'Дата окончания', dateEnd, null),
         ),
         divider,
         _row(
@@ -137,40 +144,28 @@ class QueueManagementItem extends StatelessWidget {
           _buildingBlock(context, 'Заметка', note, null),
           null,
         ),
-        SizedBox(height: 18),
+        const SizedBox(height: 18),
         Center(
           child: Text(
             'Текущий №',
             style: _textStyle1,
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Center(
-          child: CurrentOrderView(index: index),
+          child: Builder(builder: (context) {
+            return Consumer<QueueManageScreenViewModel>(
+              builder: (context, model, child) {
+                return Text(
+                  model.currentOrder(index).toString(),
+                  style: Theme.of(context).textTheme.headline4,
+                );
+              },
+            );
+          }),
         ),
         SizedBox(height: 15),
       ],
-    );
-  }
-}
-
-class CurrentOrderView extends StatelessWidget {
-  const CurrentOrderView({
-    Key key,
-    this.index,
-  }) : super(key: key);
-
-  @required
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    print(index);
-    final currentOrderViewModel = Provider.of<CreatedQueueModel>(context);
-
-    return Text(
-      currentOrderViewModel.currentOrder(index).toString(),
-      style: Theme.of(context).textTheme.headline4,
     );
   }
 }

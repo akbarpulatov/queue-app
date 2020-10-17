@@ -70,15 +70,18 @@ class CreateNewQueueViewModel with ChangeNotifier {
   }
 
   create() {
+    final _tempDateEnd = _dateCreated.add(Duration(days: 7));
+
     Navbat.queueList.insert(
       0,
       QueueListItem(
         uID: _uID,
         name: _name,
-        totalQueue: _totalQueue,
+        totalQueue: 0,
         maxQueue: _maxQueue,
         dateCreated: _dateCreated,
-        dateEnd: _dateEnd,
+        dateEnd: DateTime(_tempDateEnd.year, _tempDateEnd.month,
+            _tempDateEnd.day, _workingTimeEnd.hour, _workingTimeEnd.minute),
         workingTimeBegin: _workingTimeBegin,
         workingTimeEnd: _workingTimeEnd,
         hasBreak: _hasBreak,

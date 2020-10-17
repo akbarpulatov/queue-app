@@ -38,7 +38,7 @@ class _QueueListViewState extends State<QueueListView> {
       onRefresh: refreshList,
       key: refreshKey,
       child: Consumer<CreateNewQueueViewModel>(
-        builder: (context, value, _) {
+        builder: (context, createModel, _) {
           return ListView.separated(
               itemCount: Navbat.queueList.length,
               itemBuilder: (context, index) {

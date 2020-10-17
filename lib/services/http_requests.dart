@@ -45,17 +45,17 @@ class HttpRequest {
       } else if (url == MyUrls.queueList) {
         print('Queue list is requested!');
         var queueListJson = convert.jsonDecode(response.body) as List;
-        queueList =
+        Navbat.queueList =
             queueListJson.map((e) => QueueListItem.fromJson(e)).toList();
 
-        print(queueList.toString());
+        print(Navbat.queueList.toString());
       } else if (url == MyUrls.bookedQueueList) {
         print('Booked Queue list is requested!');
         var bookedQueueListJson = convert.jsonDecode(response.body) as List;
         bookedQueueList =
             bookedQueueListJson.map((e) => BookedQueue.fromJson(e)).toList();
 
-        print(queueList.toString());
+        print(Navbat.queueList.toString());
       }
     } else {
       print('status is NOTok!');

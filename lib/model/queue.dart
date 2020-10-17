@@ -15,6 +15,7 @@ class QueueListItem {
     TimeOfDay breakTimeEnd,
     String note,
     int currentQueue,
+    bool isPaused,
   }) {
     this.name = name;
     this.totalQueue = totalQueue;
@@ -28,6 +29,7 @@ class QueueListItem {
     this.breakTimeEnd = breakTimeEnd;
     this.note = note;
     this.currentQueue = currentQueue;
+    this.isPaused = isPaused;
   }
 
   String uID;
@@ -43,6 +45,7 @@ class QueueListItem {
   TimeOfDay breakTimeEnd;
   String note;
   int currentQueue;
+  bool isPaused;
 
   factory QueueListItem.fromJson(dynamic json) {
     return QueueListItem(
@@ -59,27 +62,10 @@ class QueueListItem {
       breakTimeEnd: json['breakTimeEnd'],
       note: json['note'],
       currentQueue: json['currentQueue'],
+      isPaused: json['isPaused'],
     );
   }
 }
-
-List<QueueListItem> queueList = [
-  QueueListItem(
-    uID: "000001",
-    name: "",
-    totalQueue: 0,
-    maxQueue: 0,
-    dateCreated: DateTime(2020, 10, 7, 9, 00),
-    dateEnd: DateTime(2020, 10, 20, 18, 00),
-    workingTimeBegin: TimeOfDay(hour: 9, minute: 00),
-    workingTimeEnd: TimeOfDay(hour: 9, minute: 00),
-    hasBreak: true,
-    breakTimeBegin: TimeOfDay(hour: 13, minute: 0),
-    breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
-    note: 'При себе необходимо иметь \nксерокопию паспорта',
-    currentQueue: 5,
-  ),
-];
 
 class Navbat {
   static List<QueueListItem> queueList = [
@@ -97,6 +83,7 @@ class Navbat {
       breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
       note: 'При себе необходимо иметь \nксерокопию паспорта',
       currentQueue: 15,
+      isPaused: false,
     ),
     QueueListItem(
       uID: "000001",
@@ -112,6 +99,7 @@ class Navbat {
       breakTimeEnd: TimeOfDay(hour: 14, minute: 0),
       note: 'При себе необходимо иметь \nксерокопию паспорта',
       currentQueue: 34,
+      isPaused: false,
     ),
   ];
 }
