@@ -4,8 +4,10 @@ import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/services/http_requests.dart';
+import 'package:flutter_auth/view_models/search_result_view_model.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BookedQueueListView extends StatefulWidget {
   BookedQueueListView({
@@ -36,6 +38,7 @@ class _BookedQueueListViewState extends State<BookedQueueListView> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final searchResultModel = Provider.of<SearchResultViewModel>(context);
 
     return Expanded(
       child: bookedQueueList.isNotEmpty
