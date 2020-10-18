@@ -17,6 +17,13 @@ class SearchResultItem extends StatelessWidget {
   static const size = 26;
   static const textWatchButton = 'Наблюдать';
   static const textBookButton = 'Занять';
+  static const verticalDivider = SizedBox(
+    width: 20,
+    height: 50,
+    child: VerticalDivider(
+      thickness: 1,
+    ),
+  );
 
   Widget _buildAlert(context) {
     final model = Provider.of<SearchResultViewModel>(context, listen: false);
@@ -83,6 +90,9 @@ class SearchResultItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<SearchResultViewModel>(context, listen: true);
+    final myQueue = model.isInQueueAlready();
+
     final name = Navbat.searchResult.name;
     final averageWaitingTime = Navbat.searchResult.averageWaitingTime.inMinutes;
 
@@ -210,25 +220,43 @@ class SearchResultItem extends StatelessWidget {
           ),
           SizedBox(height: 18),
 
-//=====================< Row #5 >=======================
-          Center(
-            child: Text(
-              'Текущий №',
-              style: Styles.textStyle3,
+//=================< Queue Numbers Row >===================
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Column(
+              children: [
+                Text(
+                  'Текущий №',
+                  style: Styles.textStyle3,
+                ),
+                SizedBox(height: 5),
+                Text(
+                  '$currentQueue',
+                  style: Styles.textStyle4,
+                ),
+                SizedBox(height: 15),
+              ],
             ),
-          ),
-          SizedBox(height: 5),
+            if (myQueue != null) verticalDivider,
+            if (myQueue != null)
+              Column(
+                children: [
+//=================< Current Queue >===================
+                  Text(
+                    'Ваш №',
+                    style: Styles.textStyle3,
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    '$myQueue',
+                    style: Styles.textStyle4,
+                  ),
+                  SizedBox(height: 15),
+                ],
+              )
+          ]),
 
-//=====================< Row #6 >=======================
-          Center(
-            child: Text(
-              '$currentQueue',
-              style: Styles.textStyle4,
-            ),
-          ),
-          SizedBox(height: 15),
-
-//=====================< Row #7 >=======================
+//====================< Buttons >======================
+//=============< Watch Button >=============
           Row(
             children: [
               SizedBox(width: 16),
@@ -245,25 +273,26 @@ class SearchResultItem extends StatelessWidget {
               ),
               SizedBox(width: 19),
 
-//=================< Let's Book Button >=================
-              ButtonContainer(
-                flex: 1,
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => _buildAlert(context),
-                  );
-                },
-                borderColor: MyColors.enabled,
-                fillColor: MyColors.enabled,
-                child: Text(
-                  textBookButton,
-                  style: Styles.textStyleButton.merge(
-                    TextStyle(color: Colors.white),
+//===========< Let's Book Button >===========
+              if (myQueue == null)
+                ButtonContainer(
+                  flex: 1,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => _buildAlert(context),
+                    );
+                  },
+                  borderColor: MyColors.enabled,
+                  fillColor: MyColors.enabled,
+                  child: Text(
+                    textBookButton,
+                    style: Styles.textStyleButton.merge(
+                      TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 16),
+              if (myQueue == null) SizedBox(width: 16),
             ],
           ),
         ],
