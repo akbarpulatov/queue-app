@@ -43,7 +43,7 @@ class _BookedQueueListViewState extends State<BookedQueueListView> {
     final homeModel = Provider.of<HomeScreenViewModel>(context);
 
     return Expanded(
-      child: bookedQueueList.isNotEmpty
+      child: Navbat.bookedQueueList.isNotEmpty
           ? RefreshIndicator(
               onRefresh: refreshList,
               key: refreshKey,

@@ -51,9 +51,9 @@ class HttpRequest {
         print(Navbat.queueList.toString());
       } else if (url == MyUrls.bookedQueueList) {
         print('Booked Queue list is requested!');
-        var bookedQueueListJson = convert.jsonDecode(response.body) as List;
-        bookedQueueList =
-            bookedQueueListJson.map((e) => BookedQueueOld.fromJson(e)).toList();
+        // var bookedQueueListJson = convert.jsonDecode(response.body) as List;
+        // bookedQueueList =
+        //     bookedQueueListJson.map((e) => BookedQueueOld.fromJson(e)).toList();
 
         print(Navbat.queueList.toString());
       }
