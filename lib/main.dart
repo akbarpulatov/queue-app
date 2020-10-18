@@ -10,6 +10,7 @@ import 'package:flutter_auth/Screens/WatchScreen/watch_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/view_models/create_new_queue_view_model.dart';
+import 'package:flutter_auth/view_models/home_screen_view_model.dart';
 import 'package:flutter_auth/view_models/queue_managa_view_model.dart';
 import 'package:flutter_auth/view_models/search_result_view_model.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
             value: QueueManageScreenViewModel()),
         ChangeNotifierProvider<SearchResultViewModel>.value(
             value: SearchResultViewModel()),
+        ChangeNotifierProvider<HomeScreenViewModel>.value(
+            value: HomeScreenViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

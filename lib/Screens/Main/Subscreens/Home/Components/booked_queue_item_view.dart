@@ -4,9 +4,11 @@ import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/home_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BookedQueueItemView extends StatefulWidget {
   @required
@@ -20,7 +22,7 @@ class BookedQueueItemView extends StatefulWidget {
 class _BookedQueueItemViewState extends State<BookedQueueItemView> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
+    final homeModel = Provider.of<HomeScreenViewModel>(context);
     final index = widget.index;
 
     final String uID = Navbat.bookedQueueList[index].uID;
@@ -157,7 +159,9 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
             children: [
               ButtonContainer(
                 flex: exitText.length + 9,
-                onPressed: () {},
+                onPressed: () {
+                  homeModel.delete(index);
+                },
                 borderColor: Color(0xFFE0503D),
                 fillColor: Color(0xFFE0503D),
                 child: Row(
