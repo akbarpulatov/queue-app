@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
-import 'package:flutter_auth/Screens/SearchResult/Components/button_container.dart';
+import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/booked_queue.dart';
+import 'package:flutter_auth/model/queue.dart';
+import 'package:flutter_auth/view_models/home_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BookedQueueItemView extends StatefulWidget {
   @required
@@ -18,18 +22,18 @@ class BookedQueueItemView extends StatefulWidget {
 class _BookedQueueItemViewState extends State<BookedQueueItemView> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
+    final homeModel = Provider.of<HomeScreenViewModel>(context);
     final index = widget.index;
 
-    final String uID = bookedQueueList[index].uID;
-    final String name = bookedQueueList[index].name;
-    final String createdTime = bookedQueueList[index].createdTime;
-    final String order = bookedQueueList[index].order;
-    final String averageWaitingTime = bookedQueueList[index].averageWaitingTime;
-    final String currentOrder = bookedQueueList[index].currentOrder;
-    final String note = bookedQueueList[index].note;
-
-    Color colorAverageWaitingTime = MyColors.enabled;
+    final String uID = Navbat.bookedQueueList[index].uID;
+    final String name = Navbat.bookedQueueList[index].name;
+    final averageWaitingTime =
+        '${Navbat.bookedQueueList[index].averageWaitingTime.inMinutes} min';
+    final bookedTime = DateFormat('d.MM.yyyy  H:mm')
+        .format(Navbat.bookedQueueList[index].bookedTime);
+    final myQueue = Navbat.bookedQueueList[index].myQueue;
+    final currentQueue = Navbat.bookedQueueList[index].currentQueue;
+    final note = Navbat.bookedQueueList[index].note;
 
     final String exitText = 'Выйти';
     final String shareText = 'Поделиться';
@@ -73,7 +77,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                   children: [
                     Text('Ваш №'),
                     Text(
-                      order,
+                      '$myQueue',
                       style: TextStyle(
                           fontSize: 20,
                           fontStyle: FontStyle.italic,
@@ -103,7 +107,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                       'Вы в очереди с',
                       style: TextStyle(fontSize: 15, color: MyColors.disabled),
                     ),
-                    Text('$createdTime'),
+                    Text('$bookedTime'),
                   ],
                 ),
               ),
@@ -116,7 +120,7 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
                         style:
                             TextStyle(fontSize: 15, color: MyColors.disabled),
                       ),
-                      Text('$currentOrder'),
+                      Text('$currentQueue'),
                     ],
                   )
                 ],
@@ -155,7 +159,9 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
             children: [
               ButtonContainer(
                 flex: exitText.length + 9,
-                onPressed: () {},
+                onPressed: () {
+                  homeModel.delete(index);
+                },
                 borderColor: Color(0xFFE0503D),
                 fillColor: Color(0xFFE0503D),
                 child: Row(

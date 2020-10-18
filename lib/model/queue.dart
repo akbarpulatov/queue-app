@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/model/booked_queue.dart';
+import 'package:flutter_auth/model/search_queue.dart';
 
 class QueueListItem {
   QueueListItem({
@@ -100,6 +102,38 @@ class Navbat {
       note: 'При себе необходимо иметь \nксерокопию паспорта',
       currentQueue: 34,
       isPaused: false,
+    ),
+  ];
+
+  static SearchListItem searchResult = SearchListItem(
+    uID: '546401',
+    name: 'Клиника DoctorPlus',
+    averageWaitingTime: Duration(minutes: 30),
+    workingTimeBegin: TimeOfDay(hour: 9, minute: 00),
+    workingTimeEnd: TimeOfDay(hour: 17, minute: 00),
+    breakTimeBegin: TimeOfDay(hour: 13, minute: 00),
+    breakTimeEnd: TimeOfDay(hour: 14, minute: 00),
+    totalQueue: 107,
+    note: 'При себе необходимо иметь \nксерокопию паспорта',
+    currentQueue: 15,
+    isPaused: false,
+  );
+
+  static List<BookedQueue> bookedQueueList = [
+    BookedQueue(
+      uID: '546402',
+      name: 'Технический осмотр автомобиля в ГАИ',
+      averageWaitingTime: Duration(minutes: 30),
+      workingTimeBegin: TimeOfDay(hour: 9, minute: 00),
+      workingTimeEnd: TimeOfDay(hour: 17, minute: 00),
+      breakTimeBegin: TimeOfDay(hour: 13, minute: 30),
+      breakTimeEnd: TimeOfDay(hour: 14, minute: 30),
+      totalQueue: 150,
+      myQueue: 137,
+      note: 'При себе необходимо иметь ксерокопию паспорта',
+      currentQueue: 15,
+      isPaused: false,
+      bookedTime: DateTime.now(),
     ),
   ];
 }
