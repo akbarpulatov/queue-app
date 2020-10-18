@@ -61,7 +61,6 @@ class SearchResultItem extends StatelessWidget {
                 ButtonContainer(
                   flex: 1,
                   onPressed: () {
-                    //TODO: add change provider notifier
                     model.addQueue();
                     Navigator.of(context).pop();
                   },
