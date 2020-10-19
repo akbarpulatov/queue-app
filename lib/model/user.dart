@@ -1,11 +1,11 @@
-enum Type {
+enum UserType {
   guest,
   user,
 }
 
 class User {
   static String id;
-  static Type type;
+  static UserType type = UserType.guest;
   static String name;
   static String password;
   static String tarif;
