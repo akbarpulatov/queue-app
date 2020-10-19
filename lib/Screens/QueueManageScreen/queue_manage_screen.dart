@@ -25,6 +25,12 @@ class QueueManagementScreen extends StatelessWidget {
       body: Stack(
         alignment: Alignment.center,
         children: [
+//=====================< Queue Managament Item >=======================
+          Positioned(
+            top: 0.0,
+            width: DisplaySize.size.width,
+            child: QueueManagementItem(index: index),
+          ),
           Positioned(
             bottom: 20,
             width: DisplaySize.size.width,
@@ -142,9 +148,6 @@ class QueueManagementScreen extends StatelessWidget {
               ),
             ),
           ),
-
-//=====================< Queue Managament Item >=======================
-          Positioned(child: QueueManagementItem(index: index)),
         ],
       ),
     );

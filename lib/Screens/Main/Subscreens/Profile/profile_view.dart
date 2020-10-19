@@ -26,84 +26,90 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
       appBar: FlatAppBar(
         label: 'Личный кабинет',
       ),
-      body: Column(
+      body: Stack(
+        alignment: Alignment.center,
         children: [
-          UserProfileInfo(),
-          SizedBox(height: 20),
-          User.type == UserType.user
-              ? Column(
-                  children: [
-                    SizedBox(
-                      width: DisplaySize.size.width * 0.8,
-                      child: ButtonContainer(
-                        onPressed: () {},
-                        borderColor: Color(0xFFB5B5AD),
-                        child: Text('Сменить тариф',
-                            style: Theme.of(context).textTheme.button),
+          Positioned(
+            child: Column(
+              children: [
+                UserProfileInfo(),
+                SizedBox(height: 20),
+                User.type == UserType.user
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            width: DisplaySize.size.width * 0.8,
+                            child: ButtonContainer(
+                              onPressed: () {},
+                              borderColor: Color(0xFFB5B5AD),
+                              child: Text('Сменить тариф',
+                                  style: Theme.of(context).textTheme.button),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Divider(),
+                          FlatButtonForProfileScreen(
+                            icon: LineAwesomeIcons.history,
+                            text: 'История очередей',
+                            press: () {
+                              print('История очередей');
+                            },
+                          ),
+                          Divider(
+                            indent: 50,
+                          ),
+                          FlatButtonForProfileScreen(
+                            icon: LineAwesomeIcons.lock,
+                            text: 'Сменить пароль',
+                            press: () {
+                              print('Сменить пароль');
+                            },
+                          ),
+                          Divider(),
+                        ],
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: DisplaySize.size.height * 0.15,
+                          ),
+                          AlreadyHaveAnAccountCheck(
+                            login: false,
+                            press: () {
+                              Navigator.pushNamed(context, '/login');
+                            },
+                          ),
+                          OrDivider(),
+                          AlreadyHaveAnAccountCheck(
+                            press: () {
+                              Navigator.pushNamed(context, '/sign-up');
+                            },
+                          ),
+                        ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Divider(),
-                    FlatButtonForProfileScreen(
-                      icon: LineAwesomeIcons.history,
-                      text: 'История очередей',
-                      press: () {
-                        print('История очередей');
-                      },
-                    ),
-                    Divider(
-                      indent: 50,
-                    ),
-                    FlatButtonForProfileScreen(
-                      icon: LineAwesomeIcons.lock,
-                      text: 'Сменить пароль',
-                      press: () {
-                        print('Сменить пароль');
-                      },
-                    ),
-                    Divider(),
-                  ],
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: DisplaySize.size.height * 0.15,
-                    ),
-                    AlreadyHaveAnAccountCheck(
-                      login: false,
-                      press: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                    ),
-                    OrDivider(),
-                    AlreadyHaveAnAccountCheck(
-                      press: () {
-                        Navigator.pushNamed(context, '/sign-up');
-                      },
-                    ),
-                  ],
-                ),
-          Expanded(child: SizedBox()),
-          if (User.type == UserType.user)
-            RoundedButton(
-              text: "Выход",
-              color: kBackgroundLightColor,
-              borderColor: MyColors.redLight,
-              textColor: MyColors.redDark,
-              press: () {
-                // Sign-out
-                setState(() {
-                  User.type = UserType.guest;
-                  User.name = null;
-                });
-              },
+              ],
             ),
-          SizedBox(
-            height: 7,
           ),
+          if (User.type == UserType.user)
+            Positioned(
+              bottom: 10,
+              child: RoundedButton(
+                text: "Выход",
+                color: kBackgroundLightColor,
+                borderColor: MyColors.redLight,
+                textColor: MyColors.redDark,
+                press: () {
+                  // Sign-out
+                  setState(() {
+                    User.type = UserType.guest;
+                    User.name = null;
+                  });
+                },
+              ),
+            ),
         ],
       ),
     );
