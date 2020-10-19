@@ -13,11 +13,11 @@ class QueueListItem {
     TimeOfDay workingTimeBegin,
     TimeOfDay workingTimeEnd,
     bool hasBreak,
+    bool isPaused,
     TimeOfDay breakTimeBegin,
     TimeOfDay breakTimeEnd,
     String note,
     int currentQueue,
-    bool isPaused,
   }) {
     this.name = name;
     this.totalQueue = totalQueue;
@@ -27,6 +27,7 @@ class QueueListItem {
     this.workingTimeBegin = workingTimeBegin;
     this.workingTimeEnd = workingTimeEnd;
     this.hasBreak = hasBreak;
+    this.hasPaused = hasPaused;
     this.breakTimeBegin = breakTimeBegin;
     this.breakTimeEnd = breakTimeEnd;
     this.note = note;
@@ -43,6 +44,7 @@ class QueueListItem {
   TimeOfDay workingTimeBegin;
   TimeOfDay workingTimeEnd;
   bool hasBreak;
+  bool hasPaused;
   TimeOfDay breakTimeBegin;
   TimeOfDay breakTimeEnd;
   String note;
@@ -60,11 +62,11 @@ class QueueListItem {
       workingTimeBegin: json['workingTimeBegin'],
       workingTimeEnd: json['workingTimeEnd'],
       hasBreak: json['hasBreak'],
+      isPaused: json['isPaused'],
       breakTimeBegin: json['breakTimeBegin'],
       breakTimeEnd: json['breakTimeEnd'],
       note: json['note'],
       currentQueue: json['currentQueue'],
-      isPaused: json['isPaused'],
     );
   }
 }

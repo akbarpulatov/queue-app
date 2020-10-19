@@ -12,6 +12,7 @@ class CreateNewQueueViewModel with ChangeNotifier {
   TimeOfDay _workingTimeBegin;
   TimeOfDay _workingTimeEnd;
   bool _hasBreak;
+  bool _isPaused = false;
   TimeOfDay _breakTimeBegin;
   TimeOfDay _breakTimeEnd;
   String _note;
@@ -69,6 +70,14 @@ class CreateNewQueueViewModel with ChangeNotifier {
     _currentQueue = val;
   }
 
+  set isPaused(val) {
+    _isPaused = val;
+  }
+
+  get isPaused {
+    return _isPaused;
+  }
+
   create() {
     final _tempDateEnd = _dateCreated.add(Duration(days: 7));
 
@@ -85,6 +94,7 @@ class CreateNewQueueViewModel with ChangeNotifier {
         workingTimeBegin: _workingTimeBegin,
         workingTimeEnd: _workingTimeEnd,
         hasBreak: _hasBreak,
+        isPaused: _isPaused,
         breakTimeBegin: _breakTimeBegin,
         breakTimeEnd: _breakTimeEnd,
         note: _note,
