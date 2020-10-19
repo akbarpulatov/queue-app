@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/flat_button_for_profile_screen.dart';
 import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/user_profile_info.dart';
+import 'package:flutter_auth/Screens/Signup/components/or_divider.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/components/AppBar.dart';
@@ -64,20 +65,18 @@ class ProfileViewScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: DisplaySize.size.height * 0.1,
-                    ),
-                    AlreadyHaveAnAccountCheck(
-                      press: () {
-                        Navigator.pushNamed(context, '/sign-up');
-                      },
-                    ),
-                    SizedBox(
-                      height: 20,
+                      height: DisplaySize.size.height * 0.15,
                     ),
                     AlreadyHaveAnAccountCheck(
                       login: false,
                       press: () {
                         Navigator.pushNamed(context, '/login');
+                      },
+                    ),
+                    OrDivider(),
+                    AlreadyHaveAnAccountCheck(
+                      press: () {
+                        Navigator.pushNamed(context, '/sign-up');
                       },
                     ),
                   ],
