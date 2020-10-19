@@ -1,29 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Main/Subscreens/Home/Components/flat_button.dart';
+import 'package:flutter_auth/Screens/SearchResult/Components/styles.dart';
 import 'package:flutter_auth/components/button_container.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/model/booked_queue.dart';
 import 'package:flutter_auth/model/queue.dart';
 import 'package:flutter_auth/view_models/home_screen_view_model.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-class BookedQueueItemView extends StatefulWidget {
-  @required
-  final int index;
+class BookedQueueItemView extends StatelessWidget {
   const BookedQueueItemView({Key key, this.index}) : super(key: key);
+  final int index;
 
-  @override
-  _BookedQueueItemViewState createState() => _BookedQueueItemViewState();
-}
+  Widget _buildAlert(context) {
+    final homeModel = Provider.of<HomeScreenViewModel>(context);
 
-class _BookedQueueItemViewState extends State<BookedQueueItemView> {
+    return AlertDialog(
+      content: Container(
+        width: 250,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Вы действительно хотите выйти из очереди?',
+              style: Styles.textStyleAlertHeader,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+//=================< Cancel Button >=================
+                ButtonContainer(
+                  flex: 1,
+                  onPressed: () {
+                    print('Cancel is pressed in alert menu');
+                    Navigator.of(context).pop();
+                  },
+                  borderColor: MyColors.disabled,
+                  child: Text(
+                    'Отмена',
+                    style: Styles.textStyleButton,
+                  ),
+                ),
+                SizedBox(width: 20),
+
+//=================< Delete Approve Button >=================
+                ButtonContainer(
+                  flex: 1,
+                  onPressed: () {
+                    homeModel.delete(index);
+                    Navigator.of(context).pop();
+                  },
+                  borderColor: MyColors.enabled,
+                  fillColor: MyColors.enabled,
+                  child: Text(
+                    'Выйти',
+                    style: Styles.textStyleButton.merge(
+                      TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    final homeModel = Provider.of<HomeScreenViewModel>(context);
-    final index = widget.index;
 
     final String uID = Navbat.bookedQueueList[index].uID;
     final String name = Navbat.bookedQueueList[index].name;
@@ -160,7 +207,10 @@ class _BookedQueueItemViewState extends State<BookedQueueItemView> {
               ButtonContainer(
                 flex: exitText.length + 9,
                 onPressed: () {
-                  homeModel.delete(index);
+                  showDialog(
+                    context: context,
+                    builder: (_) => _buildAlert(context),
+                  );
                 },
                 borderColor: Color(0xFFE0503D),
                 fillColor: Color(0xFFE0503D),

@@ -30,9 +30,9 @@ class SearchResultItem extends StatelessWidget {
 
     return AlertDialog(
       content: Container(
-        height: 250,
         width: 250,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
