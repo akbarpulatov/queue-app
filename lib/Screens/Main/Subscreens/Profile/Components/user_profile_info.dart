@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Main/Subscreens/Profile/Components/styles.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/model/user.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class UserProfileInfo extends StatelessWidget {
@@ -33,12 +35,17 @@ class UserProfileInfo extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  'John',
-                  style: TextStyle(
-                    fontSize: 17,
-                  ),
-                ),
+                child: User.type == UserType.user
+                    ? Text(
+                        User.name,
+                        style: TextStyle(
+                          fontSize: 17,
+                        ),
+                      )
+                    : Text(
+                        'Гость',
+                        style: Styles.textStyleGuest,
+                      ),
               ),
               Divider(),
               RichText(

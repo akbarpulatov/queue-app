@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/CreateNewQueue/Components/alert_window.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/begin_date_time_widget.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/break_time_widget.dart';
 import 'package:flutter_auth/Screens/CreateNewQueue/Components/data_types.dart';
@@ -183,8 +184,12 @@ class CreateNewQueueScreen extends StatelessWidget {
 
                       _formKey.currentState.save();
 
-                      model.create();
-                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertWindow();
+                        },
+                      );
 
                       //Send to API
                     })

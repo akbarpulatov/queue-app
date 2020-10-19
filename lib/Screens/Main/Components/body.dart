@@ -15,6 +15,8 @@ class Body extends StatelessWidget {
   }
 }
 
+int selectedIndexBottomBar = 0;
+
 //===========================================< Main Page >===========================================
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
@@ -24,11 +26,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
-
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndexBottomBar = index;
     });
   }
 
@@ -66,14 +66,14 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[_selectedIndex],
+      body: tabs[selectedIndexBottomBar],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.grey[850],
         items: botNavigationBarItems,
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndexBottomBar,
         onTap: _onItemTapped,
       ),
     );

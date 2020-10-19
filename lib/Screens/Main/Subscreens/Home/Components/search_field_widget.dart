@@ -15,11 +15,5 @@ class SearchFieldWidget extends StatelessWidget {
         print(value);
       },
     );
-    // return TextField();
   }
 }
-
-// RoundedInputField(
-//   hintText: "Логин",
-//   onChanged: (value) {},
-// ),
