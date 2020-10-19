@@ -10,11 +10,16 @@ import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/model/user.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class ProfileViewScreen extends StatelessWidget {
+class ProfileViewScreen extends StatefulWidget {
   const ProfileViewScreen({
     Key key,
   }) : super(key: key);
 
+  @override
+  _ProfileViewScreenState createState() => _ProfileViewScreenState();
+}
+
+class _ProfileViewScreenState extends State<ProfileViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,32 +95,12 @@ class ProfileViewScreen extends StatelessWidget {
               textColor: MyColors.redDark,
               press: () {
                 // Sign-out
+                setState(() {
+                  User.type = UserType.guest;
+                  User.name = null;
+                });
               },
             ),
-          // : Column(
-          //     children: [
-          //       RoundedButton(
-          //         text: "Войти",
-          //         color: kBackgroundLightColor,
-          //         borderColor: kPrimaryColor,
-          //         textColor: kPrimaryColor,
-          //         press: () {
-          //           //Sign-up
-          //           Navigator.pushNamed(context, '/login');
-          //         },
-          //       ),
-          //       RoundedButton(
-          //         text: "Зарегистрироваться",
-          //         color: kBackgroundLightColor,
-          //         borderColor: kPrimaryColor,
-          //         textColor: kPrimaryColor,
-          //         press: () {
-          //           //Sign-up
-          //           Navigator.pushNamed(context, '/sign-up');
-          //         },
-          //       ),
-          //     ],
-          //   ),
           SizedBox(
             height: 7,
           ),
